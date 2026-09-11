@@ -1,0 +1,245 @@
+% Chapter 7: Discussion
+
+\chapter{Discussion}
+\label{ch:discussion}
+
+Chapter~\ref{ch:results} reported the results. This chapter interprets RQ1 and
+RQ2 in turn, brings the two stages together, relates the findings to the three
+strands reviewed in Chapter~\ref{ch:related-work}, and then states what the
+evidence means for faithfulness, its limitations, and future work.
+
+\section{Interpreting RQ1: answer behaviour under changes to visual evidence}
+\label{sec:discussion-rq1}
+\label{sec:discussion-descriptions}
+
+Accuracy under mismatch (0.435--0.519) was lower than accuracy under
+grey (0.483--0.626) in every arm. Grey takes the scene away and leaves the
+question, the choices, and any description intact. Mismatch leaves a full,
+coherent scene in place, but it belongs to a different record. If the model were
+simply falling back on textual priors once the image stopped being useful, the
+two conditions should not separate in this direction: an unrelated image would
+be no worse than no image at all. That the wrong image is worse than no image is
+consistent with the model treating whatever it is shown as evidence about the
+question, and being misled when that evidence is irrelevant.
+
+The two conditions also differ in input format. Mismatch supplies a full-size
+photograph of the kind the model was adapted on, while grey supplies a small
+uniform square that matches no frame in the dataset
+(Section~\ref{sec:setup-conditions}). An input that is easy to disregard and one
+that demands to be read are not the same
+manipulation, so this design cannot separate misleading evidence from a
+difference in input format. Both explanations concern observable behaviour.
+
+Mirror left aggregate Stage~1 accuracy close to source, but 5.24--7.50\% of
+records moved between correct and wrong states. A stable aggregate accuracy can
+therefore conceal substantial movement for individual records.
+
+Mirror preserves scene content while changing its orientation, so it provides a
+comparison with less visual disruption than removal, corruption, or replacement.
+Horizontal reversal can
+alter text placement, left-right relations, and pixel organisation.
+The observed churn makes that limitation visible. The analysis does not
+identify which question types account for the movement.
+
+The description arms lost less Stage~1 accuracy under the interventions, and
+under grey the difference sat mainly in fewer losses from correct to wrong rather than
+more gains from wrong to correct.
+The polygon results differed across comparisons. Differences between the polygon
+arms and their plain counterparts were small at source, and the \texttt{point}
+against \texttt{plain} difference changed direction across the Stage~1
+interventions.
+
+Stage~1 answer behaviour therefore responds to the content of the image as well
+as to its presence, and a fixed description partly buffers that response.
+
+\section[Interpreting RQ2: rationale sensitivity and answer conditioning]%
+  {Interpreting RQ2: rationale sensitivity and \mbox{answer} conditioning}
+\label{sec:discussion-rq2}
+
+Under gold conditioning the rationale text moved for every intervention.
+Replacement by an unrelated scene moved it most, removal next, corruption and
+added noise less, and reversal least. Arms carrying a description moved less when grey took the
+scene away. \texttt{point\_desc} had higher mean Drift than
+\texttt{plain\_desc} under all five interventions
+(Table~\ref{tab:rq2-drift}), but that comparison was not
+planned, so no interval is reported and no causal reading follows: under
+mismatch the arms do not receive the same kind of image
+(Section~\ref{sec:setup-conditions}).
+
+Gold conditioning held the supplied answer fixed, which made the image
+intervention interpretable. The 200-record wrong-answer control then changed
+that answer while retaining the source image. Drift from the wrong answer
+exceeded matched grey Drift in all four arms, and the direction survived both
+the reasoning span and final rationales with answer choices masked. Rationale
+generation therefore responded to the answer it was asked to justify as well as
+to the image. That comparison is specific to matched grey removal; the other
+conditions and anchors have different sample scopes and support no inferential
+ranking against answer change.
+
+The predicted-answer regime adds a further observation. When Stage~2
+wrote a rationale for an answer Stage~1 had selected, a judge receiving only
+text could often recover that answer, right or wrong. In \texttt{plain\_desc}
+the conditional rate was almost the same for correct and wrong predictions,
+0.5378 against 0.5331 (Appendix~\ref{sec:app-pred-a}). Coherence with a supplied
+answer therefore does not establish that the answer is correct. Coverage of usable
+rationales ranged from 39.84\% to 97.02\%, so a rate computed over successful
+generations alone would hide the records lost. The regime needs the
+conditional and the pipeline view together, and these readings stay inside its
+own scope (Section~\ref{sec:setup-pred-a}).
+
+Stage~2 rationale text therefore has two observable dependencies. It moves when
+the image changes, and when the supplied answer changes.
+
+\section{Relationship between Stage~1 and Stage~2}
+\label{sec:discussion-stages}
+
+The two stages showed the same broad intervention ordering even though their
+outputs and model heads differed. The comparison is ordinal. An accuracy gap is
+a change in the share of correct answers, while Drift is a change in text
+similarity among usable rationale pairs. Their magnitudes cannot be placed on
+one scale. The common ordering is therefore evidence of agreement between the
+stages across interventions. It does
+not establish a shared effect size.
+
+Descriptions reduced disruption at both stages. Their buffering effect is
+consistent with an alternative information route through text.
+Explicit polygon pointing did not yield a consistent independent advantage.
+The most consistent robustness pattern was associated with descriptions.
+
+Because each arm was trained once with its own inputs, the comparison describes four
+separately trained systems (Section~\ref{sec:problem-scope}). The experiment does
+not identify the mechanism or establish stronger visual grounding.
+
+\section{How the findings address gaps in prior work}
+\label{sec:discussion-priorwork}
+
+Chapter~\ref{ch:related-work} reviewed visual question answering, rationale
+generation, and behavioural evaluation of explanations. The findings address a
+specific gap in each strand, within one model family, one VCR population, and
+one adaptation per arm.
+
+\subsection{Visual Question Answering}
+\label{sec:discussion-priorwork-vqa}
+
+This thesis addresses the visual question answering gap by applying five
+controlled image interventions to the same VCR records and evaluating both
+answer and rationale behaviour. Descriptions reduced disruption at both stages,
+while polygon overlays produced no consistent independent advantage. These
+findings extend work showing shortcuts across questions and detected image
+content
+\citep{DBLP:conf/iccv/DancetteCTC21,DBLP:conf/emnlp/SiMZLL0CWZ22},
+that verbal descriptions can substitute for or compete with visual input, and
+that a region label does not guarantee use of the linked image area
+\citep{HakimovS23,DBLP:conf/cvpr/DengCCH25,LiGWCNK24}.
+
+\subsection{Rationale Generation}
+\label{sec:discussion-priorwork-rationales}
+
+This thesis addresses the rationale generation gap by testing answer
+conditioning directly. In the wrong-answer control, changing the supplied answer
+while keeping the source image fixed produced greater Drift than matched grey
+replacement in every arm. PRED-A also showed that coherence with the supplied
+answer can occur when that answer is wrong. These findings extend work on
+answer-conditioned rationale systems
+\citep{DBLP:conf/cvpr/ParkHARSDR18,DBLP:conf/emnlp/MarasovicBPLSC20}
+and on written reasoning that follows a prompt cue without mentioning it
+\citep{DBLP:conf/nips/TurpinMPB23}. The control covers 200 records, and PRED-A
+coverage varies across arms.
+
+\subsection{Behavioural Evaluation of Explanations}
+\label{sec:discussion-priorwork-behavioural}
+
+This thesis addresses the behavioural evaluation gap by extending intervention
+logic to visual evidence in free-form rationale generation. It keeps the record
+and supplied gold answer fixed, changes the image condition, and measures paired
+rationale change with BERTScore Drift. Applying the same image conditions at
+both stages supports an ordinal cross-stage synthesis. Prior work intervened on
+input spans, attention distributions, or written chains of reasoning
+\citep{DeYoungEtAl20ERASER,JainWallace19Attention,DBLP:journals/corr/abs-2307-13702}.
+This places answer and rationale responses within one matched intervention
+framework.
+
+\section{What the findings mean for faithfulness}
+\label{sec:discussion-faithfulness}
+
+% Without this the page ends on the Section 7.6 heading and its one-line
+% introduction, leaving the seven bullets to open the next page on their own.
+% Shortening this page carries the heading and its introduction across with them.
+\enlargethispage{-4\baselineskip}
+Stage~1 answers and Stage~2 rationale text respond systematically to changes in
+visual evidence, and the rationale text also responds to the answer it is given.
+These are behavioural signals relevant to whether a displayed rationale tracks
+the available evidence.
+
+The measures do not observe the causal computation that produced a particular
+answer. BERTScore Drift records textual change and has no universal faithfulness
+threshold. A low value can arise from stable content, shared phrasing, or other
+properties of the generator. A high value records greater text change but does not identify why. The study
+therefore supports comparative claims about
+behavioural sensitivity. It does not support labels for individual rationales.
+
+The reference using rationales from different records illustrates the same
+point. It locates the observed values on this dataset's raw BERTScore scale. It
+is an empirical reference produced by one fixed pairing.
+
+\section{Limitations}
+\label{sec:discussion-limitations}
+
+The main limitations are:
+
+\begin{itemize}
+  \item \textbf{Scope.} The study uses one model family, one VCR population,
+        one adaptation seed per arm, and separate checkpoints for each arm.
+
+  \item \textbf{Evaluation.} The reported values are performance on the
+        validation set rather than estimates from a separate untouched test
+        set: the same records supported checkpoint assessment and reporting.
+        Stage~1 selection and Stage~2 BLEU monitoring used outputs from the
+        source condition only. The bootstrap intervals cover variation across
+        records and source frames, excluding uncertainty from checkpoint
+        choice, training seed, and adaptation.
+
+  \item \textbf{Descriptions.} The GPT-4o API alias was not pinned to a dated
+        model snapshot. The descriptions were generated from polygon images,
+        were not independently checked for factual accuracy or task coverage,
+        and were truncated to 256 characters. A description error could cause
+        or mask apparent textual substitution.
+
+  \item \textbf{Visible artefacts.} Some frames contain distributor branding or
+        subtitles. Mask, noise, and mirror preserve or partly preserve these
+        cues, while grey and mismatch remove them. The interventions therefore
+        do not isolate scene content from every other visible cue.
+
+  \item \textbf{Stage comparison and deployment.} Stage~1 and Stage~2 use
+        different outcomes and hardware environments, so only qualitative
+        agreement between them is supported. Primary Stage~2 uses the gold
+        answer. A deployed pipeline would justify the answer selected by
+        Stage~1.
+
+  \item \textbf{Output format.} Tolerant parsing recovered usable text from
+        some generations that did not follow the requested format. Strict
+        formatting failures were concentrated in \texttt{point\_desc}.
+
+  \item \textbf{Transition interpretation.} W$\rightarrow$C transitions can
+        reflect choice artefacts or ambiguity and therefore do not establish
+        corrected reasoning.
+\end{itemize}
+
+\section{Future work}
+\label{sec:discussion-future}
+
+Future work should:
+
+\begin{itemize}
+  \item replicate the intervention battery across model families, datasets,
+        adaptation seeds, and prompt families;
+
+  \item use independent human judgements to relate Drift values to perceived
+        changes in rationale content;
+
+  \item vary description availability during training and evaluation to
+        separate the buffering effect from the trained arm; and
+
+  \item use mechanistic or causal interventions to test the internal evidence
+        routes suggested by the behavioural findings.
+\end{itemize}

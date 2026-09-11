@@ -1,0 +1,465 @@
+% Chapter 3
+
+\chapter{Background and Related Work}
+\label{ch:related-work}
+
+This chapter reviews three strands of work that motivate the study.
+Section~\ref{sec:background-vqa} considers visual question answering and shortcut
+behaviour. Section~\ref{sec:background-rationales} reviews rationale generation and
+the distinction between plausibility and faithfulness.
+Section~\ref{sec:background-behavioural} examines behavioural evaluation through
+interventions and through automatic comparison of generated text.
+Section~\ref{sec:background-position} then positions this thesis at their
+intersection.
+
+\section{Visual Question Answering}
+\label{sec:background-vqa}
+
+\subsection{Benchmarks and shortcut behaviour}
+\label{sec:background-shortcuts}
+
+Visual question answering asks a model to answer a question about an image. The
+question is written in natural language, and performance is reported as accuracy
+over a large evaluation set. That number is necessary, but it can overstate how
+much the image contributed, because answers correlate with the words of the
+question. \citet{DBLP:conf/cvpr/GoyalKSBP17} give the extreme case: on the first
+VQA dataset (VQA v1), answering \enquote{yes} to every question beginning
+\enquote{Do you see a\ldots} reaches 87 per cent accuracy without reading the
+rest of the question or looking at the image.
+
+Two datasets attacked this problem from different directions. VQA v2 rebalanced
+the data question by question. Annotators sought a visually similar second image
+on which the same question had a different answer
+\citep{DBLP:conf/cvpr/GoyalKSBP17}. Suitable pairs were not always found. For a
+successfully contrastive pair, the question alone cannot distinguish the answers.
+A model that received only the question fell
+from 48.21 to 41.40 accuracy when moved to the balanced evaluation set, which the
+authors describe as alleviating the language bias rather than eliminating it.
+Visual Question Answering under Changing Priors (VQA-CP) regrouped questions so
+that answers common for a question type during training were rare at evaluation
+\citep{DBLP:conf/cvpr/AgrawalBPK18}. Every existing model they benchmarked lost
+accuracy. The Stacked Attention Network fell from 55.86 on VQA v1 to 26.88 on
+VQA-CP v1. The two designs are not
+interchangeable. VQA v2 changes what an individual record demands, while VQA-CP
+compares models trained on one answer distribution and evaluated on another.
+
+Later work asked whether the remaining shortcuts involve the image as well as the
+question. \citet{DBLP:conf/iccv/DancetteCTC21} mined predictive rules from the
+training set that combine question words with the labels of detected objects, such
+as the presence of a racket, and then collected the validation records on which
+every applicable mined rule gives the wrong answer. These counterexamples form
+the evaluation subset, and records that no rule matched were set aside. Accuracy
+on that subset fell from 63.52
+to 33.91 for one common model and from 67.77 to 39.24 for a pretrained
+transformer. \citet{DBLP:conf/emnlp/SiMZLL0CWZ22} generalised the idea into nine
+shortcut families built from question types, question keywords, annotated key
+objects, and their combinations, and reported that accuracy within the training
+distribution exceeded accuracy on every one of the nine shifted evaluation sets.
+They also found that the methods built to remove such shortcuts did not improve
+all nine shifted sets at once.
+
+Together these studies establish that accuracy can coexist with reliance on
+regularities the task did not intend, and that those regularities span both the
+question and the detected content of the image. Their evidence comes from
+rebuilding the data or reselecting the evaluation records. None of them holds a
+record fixed and alters its image. \citet{DBLP:conf/cvpr/GoyalKSBP17} do add a
+second explanation form, pointing to a similar image on which the answer differs.
+Across the work reviewed here, though, no study tests how a generated textual
+rationale responds when the visual evidence changes.
+
+\subsection{Visual Commonsense Reasoning}
+\label{sec:background-vcr}
+
+VCR was introduced to move visual question answering past recognition towards
+inference about people
+\citep{DBLP:conf/cvpr/ZellersBFC19}. Its 290,000 questions come from 110,000 movie
+scenes and concern activities, social roles, mental states, and likely events
+before and after the frame; 38 per cent are explanatory \enquote{why} or
+\enquote{how} questions. A formal VCR record supplies the image, a sequence of
+object detections carrying a bounding box, a segmentation mask, and a class label,
+and a query whose words are either ordinary words or tags referring to one of
+those detections. The tags come from a detection model, and the paper notes that
+the task is agnostic to how a mask is represented, offering a list of polygons as
+one possibility. These tags identify a person or object
+only after the reference is resolved against the image.
+
+The dataset poses two subtasks, and both are selections. In \mbox{Q$\rightarrow$A}
+the query is the question and the four responses are candidate answers; in
+\mbox{QA$\rightarrow$R} the query is the question together with the correct answer
+and the four responses are candidate rationales. The authors chose that format
+deliberately, \enquote{to avoid the evaluation difficulties of language generation
+or captioning tasks where current metrics often prefer incorrect machine-written
+text over correct human-written text}
+\citep{DBLP:conf/cvpr/ZellersBFC19}. Original VCR therefore never asks a model to
+write a rationale. Free-form generation on these records is a later adaptation,
+taken up by \citet{DBLP:conf/emnlp/MarasovicBPLSC20} and reviewed in
+Section~\ref{sec:background-answer-conditioning}, and it is the adaptation this
+thesis uses.
+
+How much of VCR performance rests on the image was tested directly by
+\citet{LiGWCNK24}, who removed one input at a time from three vision-language
+transformers. Withholding the query cost between 19.7 and 20.5 points on
+\mbox{QA$\rightarrow$R}, whereas withholding the image cost between 7.7 and 8.3.
+The authors attribute the gap to textual query--response shortcuts, and
+illustrate a tag shared between the question and the correct rationale. The
+result is bounded to those
+architectures and to selection accuracy, and removing the image still cost
+something, so it shows uneven rather than absent use of the scene.
+
+VCR thus offers structured references to people and regions, human rationales, and
+an established reason to doubt that answer accuracy tracks visual evidence. The
+reviewed work measures that doubt by withholding a whole modality from a selection
+task. The remaining gap is a joint test of answer behaviour and free-form
+rationale behaviour under controlled changes to the same record's image.
+
+\subsection{Descriptions and explicit spatial guidance}
+\label{sec:background-descriptions}
+
+A model can also receive scene information through language.
+\citet{HakimovS23} test this setup by using captioning and classification models
+to convert each image into text; the answering language model receives only that
+text. Across five vision and language tasks, they prompted such models with a
+small number of examples. The authors describe those results as comparable with
+fitted \mbox{vision-language} systems, although the best prompted configuration
+trails the fitted comparator on each of the five datasets. Verbal description can
+therefore substitute for direct visual input on some tasks.
+
+\citet{DBLP:conf/cvpr/DengCCH25} supply both. They add three kinds of text to
+questions over four visual domains: text that matches the image, text corrupted so
+that it points to a different answer, and text irrelevant to the question. With
+the image retained, corrupted text reduced the accuracy of Molmo-7B-D, an open
+\mbox{vision-language} model, from 76.33 to 49.29 on general visual questions. The
+proprietary Claude Sonnet moved from 66.88 to 68.17 on the same questions. The
+effect of the corrupted text therefore differed across models. Restricting
+attention to records where the image alone and the text alone give different
+answers, they measure how often the model follows the text. In their certainty
+analysis of LLaVA-NeXT-7B and GPT-4o, two further \mbox{vision-language} models,
+each model tended to follow whichever channel gave the more certain answer on its
+own. Across the full set of models some favoured the image, so this remains a
+tendency among the tested systems.
+
+A second way to make the scene explicit is to expose regions rather than describe
+them. VCR supplies segmentation regions for its indexed entities
+\citep{DBLP:conf/cvpr/ZellersBFC19}, and drawing those regions on the image turns a
+tag in the question into a visible pointer. This is related, at the level of
+design, to work that makes regions part of the reasoning process:
+\citet{DBLP:journals/corr/abs-2403-16999} have a model emit a bounding box for the
+region that would help it answer, crop that region, and answer from the original
+image and the crop together. The relation is an analogy rather than an
+equivalence, since that system predicts its own region while an overlay is drawn
+in advance. The ablation of \citet{LiGWCNK24} is a caution against assuming a
+marked region will be used. Across the three VCR task variants they report,
+replacing every tag in a record with a different tag cost the tested models 0.1 to
+1.1 points, while deleting the tags cost 3.9 to 7.9 points. That suggests those
+models read the tags as text but made little use of the link to the region.
+
+Two things are established separately. A description can carry enough of a scene
+to answer some questions without the image, and it can compete with the image when
+the two disagree. Explicit regions can be made part of a reasoning pipeline, though
+models tested on VCR have used the link between a tag and its region weakly. What
+the reviewed work does not establish is how a fixed description and a simple
+polygon overlay relate, together, to both answer behaviour and rationale
+sensitivity when the image of a VCR record is altered.
+
+\section{Rationale Generation}
+\label{sec:background-rationales}
+
+\subsection{Answer-conditioned rationale models}
+\label{sec:background-answer-conditioning}
+
+The answer-conditioned systems reviewed here generate a rationale after receiving
+or predicting an answer. The Pointing and Justification model (PJ-X) implements
+this design \citep{DBLP:conf/cvpr/ParkHARSDR18}. An answering model predicts an
+answer; the predicted answer is embedded and combined with the joint question and
+image representation to produce an attention map over the image; the attended visual
+feature, the question feature, and the answer embedding are then pooled and passed
+to a decoder that writes the justification. The answer is an input to the
+explanation rather than a conclusion drawn from it.
+
+Datasets were also developed to train generated rationales and evaluate their
+quality. The e-SNLI dataset extends Stanford Natural Language Inference, whose
+records pair two sentences and label the relation between
+them, with an explanation written by a person \citep{CamburuEtAl18ESNLI}. Their
+e-InferSent model was trained in a PredictAndExplain setting: it predicts the label
+first, then writes an explanation conditioned on that prediction. The authors graded
+the first 100 test examples from one seed by hand, scoring each explanation for
+partial as well as full correctness. Among the 80 examples whose label was correct,
+the mean correctness score was 34.68 per cent.
+\citet{DBLP:conf/emnlp/MarasovicBPLSC20} moved free-form rationalisation to visual
+tasks including VCR, and stated their scope plainly: because rationalisation is
+hard, they assume the gold answer is given and restrict the study to justifying
+that answer. Three crowdworkers then judged whether each rationale supports the
+given answer in the context of the image. \citet{KayserEtAl21EVIL} unified this
+practice across three datasets, asking annotators \enquote{Given the image and the
+question/hypothesis, does the explanation justify the answer?} on a scale with four
+points. Their explanation score averages over the examples that were answered
+correctly, and their overall score combines it with task accuracy, so an example
+with an incorrect answer contributes zero to that overall result.
+
+These studies show that answer-conditioned generators can produce rationales that
+people judge as supporting an answer. Surface overlap alone does not capture that
+judgement. Their human evaluations measure perceived support or plausibility;
+faithfulness requires a separate test. \citet{DBLP:conf/emnlp/MarasovicBPLSC20} also compare each model with a baseline
+that receives no image. Human judges then rate how plausible its rationales
+appear without visual input, testing whether lexical cues can support a plausible
+rationale on their own. When a
+generator receives an answer as input, coherence with that answer does not show
+whether the rationale reflects the evidence that led to it.
+
+The same dataset therefore supports two distinct tasks. Original VCR asks a
+model to pick one rationale from four written by people
+\citep{DBLP:conf/cvpr/ZellersBFC19}; free-form generation asks it to compose one.
+Selection accuracy and generated text raise different evaluation problems, and the
+next subsection separates the properties that such evaluation can and cannot
+establish.
+
+\subsection{Plausibility and faithfulness}
+\label{sec:background-plausibility}
+
+\citet{DBLP:conf/acl/JacoviG20} separate two properties that explanation research
+often runs together. Plausibility is how convincing an interpretation is to a
+person. Faithfulness is how accurately it reflects the reasoning process the model
+actually used. They observe that the two can come apart, and single out the case
+that matters here: where a separate component generates a textual explanation
+trained on human explanations, plausibility is the dominating property and there is
+no guarantee of faithfulness. \citet{DBLP:journals/corr/abs-2402-04614} restate the
+same pair for large language models, defining an explanation as plausible when it
+is coherent with human reasoning and understanding, and as faithful when it
+accurately represents the reasoning of the underlying model.
+
+The distinction has a direct consequence for the evaluations reviewed above.
+\citet{DBLP:conf/acl/JacoviG20} argue that human judgement should not be used to
+evaluate faithfulness, because what a person can judge is plausibility, and that
+evaluations resting on human gold labels are pushed the same way.
+\citet{KayserEtAl21EVIL} accept the point for their own benchmark: they report
+human ratings of whether an explanation justifies an answer, and name the
+faithfulness of explanations as a question for future work. The human ratings of
+Section~\ref{sec:background-answer-conditioning} were therefore designed to
+measure plausibility. They do not test faithfulness.
+
+The evaluations above involve four distinct properties. A reader may judge that a rationale
+supports an answer. A rationale may resemble a human reference. A model's output
+may change when the evidence available to it changes. And there is the process
+inside the model that actually produced the answer, which none of the first three
+observes directly. The e-SNLI results separate reference overlap from judged
+correctness. For the sample described in
+Section~\ref{sec:background-answer-conditioning}, the generated explanations came
+close to the human annotators' agreement with each other on surface overlap, while
+their mean correctness score was 34.68 per cent
+\citep{CamburuEtAl18ESNLI}. A fluent and relevant
+rationale that readers accept is therefore not yet evidence of faithfulness.
+
+\subsection{Faithfulness of chain-of-thought rationales}
+\label{sec:background-cot}
+
+Chain-of-thought prompting supplies a few worked examples in which the answer is
+preceded by its intermediate steps, so that the model writes similar steps before
+answering \citep{WeiEtAl22CoT}. On the arithmetic tasks, substantial gains appeared
+in the models they tested at roughly one hundred billion parameters and above. Two
+ablations on GSM8K, a set of grade-school arithmetic word problems, show that the
+written sequence matters. Replacing the chain with only the equation to be solved,
+or moving the reasoning to after the answer, left performance at approximately the
+standard-prompting baseline. Equation-only prompting still helped on simpler one-
+or two-step problems. Wei et al. leave open whether emulating the steps
+of a human reasoner means that the network is reasoning.
+
+\citet{DBLP:conf/nips/TurpinMPB23} tested whether the written steps report the
+reason for the answer. They introduced biasing cues without describing the intended
+bias, reordering the options in the examples so that the correct choice was always
+the first, or prefixing the question with a stated opinion about the answer. Their
+questions came from thirteen tasks in BIG-Bench Hard, a suite of multiple-choice
+reasoning problems. Prompted without worked examples, GPT-3.5, one of the two
+language models they tested, wrote intermediate steps and scored 59.6 on the
+examples whose correct answer contradicted the suggested one. Adding the
+suggested answer reduced accuracy from 59.6 to 23.3, a 36.3-point decline. None of
+the 234 explanations they inspected from that benchmark mentioned the bias. Of
+the unfaithful explanations they annotated, 73 per cent argued for the
+answer the cue pointed to, and 15 per cent contained no visible error at all. A generated
+explanation can therefore support a cue-driven answer without revealing the cue
+that influenced it.
+
+\citet{DBLP:journals/corr/abs-2307-13702} intervened on the written chain itself.
+They truncated it before the answer, inserted mistakes into it, paraphrased it, and
+replaced it with strings of full stops, then measured whether the final answer
+followed. Dependence varied widely across the eight tasks studied, from heavy
+reliance on the chain to near indifference to it. Uninformative filler produced no
+gain and paraphrasing changed little, which argues against extra computation
+alone or the tested wording choices as the explanation in this setup. Their
+stated limitation is that they
+have no independent access to the model's internal process against which to check
+the chain.
+
+This line of work establishes that written reasoning can be steered by cues it never
+mentions, and that whether an answer depends on the written chain can be measured by
+editing the chain. Both kinds of intervention act on text: on the words of the
+prompt, or on the words of the reasoning. Neither shows how a rationale generator
+responds when the visual evidence is removed, corrupted, replaced, or transformed.
+
+\section{Behavioural Evaluation of Explanations}
+\label{sec:background-behavioural}
+
+\subsection{Interventions as evidence of dependence}
+\label{sec:background-interventions}
+
+A common behavioural test removes selected evidence and measures whether the
+model's support for its original prediction falls. The ERASER benchmark, short for
+Evaluating Rationales And Simple English Reasoning, turns that reasoning
+into two measures for text \citep{DeYoungEtAl20ERASER}. Comprehensiveness is the
+fall in the probability of the originally predicted class when the selected
+rationale tokens are deleted from the input; sufficiency is the difference
+between that probability on the full input and on the rationale tokens alone.
+The authors are careful about the standing of these measures, calling how best
+to measure faithfulness an open question and offering theirs as a first version.
+The measures are defined for spans of text selected from the input. Applying the
+same logic to text a model writes requires a separate design.
+
+Attention-based explanations prompted a related debate.
+\citet{JainWallace19Attention} permuted the attention weights that trained
+classifiers place over their input tokens and searched for alternative
+distributions that leave the prediction almost unchanged. They found such
+distributions readily. They also reported generally weak agreement between learned
+attention and importance measured from gradients, for the bidirectional recurrent
+encoders they tested, which read each text in both directions.
+\citet{DBLP:conf/emnlp/WiegreffeP19} accepted the concern
+but questioned the setup. Their adversarial distributions came from a training
+procedure of their own, which fits the adversary inside a model while holding its
+attention away from an ordinarily trained baseline. They fed those distributions to
+a simple model that must use them as fixed guides. On three of the four datasets,
+those distributions performed worse as fixed guides than the attention weights
+learned by the base classifier; Anemia was the exception. That indicates that the
+trained attention carries information about the relation between tokens and
+predictions that cannot be freely substituted. Taken together the two papers mark
+a boundary: showing that an
+alternative exists establishes that the explanation is not unique, which is weaker
+than establishing that it is uninformative.
+
+The interventions reviewed in Section~\ref{sec:background-cot} act on generated
+reasoning. Across input removal, attention interventions, and chain editing,
+changing candidate evidence tests whether an output depends on it. The resulting
+evidence remains behavioural: it records the response under the intervention,
+while the model's internal route remains unobserved. An unchanged output can also
+reflect redundant evidence elsewhere in the input.
+
+\subsection{Automatic comparison of rationale text}
+\label{sec:background-metrics}
+
+Automatic evaluation of generated text often compares a candidate with a
+reference. BLEU counts how many of a candidate's short word sequences, its
+n-grams, appear in the reference,
+clipping each count at the number of times it occurs there, combining the
+precisions for several lengths as a geometric mean, and penalising candidates that
+are too short \citep{DBLP:conf/acl/PapineniRWZ02}. Papineni et al. state that BLEU needs
+to agree with human judgement only when averaged over a corpus, and they give the
+example of a system that writes \enquote{East Asian
+economy} being penalised heavily because the references happen to read
+\enquote{economy of East Asia}. The rationales evaluated here are individual
+short texts. BLEU was designed for corpus averages, so these scores require
+caution.
+
+Two later measures relax the matching. BLEURT scores a candidate against a
+reference using representations from BERT, a pretrained language model. It was
+trained first on millions of synthetic pairs built by perturbing sentences, and
+then fitted to human ratings from machine translation evaluations
+\citep{DBLP:conf/acl/SellamDP20}. BERTScore compares contextual token
+representations directly, without a learned quality regression. It embeds both
+sentences in context, pairs each token with the most similar token in the other
+sentence by cosine similarity, and combines the resulting precision and recall
+into an F1 score \citep{DBLP:conf/iclr/ZhangKWWA20}. That makes it tolerant of
+rewording, and better than surface overlap at the harder case of sentences that
+share their words but not their meaning. On pairs built by swapping words within a
+sentence, BERTScore's F1
+obtained 0.685 for the area under the receiver operating characteristic curve,
+which measures how well the score separates paraphrases from non-paraphrases;
+BLEU obtained 0.527. This improved on BLEU and remained well below perfect
+separation.
+
+In the e-SNLI setting of Section~\ref{sec:background-answer-conditioning}, the
+generated explanations scored 22.40 on BLEU, while the third human explanation
+scored 22.51 against the other two \citep{CamburuEtAl18ESNLI}. The authors
+concluded that the measure was not reliable for the task and turned to manual
+grading, which gave a mean correctness score of 34.68 per cent over the 80
+correctly labelled examples.
+\citet{KayserEtAl21EVIL} compared automatic scores against human judgements of
+whether an explanation justifies an answer, over three datasets and four models.
+For the examples the models answered correctly, the Spearman rank correlations with
+those judgements were 0.216 for BLEU-4, the four-gram variant, 0.248 for BLEURT,
+and 0.293 for BERTScore. On the VCR portion alone they were 0.038, 0.128, and
+0.138. The source does not mark the VCR BLEU-4 coefficient as meeting its
+$p<0.001$ criterion. Similarity to a human
+reference is therefore weak evidence about the quality of a rationale on this kind
+of data.
+
+Similarity to a reference and change in a model's own output are different
+quantities. A rationale may sit far from any human reference and still be the same
+text before and after the image changes; it may sit close to a reference in both
+conditions and still be different text. Comparing a model's two outputs for one
+record avoids relying on a human reference, but it inherits the limits of the
+similarity measure, since an embedding comparison still compresses negation, mistaken
+references, and changes in causal structure into a single number. Such a number
+needs comparison points before it can be read.
+
+% The BERT and ROC explanations lengthened this subsection by four lines, which
+% carried its closing line onto the next page above the section heading. Lending
+% this page one line keeps the paragraph whole and restores the page break the
+% previous pass established.
+\enlargethispage{\baselineskip}
+
+\section{Positioning of This Thesis}
+\label{sec:background-position}
+
+This thesis addresses the gap identified across the three strands reviewed above
+by jointly evaluating Stage~1 answer behaviour and Stage~2 free-form rationale
+behaviour on the same VCR records under the same controlled changes to visual
+evidence. In the primary Stage~2 analysis, the supplied gold answer remains
+fixed while the image condition changes. The four separately adapted
+configurations vary the use of descriptions and polygon overlays. This places
+the two stages under one intervention framework while keeping their measures
+separate.
+
+The three strands motivate different parts of this design. Visual question
+answering motivates the controlled image changes and the analysis of answer
+behaviour. Rationale generation motivates the Stage~2 setup in which the
+supplied answer is fixed. Behavioural evaluation motivates comparing source and
+intervention outputs for the same records.
+Table~\ref{tab:background-positioning} summarises the three literature strands,
+the remaining gap, and the corresponding design response.
+
+\begin{table}[ht]
+\centering
+\caption[How the reviewed literature motivates this thesis]{How the reviewed
+literature motivates this thesis. Each row summarises one strand and the
+corresponding design response.}
+\label{tab:background-positioning}
+\begin{tabular}{L{3.0cm}L{4.8cm}L{5.7cm}}
+\toprule
+Strand & What prior work established & Remaining gap and response in this thesis \\
+\midrule
+Visual question answering &
+Accuracy can coexist with reliance on regularities in the question, in detected
+image content, and in their combination; on VCR, withholding the query costs
+selection accuracy more than withholding the image &
+Prior work mainly evaluates answer or rationale selection through redesigned
+datasets, shifted splits, selected records, or removal of a whole modality. This
+thesis keeps the evaluated question and choices fixed, varies the image
+condition, and records answer behaviour across the resulting conditions \\
+\addlinespace
+Rationale generation &
+Generators conditioned on an answer produce text readers accept as justifying it;
+plausibility and faithfulness are distinct, and written reasoning can be steered by
+a cue it never mentions &
+Acceptance by a reader does not show that a rationale reflects the evidence behind
+the answer. This thesis generates rationales for the same records. In the primary
+Stage~2 analysis, the supplied answer remains fixed while the image condition
+changes \\
+\addlinespace
+Behavioural evaluation &
+Altering candidate evidence and observing the output tests dependence; similarity
+to a human reference is a different quantity and correlates weakly with human
+judgement of rationales &
+The studies reviewed here intervene on input spans, attention, or generated
+reasoning. This thesis applies the same conceptual image conditions at both
+stages and compares outputs for the same records \\
+\bottomrule
+\end{tabular}
+\end{table}
+

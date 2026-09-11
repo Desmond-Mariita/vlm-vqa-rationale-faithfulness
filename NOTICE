@@ -1,0 +1,13 @@
+Third-party materials and publication holds
+
+Author-owned code and thesis: licence decision pending. This notice grants no blanket rights.
+
+VCR: externally acquired dataset; no VCR imagery or raw records are included in the current payload. The former thesis-raster staging exemption is retired; historical file hashes and source references are metadata only. Researchers must obtain data under the official terms: https://visualcommonsense.com/license/ . This repository grants no rights to VCR data. Source excerpts in the unchanged thesis remain thesis quotations/examples, not a general-purpose dataset.
+
+Qwen2.5-VL-3B-Instruct and Qwen2.5-3B-Instruct: weights/adapters external. Consult the upstream Qwen Research License at the exact revisions in docs/MODEL_AND_REVISION_MANIFEST.md. No licence for code here is applied to model weights.
+
+MastersDoctoralThesis.cls: the file declares LaTeX Project Public License 1.3c. Its original header and attribution are retained verbatim. Review modified-class obligations before publication. LaTeX packages/fonts must be installed from their distributors; no standalone protected font files are included.
+
+University of Potsdam logo: absent; redistribution clearance remains unresolved. Author signature: absent; publication consent remains unresolved. The exact approved PDF embeds both and is withheld in full.
+
+Python/TeX dependencies retain their respective upstream licences. No third-party paper PDFs, model binaries, personal credentials or private repository history are included.

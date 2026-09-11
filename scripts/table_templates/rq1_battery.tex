@@ -1,0 +1,71 @@
+\begin{table}[ht]
+\centering
+\caption[Stage~1 accuracy by image condition]{Stage~1 accuracy on the same
+2,653 records and 2,400 source frames. Intervals are 95\% confidence intervals
+from a bootstrap clustered by source frame.}
+\label{tab:rq1-battery}
+\begin{tabular}{llrr}
+\toprule
+Arm & Image condition & Accuracy & 95\% CI \\
+\midrule
+\texttt{plain} & source & @@ROW_0@@ \\
+ & grey & @@ROW_1@@ \\
+ & mismatch & @@ROW_2@@ \\
+ & mask & @@ROW_3@@ \\
+ & noise & @@ROW_4@@ \\
+ & mirror & @@ROW_5@@ \\
+\texttt{point} & source & @@ROW_6@@ \\
+ & grey & @@ROW_7@@ \\
+ & mismatch & @@ROW_8@@ \\
+ & mask & @@ROW_9@@ \\
+ & noise & @@ROW_10@@ \\
+ & mirror & @@ROW_11@@ \\
+\texttt{plain\_desc} & source & @@ROW_12@@ \\
+ & grey & @@ROW_13@@ \\
+ & mismatch & @@ROW_14@@ \\
+ & mask & @@ROW_15@@ \\
+ & noise & @@ROW_16@@ \\
+ & mirror & @@ROW_17@@ \\
+\texttt{point\_desc} & source & @@ROW_18@@ \\
+ & grey & @@ROW_19@@ \\
+ & mismatch & @@ROW_20@@ \\
+ & mask & @@ROW_21@@ \\
+ & noise & @@ROW_22@@ \\
+ & mirror & @@ROW_23@@ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption[Stage~1 gaps relative to source]{Source accuracy minus condition
+accuracy. Positive values indicate lower accuracy under the intervention.
+Intervals use the same bootstrap as Table~\ref{tab:rq1-battery}.}
+\label{tab:rq1-gaps}
+\begin{tabular}{llrr}
+\toprule
+Arm & Image condition & Gap & 95\% CI \\
+\midrule
+\texttt{plain} & grey & @@ROW_24@@ \\
+ & mismatch & @@ROW_25@@ \\
+ & mask & @@ROW_26@@ \\
+ & noise & @@ROW_27@@ \\
+ & mirror & @@ROW_28@@ \\
+\texttt{point} & grey & @@ROW_29@@ \\
+ & mismatch & @@ROW_30@@ \\
+ & mask & @@ROW_31@@ \\
+ & noise & @@ROW_32@@ \\
+ & mirror & @@ROW_33@@ \\
+\texttt{plain\_desc} & grey & @@ROW_34@@ \\
+ & mismatch & @@ROW_35@@ \\
+ & mask & @@ROW_36@@ \\
+ & noise & @@ROW_37@@ \\
+ & mirror & @@ROW_38@@ \\
+\texttt{point\_desc} & grey & @@ROW_39@@ \\
+ & mismatch & @@ROW_40@@ \\
+ & mask & @@ROW_41@@ \\
+ & noise & @@ROW_42@@ \\
+ & mirror & @@ROW_43@@ \\
+\bottomrule
+\end{tabular}
+\end{table}

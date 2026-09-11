@@ -1,0 +1,2 @@
+# Recovered GPU generation stack; see HARDWARE_AND_SOFTWARE.md.
+-r training.lock.txt

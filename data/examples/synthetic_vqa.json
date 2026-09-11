@@ -1,0 +1,13 @@
+{
+  "synthetic": true,
+  "image": "synthetic_scene.svg",
+  "question": "Which shape is on the left?",
+  "choices": [
+    "A red circle",
+    "A blue square",
+    "A green triangle",
+    "A yellow star"
+  ],
+  "answer_label": 0,
+  "rationale": "The red circle is left of the blue square."
+}

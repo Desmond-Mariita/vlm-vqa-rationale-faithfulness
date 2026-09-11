@@ -1,0 +1,55 @@
+\begin{table}[ht]
+\centering
+\caption[Drift by rationale text unit]{Mean raw BERTScore Drift for the same pairs measured on three text units: the final span used for the primary analysis, the reasoning span, and the complete generation. Pairable $n$ is the count for the final span; the sensitivity units use the same records.}
+\label{tab:app-rq2-text-unit}
+\begin{tabular}{llrrrr}
+\toprule
+Arm & Image condition & $n$ & Final span & Reasoning span & Full generation \\
+\midrule
+\texttt{plain} & grey & @@ROW_0@@ \\
+ & mismatch & @@ROW_1@@ \\
+ & mask & @@ROW_2@@ \\
+ & noise & @@ROW_3@@ \\
+ & mirror & @@ROW_4@@ \\
+\texttt{point} & grey & @@ROW_5@@ \\
+ & mismatch & @@ROW_6@@ \\
+ & mask & @@ROW_7@@ \\
+ & noise & @@ROW_8@@ \\
+ & mirror & @@ROW_9@@ \\
+\texttt{plain\_desc} & grey & @@ROW_10@@ \\
+ & mismatch & @@ROW_11@@ \\
+ & mask & @@ROW_12@@ \\
+ & noise & @@ROW_13@@ \\
+ & mirror & @@ROW_14@@ \\
+\texttt{point\_desc} & grey & @@ROW_15@@ \\
+ & mismatch & @@ROW_16@@ \\
+ & mask & @@ROW_17@@ \\
+ & noise & @@ROW_18@@ \\
+ & mirror & @@ROW_19@@ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption[Wrong-answer comparison by text unit]{The wrong-answer comparison on the fixed 200-record sample, measured on three text representations. The difference is Drift from the wrong answer minus matched grey Drift, with a 95\% confidence interval from a bootstrap clustered by source frame.}
+\label{tab:app-rq2-echo-unit}
+\begin{tabular}{llrrr}
+\toprule
+Arm & Representation & Grey Drift & Wrong-answer Drift & Difference [95\% CI] \\
+\midrule
+\texttt{plain} & final span & @@ROW_20@@ \\
+ & reasoning span & @@ROW_21@@ \\
+ & final span, answer choices masked & @@ROW_22@@ \\
+\texttt{point} & final span & @@ROW_23@@ \\
+ & reasoning span & @@ROW_24@@ \\
+ & final span, answer choices masked & @@ROW_25@@ \\
+\texttt{plain\_desc} & final span & @@ROW_26@@ \\
+ & reasoning span & @@ROW_27@@ \\
+ & final span, answer choices masked & @@ROW_28@@ \\
+\texttt{point\_desc} & final span & @@ROW_29@@ \\
+ & reasoning span & @@ROW_30@@ \\
+ & final span, answer choices masked & @@ROW_31@@ \\
+\bottomrule
+\end{tabular}
+\end{table}

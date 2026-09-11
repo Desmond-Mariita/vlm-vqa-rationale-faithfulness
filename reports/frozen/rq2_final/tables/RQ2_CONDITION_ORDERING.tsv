@@ -1,0 +1,5 @@
+arm	lowest_to_highest_mean_drift	highest_to_lowest_mean_drift
+plain	mirror < mask < noise < grey < mismatch	mismatch > grey > noise > mask > mirror
+point	mirror < noise < mask < grey < mismatch	mismatch > grey > mask > noise > mirror
+plain_desc	mirror < mask < noise < grey < mismatch	mismatch > grey > noise > mask > mirror
+point_desc	mirror < noise < mask < grey < mismatch	mismatch > grey > mask > noise > mirror

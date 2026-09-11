@@ -1,0 +1,23 @@
+\begin{table}[ht]
+\centering
+\caption[Predicted-answer eligibility]{Where the 2,653 records went in the
+secondary predicted-answer regime. Empty final counts the records whose stored
+output held no final span; those records still carry reasoning text. Ambiguous
+counts the records whose only candidate final span came from text inside the
+reasoning field, which the rule against imputation does not admit, and which is
+why the ineligible total can exceed the empty finals. Ineligible is empty final
+plus ambiguous. For each arm, ineligible and
+usable sum to 2,653. Tolerant recovery counts the usable spans that needed the
+tolerant parser, so it is a subset of usable and is not added to it.}
+\label{tab:app-pred-a-coverage}
+\begin{tabular}{lrrrrr}
+\toprule
+Arm & Empty final & Ambiguous & Ineligible & Tolerant recovery & Usable \\
+\midrule
+\texttt{plain} & @@ROW_0@@ \\
+\texttt{point} & @@ROW_1@@ \\
+\texttt{plain\_desc} & @@ROW_2@@ \\
+\texttt{point\_desc} & @@ROW_3@@ \\
+\bottomrule
+\end{tabular}
+\end{table}

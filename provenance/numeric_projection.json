@@ -1,0 +1,70 @@
+{
+  "method": "Integer encoding across all three files preserves pair and cluster identity. This is a derived numeric release, not the original byte-bound scoring archive. No mapping to dataset IDs is included.",
+  "files": [
+    {
+      "path": "reports/frozen/rq1_final/data/RQ1_FINAL_RECORD_RESULTS.tsv",
+      "rows": 10612,
+      "columns": [
+        "arm",
+        "record_id",
+        "source_frame_id",
+        "gold_label",
+        "pred_source",
+        "correct_source",
+        "pred_grey",
+        "correct_grey",
+        "pred_mismatch",
+        "correct_mismatch",
+        "pred_mask",
+        "correct_mask",
+        "pred_noise",
+        "correct_noise",
+        "pred_mirror",
+        "correct_mirror"
+      ],
+      "original_sha256": "0c27e630e8ad4dc0dd1d91739c24201cae792690773d7c9a5c782ea5a5bd9b15",
+      "projection_sha256": "5b6a566b0aab7b4f71d70465d99844042a757fc74e2d997b82e7818cd17099aa"
+    },
+    {
+      "path": "reports/frozen/rq2_final/data/RQ2_PRIMARY_DRIFT_PER_RECORD.tsv",
+      "rows": 53049,
+      "columns": [
+        "arm",
+        "condition",
+        "record_id",
+        "source_frame_id",
+        "source_text_sha256",
+        "condition_text_sha256",
+        "bertscore_precision",
+        "bertscore_recall",
+        "bertscore_f1",
+        "raw_drift"
+      ],
+      "original_sha256": "7bbd938ca7bf9afc3ce6c17b28f916148fa33e44067eb6db757924edf19c6627",
+      "projection_sha256": "f24a6d92f876fdf902a36f76621e2aeb36f5497a77382820672ca1213cddf711"
+    },
+    {
+      "path": "reports/frozen/rq2_final/data/RQ2_BERTSCORE_SCORES.tsv.gz",
+      "rows": 176154,
+      "columns": [
+        "job_index",
+        "analysis",
+        "arm",
+        "condition",
+        "unit",
+        "record_id",
+        "source_frame_id",
+        "source_text_sha256",
+        "condition_text_sha256",
+        "bertscore_precision",
+        "bertscore_recall",
+        "bertscore_f1",
+        "raw_drift",
+        "baseline_rescaled_f1",
+        "baseline_rescaled_drift"
+      ],
+      "original_sha256": "9b76546d1d3ed21c4dd1ba1dfa3ade85dbb57495eae6f8836e7214cd30ceb065",
+      "projection_sha256": "37ef08e3990724569e375d9a4cff18e8f9964b3207cc26f745b44332dc0ccecd"
+    }
+  ]
+}

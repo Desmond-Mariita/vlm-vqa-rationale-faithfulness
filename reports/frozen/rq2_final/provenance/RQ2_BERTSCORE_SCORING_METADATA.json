@@ -1,0 +1,16 @@
+{
+  "rows_scored": 176154,
+  "bert_score_version": "0.3.12",
+  "model": "roberta-large",
+  "model_snapshot": "722cf37b1afa9454edce342e7895e588b6ff1d59",
+  "num_layers": 17,
+  "idf": false,
+  "primary_baseline_rescaling": false,
+  "tokenizer_class": "RobertaTokenizer",
+  "use_fast_tokenizer": false,
+  "output_sha256": "9b76546d1d3ed21c4dd1ba1dfa3ade85dbb57495eae6f8836e7214cd30ceb065",
+  "batch_size": 64,
+  "torch_version": "2.9.0+cu128",
+  "transformers_version": "4.57.1",
+  "output_sha256_scope": "original external scoring archive; staged projection has its own hash in provenance/numeric_projection.json"
+}

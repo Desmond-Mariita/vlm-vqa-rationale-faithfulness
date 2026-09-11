@@ -1,0 +1,20 @@
+\begin{table}[ht]
+\centering
+\caption[Matched wrong-answer control]{Wrong-answer control on the
+same fixed 200 records in every arm, drawn from 185 source frames and taken as
+the first 200 in deterministic dataset order. The comparison is Drift from the
+wrong answer minus matched grey Drift, with 95\% intervals from a bootstrap
+that resamples the 185 source frames of this sample. Every value here holds
+within this fixed 200-record, 185-frame sample.}
+\label{tab:rq2-known-change}
+\begin{tabular}{lrrrrr}
+\toprule
+Arm & $n$ & Matched grey & Changed answer & Difference & 95\% CI \\
+\midrule
+\texttt{plain} & @@ROW_0@@ \\
+\texttt{point} & @@ROW_1@@ \\
+\texttt{plain\_desc} & @@ROW_2@@ \\
+\texttt{point\_desc} & @@ROW_3@@ \\
+\bottomrule
+\end{tabular}
+\end{table}

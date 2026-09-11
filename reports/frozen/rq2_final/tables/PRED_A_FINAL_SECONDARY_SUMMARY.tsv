@@ -1,0 +1,5 @@
+arm	total_source_ids	usable_final_n	usable_final_rate	stage1_correct_n	stage1_wrong_n	conditional_cmc	pipeline_cmc	correct_conditional_pipeline	wrong_conditional_pipeline	lineage
+plain	2653	2437	0.9186	2136	517	0.5749	0.5281	0.596 / 0.545	0.490 / 0.457	historical RTX-3090 generation family
+point	2653	1057	0.3984	2144	509	0.5880	0.2340	0.607 / 0.246	0.497 / 0.185	historical RTX-3090 generation family
+plain_desc	2653	1624	0.6121	2153	500	0.5369	0.3287	0.538 / 0.330	0.533 / 0.322	historical RTX-3090 generation family
+point_desc	2653	2574	0.9702	2161	492	0.6310	0.6120	0.639 / 0.620	0.593 / 0.575	historical RTX-3090 generation family

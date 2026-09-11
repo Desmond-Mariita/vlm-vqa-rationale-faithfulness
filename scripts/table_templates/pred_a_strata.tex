@@ -1,0 +1,29 @@
+\begin{table}[ht]
+\centering
+\caption[Predicted-answer CMC by Stage~1 correctness]{CMC in the secondary
+predicted-answer regime, split by whether the supplied Stage~1 prediction was
+correct. Correct and wrong refer to the stored epoch~3 prediction set that
+conditioned these rationales; they are not the correct and wrong split of the
+epoch~2 RQ1 source predictions in Table~\ref{tab:rq1-battery}. $N$ is the
+records in the stratum, usable the ones with a recoverable final span, and
+answer recovered the ones whose supplied answer the judge recovered. Conditional
+divides that count by usable within the stratum; pipeline divides it by $N$.}
+\label{tab:app-pred-a-strata}
+\begin{tabular}{llrrrrr}
+\toprule
+Arm & Stage~1 & $N$ & Usable & Answer recovered & Conditional & Pipeline \\
+\midrule
+\texttt{plain} & correct & @@ROW_0@@ \\
+ & wrong & @@ROW_1@@ \\
+\addlinespace
+\texttt{point} & correct & @@ROW_2@@ \\
+ & wrong & @@ROW_3@@ \\
+\addlinespace
+\texttt{plain\_desc} & correct & @@ROW_4@@ \\
+ & wrong & @@ROW_5@@ \\
+\addlinespace
+\texttt{point\_desc} & correct & @@ROW_6@@ \\
+ & wrong & @@ROW_7@@ \\
+\bottomrule
+\end{tabular}
+\end{table}

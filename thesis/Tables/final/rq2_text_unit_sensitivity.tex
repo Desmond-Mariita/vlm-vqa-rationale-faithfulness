@@ -1,0 +1,55 @@
+\begin{table}[ht]
+\centering
+\caption[Drift by rationale text unit]{Mean raw BERTScore Drift for the same pairs measured on three text units: the final span used for the primary analysis, the reasoning span, and the complete generation. Pairable $n$ is the count for the final span; the sensitivity units use the same records.}
+\label{tab:app-rq2-text-unit}
+\begin{tabular}{llrrrr}
+\toprule
+Arm & Image condition & $n$ & Final span & Reasoning span & Full generation \\
+\midrule
+\texttt{plain} & grey & 2,653 & 0.0835 & 0.0814 & 0.0612 \\
+ & mismatch & 2,653 & 0.0882 & 0.0856 & 0.0651 \\
+ & mask & 2,653 & 0.0762 & 0.0731 & 0.0555 \\
+ & noise & 2,653 & 0.0769 & 0.0740 & 0.0562 \\
+ & mirror & 2,652 & 0.0575 & 0.0537 & 0.0419 \\
+\texttt{point} & grey & 2,653 & 0.0817 & 0.0804 & 0.0598 \\
+ & mismatch & 2,653 & 0.0886 & 0.0869 & 0.0653 \\
+ & mask & 2,653 & 0.0758 & 0.0734 & 0.0553 \\
+ & noise & 2,653 & 0.0745 & 0.0723 & 0.0544 \\
+ & mirror & 2,653 & 0.0604 & 0.0576 & 0.0443 \\
+\texttt{plain\_desc} & grey & 2,652 & 0.0745 & 0.0736 & 0.0547 \\
+ & mismatch & 2,652 & 0.0788 & 0.0778 & 0.0579 \\
+ & mask & 2,652 & 0.0669 & 0.0660 & 0.0489 \\
+ & noise & 2,651 & 0.0681 & 0.0671 & 0.0498 \\
+ & mirror & 2,651 & 0.0496 & 0.0482 & 0.0365 \\
+\texttt{point\_desc} & grey & 2,653 & 0.0770 & 0.0754 & 0.0590 \\
+ & mismatch & 2,653 & 0.0890 & 0.0874 & 0.0740 \\
+ & mask & 2,652 & 0.0716 & 0.0693 & 0.0547 \\
+ & noise & 2,652 & 0.0705 & 0.0685 & 0.0540 \\
+ & mirror & 2,652 & 0.0590 & 0.0564 & 0.0453 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption[Wrong-answer comparison by text unit]{The wrong-answer comparison on the fixed 200-record sample, measured on three text representations. The difference is Drift from the wrong answer minus matched grey Drift, with a 95\% confidence interval from a bootstrap clustered by source frame.}
+\label{tab:app-rq2-echo-unit}
+\begin{tabular}{llrrr}
+\toprule
+Arm & Representation & Grey Drift & Wrong-answer Drift & Difference [95\% CI] \\
+\midrule
+\texttt{plain} & final span & 0.0779 & 0.1033 & +0.0254 [0.0196, 0.0312] \\
+ & reasoning span & 0.0751 & 0.1015 & +0.0264 [0.0206, 0.0321] \\
+ & final span, answer choices masked & 0.0779 & 0.1036 & +0.0257 [0.0199, 0.0315] \\
+\texttt{point} & final span & 0.0790 & 0.1043 & +0.0252 [0.0197, 0.0306] \\
+ & reasoning span & 0.0779 & 0.1032 & +0.0254 [0.0198, 0.0308] \\
+ & final span, answer choices masked & 0.0798 & 0.1045 & +0.0248 [0.0191, 0.0301] \\
+\texttt{plain\_desc} & final span & 0.0692 & 0.0955 & +0.0263 [0.0199, 0.0328] \\
+ & reasoning span & 0.0688 & 0.0954 & +0.0266 [0.0202, 0.0330] \\
+ & final span, answer choices masked & 0.0698 & 0.0958 & +0.0260 [0.0195, 0.0324] \\
+\texttt{point\_desc} & final span & 0.0739 & 0.0980 & +0.0241 [0.0187, 0.0296] \\
+ & reasoning span & 0.0733 & 0.0980 & +0.0247 [0.0193, 0.0301] \\
+ & final span, answer choices masked & 0.0739 & 0.0981 & +0.0242 [0.0187, 0.0297] \\
+\bottomrule
+\end{tabular}
+\end{table}

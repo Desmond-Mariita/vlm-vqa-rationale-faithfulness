@@ -1,0 +1,13 @@
+arm	stratum	records	usable_final	judge_correct	conditional_cmc	pipeline_cmc
+plain	all	2653	2437	1401	0.5749	0.5281
+plain	stage1_correct	2136	1955	1165	0.5959	0.5454
+plain	stage1_wrong	517	482	236	0.4896	0.4565
+point	all	2653	1057	621	0.5875	0.2341
+point	stage1_correct	2144	868	527	0.6071	0.2458
+point	stage1_wrong	509	189	94	0.4974	0.1847
+plain_desc	all	2653	1624	872	0.5369	0.3287
+plain_desc	stage1_correct	2153	1322	711	0.5378	0.3302
+plain_desc	stage1_wrong	500	302	161	0.5331	0.3220
+point_desc	all	2653	2574	1623	0.6305	0.6118
+point_desc	stage1_correct	2161	2097	1340	0.6390	0.6201
+point_desc	stage1_wrong	492	477	283	0.5933	0.5752

@@ -1,0 +1,57 @@
+% Chapter 8: Conclusion
+
+\chapter{Conclusion}
+\label{ch:conclusion}
+
+This thesis asked how controlled changes to visual evidence affect answers and
+rationales in a two-stage VQA pipeline. We evaluated four separately adapted
+input arms on the same 2,653 VCR records under source, grey, mismatch, mask,
+noise, and mirror conditions.
+
+RQ1 showed that Stage~1 answer behaviour depended on the available visual
+evidence. Mismatch caused the largest accuracy loss, followed by grey,
+then mask and noise; mirror left net accuracy close to source while still
+causing correctness changes for individual records. Description arms retained
+more predictions that were correct under source when images were degraded, a
+pattern consistent with the fixed description remaining available as a text
+channel.
+
+RQ2 showed that Stage~2 rationale text conditioned on the gold answer was
+sensitive to the same interventions. Change was measured with BERTScore on the
+final rationale span, and followed the same broad order; the reasoning span and
+the complete generation give the same ordering
+(Appendix~\ref{sec:app-rq2-sensitivity}).
+The matched control with a wrong answer produced greater Drift than
+matched grey removal in every arm, showing that rationale generation was also conditioned by
+the answer it was asked to justify.
+
+A secondary predicted-answer regime also showed that coverage of usable
+rationales can vary sharply between arms, and that recovering the supplied answer from a
+rationale does not establish that the answer is correct.
+
+The most consistent robustness pattern across the two stages was associated with
+descriptions. Polygon overlays alone did not yield a consistent independent
+advantage.
+
+These results are behavioural evidence relevant to faithfulness. They show how
+outputs respond to controlled changes in visual evidence and supplied answers,
+within the limits set out in Sections~\ref{sec:discussion-faithfulness}
+and~\ref{sec:discussion-limitations}.
+
+Arms with a fixed textual description appeared more robust under image
+degradation at both stages, a pattern consistent with scene information remaining
+available through text. The arms that held up best under grey and mismatch had an
+additional route through text. Their robustness therefore does not establish
+stronger visual grounding. An evaluation that varies only the image and reports
+only accuracy will therefore reward auxiliary text channels and cannot distinguish
+them from visual evidence use. Separating the
+two requires varying the text channel as well. This applies to the system
+evaluated in this thesis; how far it carries to other models and datasets is an
+open question.
+
+Future work should repeat the six image conditions across models, datasets, and
+training seeds. Independent human validation would strengthen the interpretation
+of metrics for rationale change. A design that varies description availability
+systematically during training and evaluation could separate what a checkpoint
+expects from what it substitutes at inference. Internal evidence use will
+require causal or mechanistic methods beyond output comparison.

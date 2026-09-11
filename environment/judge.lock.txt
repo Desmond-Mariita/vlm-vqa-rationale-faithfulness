@@ -1,0 +1,2 @@
+# Separate recorded judge dependency; remaining dependencies require environment resolution.
+transformers==5.13.0

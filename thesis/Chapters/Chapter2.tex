@@ -1,0 +1,93 @@
+% Chapter 2: Problem definition and scope
+
+\chapter{Problem Definition and Scope}
+\label{ch:problem-statement}
+
+\section{Faithfulness as a behavioural question}
+\label{sec:problem-definition}
+
+An explanation is faithful when it accurately represents the reasoning process
+that produced a model prediction \citep{DBLP:conf/acl/JacoviG20}. This
+definition concerns a causal relation inside the model. Generated text alone
+does not reveal that relation. A rationale can be fluent, relevant, and
+consistent with an answer while omitting the evidence that changed the answer.
+
+We therefore ask a narrower, observable question. If an answer or rationale
+depends on visual evidence, controlled changes to that evidence should sometimes
+change the corresponding output. Stage~1 measures answer
+dependence. Stage~2 measures how the rationale text responds while the supplied
+answer is held fixed. These results describe behavioural dependence on the
+input. They do not reveal the hidden computation that produced an output.
+
+This distinction also separates two types of stability. A stable output under
+horizontal mirror can be compatible with a transformation that preserves scene
+content. The same stability under grey replacement or an unrelated image has a
+different interpretation because content relevant to the answer has been
+removed or replaced. The six image conditions make these comparisons explicit.
+
+\section{Answers and rationales are separate outcomes}
+\label{sec:problem-two-stage}
+
+The two-stage design prevents answer accuracy from standing in for rationale
+quality. Stage~1 maps the image, question, choices, and optional description to
+an answer. Stage~2 maps the same record and a supplied answer to a rationale.
+The two stages use separate adaptations of the same base model for each arm.
+
+The two stages are related but distinct. Stage~2 begins from the arm's trained
+Stage~1 weights and is then trained further to write a rationale for an answer
+it is given. It does not receive Stage~1's hidden states, its four class scores,
+or any trace of how that answer was reached. The classifier head belongs to
+Stage~1 alone. A Stage~2 rationale therefore describes the answer it was handed,
+and the design tests whether each output depends on the visual evidence when the
+same intervention is applied to both.
+
+Gold answer conditioning is central to this separation: it keeps the answer
+that Stage~2 must support constant while the image changes
+(Section~\ref{sec:setup-regimes}). The primary RQ2 analysis holds the answer
+fixed in this way, while a separate source-only regime examines the recorded
+path in which Stage~2 receives a Stage~1 prediction instead
+(Section~\ref{sec:setup-pred-a}).
+
+Accuracy and Drift use different scales and denominators. Their relationship is
+therefore assessed through their patterns across image conditions rather than by
+comparing their numerical magnitudes.
+
+\section{Input arms and image conditions}
+\label{sec:problem-design}
+
+The four input arms vary two inputs. The \texttt{point} arms add polygon
+overlays to the image. The \texttt{desc} arms add a fixed textual description.
+Each arm has its own Stage~1 and Stage~2 checkpoint, so a comparison between
+arms describes what these four adapted systems do, rather than the effect of
+one input component on its own.
+
+The six image conditions vary the evidence available during evaluation. Source
+provides the image appropriate to the arm. Grey removes scene content. Mismatch
+supplies an unrelated image from a different source frame. Mask and noise
+corrupt the image while retaining part of its structure. Mirror preserves the
+scene but changes its spatial orientation. Chapter~\ref{ch:setup} defines each
+construction.
+
+\section{Scope and interpretation}
+\label{sec:problem-scope}
+
+The evaluation covers one Qwen2.5-VL model size, VCR, one training seed per
+arm, one prompt family, and deterministic generation. Within each stage and
+arm, all image conditions use the same checkpoint. Across arms, the checkpoints
+were trained separately, so the observed differences may reflect both the input
+configuration and variation introduced during training. We therefore interpret
+comparisons between arms descriptively, as properties of the four trained
+systems.
+
+The description arms retain text derived from the image after the pixels are
+changed, so smaller accuracy losses or lower Drift in those arms can reflect
+textual substitution. A polygon overlay changes the pixels and a description
+adds text, so the analysis reports their patterns separately.
+
+Every estimate is also conditional on the eight checkpoints the study used.
+Each arm was adapted once. Stage~1 selected its checkpoint by validation
+accuracy on the same records that the results report, and Stage~2 retained the
+final checkpoint of a fixed epoch budget scored on those records
+(Section~\ref{sec:setup-model}). The intervals in Chapter~\ref{ch:results}
+describe variation across records and source frames for these fixed
+checkpoints.

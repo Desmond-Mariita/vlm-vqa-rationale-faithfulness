@@ -1,0 +1,5 @@
+arm	n	matched_grey_drift	deliberate_answer_drift	answer_minus_grey	difference_ci_95
+plain	200	0.0779	0.1033	0.0254	[0.0196, 0.0312]
+point	200	0.0790	0.1043	0.0252	[0.0197, 0.0306]
+plain_desc	200	0.0692	0.0955	0.0263	[0.0199, 0.0328]
+point_desc	200	0.0739	0.0980	0.0241	[0.0187, 0.0296]

@@ -1,0 +1,296 @@
+% Chapter 5: Measures and statistical analysis
+
+\chapter{Measures and Statistical Analysis}
+\label{ch:framework}
+
+This chapter defines the outcomes, denominators, and uncertainty procedures used
+to answer the two research questions.
+
+\section{Analysis principles}
+\label{sec:framework-principles}
+
+We report the available sample, point estimate, and 95\% confidence interval
+from a bootstrap clustered by source frame where applicable. The analysis plan, including its
+comparisons, was fixed before the complete results were inspected. Every planned comparison is reported.
+
+Differences and intervals were computed from unrounded values; the components
+displayed in tables are rounded for presentation, so subtracting two printed
+numbers can differ from the printed difference in the last digit.
+
+Missing rationale text remained missing. The primary Stage~2 analysis uses a
+paired record only when the tolerant parser recovered a non-empty final rationale span
+from both source and intervention outputs. We report parser coverage before the
+scientific estimates so that a change in denominator remains visible.
+
+\section{RQ1: answer behaviour}
+\label{sec:framework-rq1}
+
+\subsection{Accuracy and gaps relative to source}
+\label{sec:framework-accuracy}
+
+Accuracy is the proportion of records whose Stage~1 prediction equals the gold
+answer. With four choices, chance performance is 0.25. The five intervention
+conditions are grey, mismatch, mask, noise, and mirror. For any one of these
+conditions, the gap relative to source is
+\[
+  G_{\mathrm{condition}}
+  =A_{\mathrm{source}}-A_{\mathrm{condition}},
+\]
+where $A_{\mathrm{source}}$ is accuracy with the source image and
+$A_{\mathrm{condition}}$ is accuracy under the named intervention condition.
+Positive values mean that accuracy was lower after the
+image intervention. Both component accuracies accompany the gap because the
+same difference can arise at different performance levels.
+
+The \emph{Sufficiency Gap} is the gap for grey replacement:
+\[
+  \mathrm{Sufficiency\ Gap}
+  =A_{\mathrm{source}}-A_{\mathrm{grey}}.
+\]
+It quantifies how much answer accuracy is lost when scene pixels are replaced
+while the question, choices, checkpoint, and optional description remain. Grey
+also changes the size and shape of the input (Section~\ref{sec:setup-conditions}),
+so the gap measures this specific 256 by 256 replacement. The same grey
+constructor was applied to every arm, but interactions with its size, shape, and
+processed visual tokens may still differ between arms. A
+smaller gap means that more information relevant to the answer
+remains available under grey. In a description arm, the retained text
+can provide that information, so a smaller gap is interpreted as behavioural
+robustness.
+
+The planned comparisons across arms compare \texttt{plain\_desc} with
+\texttt{plain} and \texttt{point\_desc} with \texttt{point}. They subtract
+the Sufficiency Gap without a description from the corresponding gap with a description.
+Negative values mean that the description arm lost less accuracy.
+
+\subsection{Correctness transitions}
+\label{sec:framework-transitions}
+
+Net accuracy can hide opposing movements for individual records. We therefore
+classify each source and condition pair as correct to correct (C$\rightarrow$C),
+correct to wrong (C$\rightarrow$W), wrong to correct (W$\rightarrow$C), or
+wrong to wrong (W$\rightarrow$W). C$\rightarrow$W is reported relative to the
+number correct under source, while W$\rightarrow$C is reported relative to the
+number wrong under source and to all records.
+
+Churn is C$\rightarrow$W plus W$\rightarrow$C. It measures how many records
+changed correctness state even when the two directions cancel in aggregate
+accuracy. Net movement is W$\rightarrow$C minus C$\rightarrow$W. The
+accounting identity
+\[
+  A_{\mathrm{source}}-A_{\mathrm{condition}}
+  =\frac{\left(\mathrm{C}\rightarrow\mathrm{W}\right)
+         -\left(\mathrm{W}\rightarrow\mathrm{C}\right)}{N}
+\]
+was checked in every combination of arm and condition.
+
+The qualitative W$\rightarrow$C audit uses a fixed sample of 16 cases, each
+representing one arm under one condition. Twelve represent the conditions other than mismatch and four represent
+mismatch under the shared map. Their identifiers were fixed before questions,
+choices, or images were inspected. The audit is illustrative and does not estimate category
+prevalence.
+
+\section{RQ2: BERTScore Drift}
+\label{sec:framework-rq2}
+
+\subsection{Why compare paired rationales}
+\label{sec:framework-drift-motivation}
+
+RQ2 asks whether generated rationale text responds when visual evidence changes.
+Reference similarity to a human rationale does not answer this question because
+both source and intervention outputs could be equally plausible. We compare the
+two model outputs from the same record, arm, checkpoint, question, choices, gold
+answer, and decoding configuration.
+
+Let $R_{i,\mathrm{source}}$ be the final rationale from the tolerant parser for
+record $i$ under the source image, and let $R_{i,\mathrm{condition}}$ be the
+final rationale for the same record under the named intervention condition. The
+primary measure is
+\[
+  D_{i,\mathrm{condition}}
+  =1-\mathrm{BERTScore}_{\mathrm{F1}}
+  \left(R_{i,\mathrm{source}},R_{i,\mathrm{condition}}\right).
+\]
+We call $D_{i,\mathrm{condition}}$ \emph{BERTScore Drift}, or Drift after first
+use. We convert BERTScore F1 similarity into a dissimilarity score by
+subtracting the similarity value from 1. Larger values therefore mean greater
+text change on this configured scale. Identical strings have Drift zero by
+definition. Drift measures change in the generated text; truth, semantic
+correctness, and hidden causal reasoning are separate questions.
+
+\subsection{BERTScore configuration}
+\label{sec:framework-bertscore-config}
+
+We computed BERTScore F1 \citep{DBLP:conf/iclr/ZhangKWWA20}. Our implementation
+used \texttt{bert\_score==0.3.12} with \textsc{roberta-large}, model snapshot
+\texttt{722cf37b1afa9454edce342e7895e588b6ff1d59}, and layer~17.
+Inverse document frequency weighting was
+disabled, and baseline rescaling was disabled, so every reported value is raw.
+Precision, recall, F1, and raw Drift were stored for every eligible pair
+together with hashes of both text spans.
+
+For each arm and intervention, we report the number of usable pairs, the mean,
+and a 95\% confidence interval for the mean. Whether the ordering of the
+conditions depends on scoring the final span is checked in
+Appendix~\ref{sec:app-rq2-sensitivity}, which repeats the same pairs on the
+reasoning span and the complete generation.
+
+\section{Drift reference points}
+\label{sec:framework-anchors}
+
+Raw Drift values are easier to interpret when they are placed beside three
+observed reference points.
+
+\paragraph{Mirror.}
+For each record, we compare the rationale generated with the source image with
+the rationale generated after horizontally mirroring that image. The gold answer
+remains fixed. Mirror preserves the scene content while reversing its
+orientation, so it gives a reference point for a visual change that does not
+remove or replace the scene.
+
+\paragraph{Wrong-answer control.}
+For the same fixed 200 records in each arm, we use the source image in both
+answer conditions:
+
+\begin{itemize}
+  \item First, Stage~2 receives the source image and the gold answer and
+        produces the source rationale.
+  \item Second, Stage~2 receives the same source image and a predefined answer
+        that differs from the gold answer and produces another rationale.
+  \item We compute the Drift between these two rationales.
+\end{itemize}
+
+For the matched grey value, we compare the same source rationale with the
+rationale generated from the grey image while the answer remains gold. The
+paired comparison is
+\[
+  \Delta_{\mathrm{answer}}
+  =D_{\mathrm{wrong\ answer}}-D_{\mathrm{matched\ grey}}.
+\]
+A positive value means that changing the supplied answer produced more rationale
+change than grey replacement on the same records. The analysis on the reasoning
+span, and the analysis on the final span with answer choices masked, check
+whether this direction depends on direct lexical echo.
+
+\paragraph{Reference using rationales from different records.}
+Within each arm, we form a fixed one-to-one pairing of source-condition
+rationales:
+
+\begin{itemize}
+  \item Take the source-condition rationale for each record.
+  \item Pair it with the source-condition rationale from a different record in
+        the same arm.
+  \item Require the two records to come from different source frames.
+  \item Compute Drift for every pair and average the resulting values.
+\end{itemize}
+
+The mean shows the scale of Drift when the two rationales describe different
+records. We use it as an empirical reference point for this dataset and metric
+configuration.
+
+The one-to-one pairing used seed \texttt{20260829} for \texttt{plain},
+\texttt{20260830} for \texttt{point}, \texttt{20260831} for
+\texttt{plain\_desc}, and \texttt{20260832} for \texttt{point\_desc}. The
+accepted permutation was the third draw for \texttt{plain}, the second for
+\texttt{point} and \texttt{plain\_desc}, and the first for
+\texttt{point\_desc}.
+
+\section{Uncertainty and planned comparisons}
+\label{sec:framework-statistics}
+
+Several VCR questions can use the same movie frame, so records from one frame
+are related. We therefore estimated uncertainty with a bootstrap clustered by
+source frame \citep{DBLP:books/sp/EfronT93}.
+
+\begin{itemize}
+  \item \textbf{Sampling unit.} One source frame is one bootstrap unit, together
+        with every analysed record that uses that frame. A full-population cell
+        contains 2,400 frame units. Cells affected by a missing rationale contain
+        2,398 or 2,399, and the 200-record wrong-answer control contains 185.
+
+  \item \textbf{Resampling.} For each replicate, sample with replacement the
+        same number of frame units as the analysed set contains. When a frame is
+        selected more than once, all records linked to it receive the same
+        multiplicity.
+
+  \item \textbf{Recalculation.} Recompute the requested accuracy, transition
+        rate, mean Drift, or difference between paired terms on the resampled
+        data. A paired comparison uses the same sampled frame multiplicities for
+        both terms.
+
+  \item \textbf{Repetition.} Repeat the process 10,000 times with seed~42.
+
+  \item \textbf{Confidence interval.} Use the 2.5th and 97.5th percentiles of
+        the 10,000 replicate values as the endpoints of the 95\% interval.
+\end{itemize}
+
+An interval that includes zero leaves the direction of the difference unresolved
+under this procedure. Establishing equivalence would require a dedicated
+equivalence test.
+
+The confidence intervals are unadjusted.
+Section~\ref{sec:framework-principles} records that the comparison list was
+fixed in advance, and every planned comparison is reported.
+
+\begin{itemize}
+  \item \textbf{RQ1.} Compare \texttt{plain\_desc} with \texttt{plain} and
+        \texttt{point\_desc} with \texttt{point} for the Sufficiency Gap and for
+        the grey C$\rightarrow$W rate.
+
+  \item \textbf{RQ2 intervention values.} Report Drift for grey, mismatch, mask,
+        noise, and mirror relative to source in every arm.
+
+  \item \textbf{RQ2 planned pairwise comparisons.} Within each arm, compare grey
+        with mirror, mismatch with mirror, grey with mismatch, and mask with
+        noise. Across matched arms under grey, compare \texttt{plain\_desc} with
+        \texttt{plain} and \texttt{point\_desc} with \texttt{point}. These are
+        the comparisons reported in
+        Appendix~\ref{sec:app-rq2-contrasts}.
+
+  \item \textbf{Wrong-answer control.} Compare wrong-answer Drift with matched
+        grey Drift on the fixed 200-record, 185-frame sample.
+\end{itemize}
+
+\section{PRED-A and Cross-Modal Consistency}
+\label{sec:framework-pred-a}
+
+The secondary predicted-answer regime (PRED-A) is measured by Cross-Modal
+Consistency (CMC), which asks whether the answer Stage~2 was given can be
+recovered from the rationale it wrote. We measure this by letting a text-only
+model act as the judge. The judge receives the question, the four answer
+choices, and the eligible final rationale span. These are its only inputs. It
+selects one of the four choice indices, and recovery succeeds when that choice
+matches the answer supplied to Stage~2.
+
+The judge is \texttt{Qwen/Qwen2.5-3B-Instruct}, pinned to revision
+\texttt{aa8e72537993ba99e69dfaafa59ed015b17504d1}. Inputs were truncated at 2,048
+tokens and
+scored in batches of 16. The reported CMC values are properties of this judge as
+much as of the rationales, and a different judge would give different numbers.
+
+% Keep the sentence that names R, U and N on the same page as the equations it
+% introduces; a break here left the closing word alone above the display.
+\begin{samepage}
+Two rates follow from that, and they answer different questions. Writing $R$ for
+the number of recoveries, $U$ for the usable final rationales, and $N$ for all
+records,
+\[
+  \mathrm{CMC}_{\mathrm{conditional}} = \frac{R}{U},
+  \qquad
+  \mathrm{CMC}_{\mathrm{pipeline}} = \frac{R}{N}.
+\]
+\end{samepage}
+Conditional CMC describes only the records for which a usable rationale exists.
+Pipeline CMC divides by every record, so it carries generation coverage with it.
+Where coverage is low the two diverge sharply, and reporting only the first
+would describe the successful generations rather than the regime.
+
+CMC records coherence between a supplied answer and the rationale written for it.
+It does not measure visual grounding, answer correctness, rationale truth, or
+faithfulness. Uniform random selection among four choices succeeds with
+probability 0.25. This is the mathematical chance level of the four-way
+decision. Because the judge also sees the question and answer choices, CMC may partly
+reflect information available without the rationale; estimating that
+contribution would require a question-and-choices-only baseline.
+Appendix~\ref{sec:app-prompts} reproduces the judge prompt and states its
+decoding rule.

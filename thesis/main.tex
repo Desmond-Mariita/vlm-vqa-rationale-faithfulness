@@ -1,0 +1,415 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Master's Thesis -- Driver File
+% Adapted from the Universität Potsdam template (LaTeXTemplates v2.5).
+% Citations use natbib with the apalike bibliography style.
+% Each chapter lives in Chapters/ChapterN.tex.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+12pt,
+oneside,
+english,
+onehalfspacing,
+nolistspacing,
+parskip,
+headsepline,
+]{MastersDoctoralThesis}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{mathpazo}
+
+% Typography: prevents most overfull lines by enabling protrusion and font expansion.
+\usepackage[protrusion=true,expansion=true,babel=true,final]{microtype}
+
+% Relax line breaking just enough to keep paragraphs inside the type block
+% without resorting to global \sloppy. emergencystretch lets TeX add a little
+% extra inter-word space on hard-to-break lines; the tolerance bump lets it
+% accept slightly looser lines before bailing out to overflow.
+\setlength{\emergencystretch}{3em}
+\tolerance=2000
+\hbadness=2000
+
+% Citations match proposal_v2.pdf exactly: natbib + apalike (author-year, parens).
+\usepackage{natbib}
+\bibliographystyle{apalike}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{etoolbox}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{amssymb}
+\newenvironment{inplacetable}[1][]{%
+  \par\begin{center}\begin{minipage}{\linewidth}%
+  \captionsetup{type=table}%
+}{%
+  \end{minipage}\end{center}\par%
+}
+
+% Keep table typography consistent across regular, in-place, and long tables.
+% Captions retain the class-wide `scriptsize` setting.
+\newcommand{\thesistablestyle}{%
+  \scriptsize
+  \setlength{\tabcolsep}{2pt}%
+  \let\small\scriptsize
+  \let\footnotesize\scriptsize
+}
+\newtoggle{inthesistable}
+\AtBeginEnvironment{table}{\toggletrue{inthesistable}\thesistablestyle}
+\AtBeginEnvironment{inplacetable}{\toggletrue{inthesistable}\thesistablestyle}
+\AtBeginEnvironment{longtable}{\thesistablestyle}
+% A table caption resets the surrounding font before the tabular begins.  Apply
+% the approved v10 table style again at the tabular boundary, but only inside a
+% table environment so figure-panel tabulars retain their v10 `\small` labels.
+\AtBeginEnvironment{tabular}{%
+  \iftoggle{inthesistable}{\thesistablestyle}{}%
+}
+
+% Hyphenation help for British-spelled compounds that the default English
+% patterns sometimes refuse to break, leaving lines flush against the margin.
+\hyphenation{
+  ra-tio-na-li-sa-tion ra-tio-na-li-sa-tions
+  ra-tio-na-li-sed ra-tio-na-li-ses ra-tio-na-li-sing
+  be-ha-viour be-ha-vio-ural
+  ge-ne-ra-li-sa-tion ge-ne-ra-li-sed
+  cha-rac-te-ri-sa-tion cha-rac-te-ri-sed
+  con-tex-tu-al con-tex-tu-a-li-sed
+  com-mon-sense
+  rea-so-ning
+  ex-pla-na-tion ex-pla-na-tions
+  per-tur-ba-tion per-tur-ba-tions
+  % The Zusammenfassung is set with the English patterns, which break these
+  % German words in the wrong places.
+  zwi-schen Ein-ga-be-än-de-run-gen
+  % Keep the registered title's key word whole where the title is quoted.
+  Faithfulness
+}
+
+%----------------------------------------------------------------------------------------
+%	MARGIN SETTINGS
+%----------------------------------------------------------------------------------------
+
+\geometry{
+	paper=a4paper,
+	inner=2.5cm,
+	outer=3.8cm,
+	bindingoffset=.5cm,
+	top=3.0cm,
+	bottom=3.0cm,
+}
+
+%----------------------------------------------------------------------------------------
+%	THESIS INFORMATION
+%----------------------------------------------------------------------------------------
+
+\thesistitle{Evaluating the Faithfulness of Chain-of-Thought Rationales in Vision-Language Models for Visual Question Answering}
+\supervisor{Dr.~Sherzod \textsc{Hakimov}}
+\secondsupervisor{Prof.~Dr.~David \textsc{Schlangen}}
+\degree{Master of Science in Cognitive Systems}
+\author{Desmond \textsc{Mariita}}
+\addresses{}
+\newcommand{\thesisdate}{11 September 2026}
+
+\subject{Cognitive Systems}
+\keywords{vision-language models, visual question answering, chain-of-thought, faithfulness, VCR}
+\university{University of Potsdam}
+\department{Department of Linguistics}
+\faculty{Faculty of Human Sciences}
+
+\AtBeginDocument{
+\hypersetup{pdftitle=\ttitle}
+\hypersetup{pdfauthor=\authorname}
+\hypersetup{pdfkeywords=\keywordnames}
+}
+
+\begin{document}
+
+\frontmatter
+
+\pagestyle{plain}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+\begin{center}
+
+\vspace*{-4.3cm}
+\includegraphics[width=0.46\textwidth]{Figures/uni_potsdam_logo}\\[0.3cm]
+{\scshape\LARGE \univname\par}\vspace{0.6cm}
+\textsc{\Large Master's Thesis}\\[0.4cm]
+
+\HRule \\[0.4cm]
+{\huge \bfseries \ttitle\par}\vspace{0.4cm}
+\HRule \\[0.8cm]
+
+\begin{minipage}[t]{0.34\textwidth}
+	\begin{flushleft} \large
+	\emph{Author:}\\
+	{\authorname}
+	\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{0.50\textwidth}
+	\begin{flushright} \large
+		\emph{1st Supervisor:} \\
+		{\supname}
+	\end{flushright}
+	\begin{flushright} \large
+		\emph{2nd Supervisor:} \\
+		{\secondsupname}
+	\end{flushright}
+\end{minipage}\\[1.2cm]
+
+\large \textit{A thesis submitted in fulfilment of the requirements\\ for the degree of \degreename}\\[0.4cm]
+\thesisdate
+
+\vfill
+\end{center}
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+%	DECLARATION PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{declaration}
+\addchaptertocentry{\authorshipname}
+\noindent I, \authorname, declare that this thesis, titled \enquote{\ttitle}, and the work presented in it are my own. I confirm that:
+
+\begin{itemize}
+\item This work was done wholly or mainly while in candidature for a research degree at this University.
+\item Where any part of this thesis has previously been submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated.
+\item Where I have consulted the published work of others, this is always clearly attributed.
+\item Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this thesis is entirely my own work.
+\item I have acknowledged all main sources of help.
+\item Where this thesis is based on work done by myself jointly with others, I have made clear exactly what was done by others and what I have contributed myself.
+\end{itemize}
+
+\noindent Signed:\\
+\rule{25em}{0.5pt}
+
+\noindent Date:\\
+\thesisdate\\[-0.4em]
+\rule{25em}{0.5pt}
+\end{declaration}
+
+\cleardoublepage
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT PAGE
+%----------------------------------------------------------------------------------------
+
+% The class's default optional argument (\null\vfill) vertically centres the page,
+% which pushes a near-full abstract down; [] starts it at the top of the type block.
+\begin{abstract}[]
+\addchaptertocentry{\abstractname}
+\begin{singlespace}
+\footnotesize
+\setlength{\parskip}{0.1em}
+\noindent A generated rationale can sound plausible without reflecting the
+evidence that affected a model's answer. We evaluate this problem in a
+two-stage visual question answering pipeline: Stage~1 predicts an answer and
+Stage~2 generates a rationale for a supplied answer. Using
+Qwen2.5-VL-3B-Instruct on Visual Commonsense Reasoning, we trained separate
+adaptations for four input arms that combine a plain image or polygon overlay
+with or without a fixed textual description. We evaluated 2,653 records under
+source, grey, mismatch, mask, noise, and mirror conditions.
+
+Stage~1 source accuracy was descriptively similar across arms
+(0.805--0.815), but the interventions revealed clear dependence on visual
+evidence. Mismatch caused the largest accuracy loss, followed by grey, then
+mask and noise; mirror remained close to source but still changed correctness
+for individual records. Description arms lost less accuracy under degraded images,
+mainly because more predictions that were correct under source remained correct. We interpret
+this as textual substitution.
+
+For Stage~2, we held the gold answer fixed and compared how generated rationales
+changed across the same image conditions. BERTScore Drift for the final rationale span followed the same broad
+ordering: mismatch was highest, grey next, mask and noise intermediate, and
+mirror lowest. Description arms had lower Drift between source and grey than their
+matched arms without descriptions. On a fixed 200-record control, changing the
+supplied answer produced greater Drift than matched grey removal in every arm.
+Polygon overlays alone showed no consistent independent advantage across the
+answer and rationale analyses.
+
+The study measures behavioural evidence relevant to faithfulness: observable
+answer dependence and rationale text sensitivity under controlled input
+changes. It does not directly observe hidden causal computation or classify
+individual rationales as faithful or unfaithful.
+
+\end{singlespace}
+\end{abstract}
+
+\clearpage
+
+% layout copied from the abstract environment
+\phantomsection
+\addcontentsline{toc}{chapter}{Zusammenfassung}
+\begin{center}
+{\normalsize \MakeUppercase{Universität Potsdam} \par}
+{\LARGE\textit{Zusammenfassung} \par}
+{\normalsize Humanwissenschaftliche Fakultät \par}
+{\normalsize Department für Linguistik \par}
+{\normalsize \degreename\par}
+{\normalsize\bfseries \ttitle \par}
+{\normalsize \byname{} \authorname \par}
+\smallskip
+\end{center}
+{
+\begin{singlespace}
+\footnotesize
+\setlength{\parskip}{0.1em}
+\noindent Eine erzeugte Begründung kann plausibel klingen, ohne die Evidenz
+abzubilden, die die Antwort eines Modells beeinflusst hat. Wir untersuchen
+dieses Problem in einer zweistufigen Pipeline für visuelle Fragebeantwortung:
+Stage~1 sagt eine Antwort voraus, Stage~2 erzeugt eine Begründung für eine
+vorgegebene Antwort. Mit Qwen2.5-VL-3B-Instruct auf Visual Commonsense
+Reasoning trainierten wir getrennte Anpassungen für vier Eingabearme. Diese
+kombinieren ein unverändertes oder polygonmarkiertes Bild mit oder ohne feste
+textuelle Bildbeschreibung. Wir evaluierten 2.653 Datensätze mit
+Ausgangsbildern sowie grauen, unpassenden, maskierten, verrauschten und
+horizontal gespiegelten Bildern.
+
+Die Genauigkeit von Stage~1 mit dem Ausgangsbild war zwischen den Armen
+deskriptiv ähnlich (0,805--0,815). Die Interventionen zeigten jedoch eine klare
+Abhängigkeit von visueller Evidenz. Unpassende Bilder verursachten den größten
+Genauigkeitsverlust, gefolgt von grauen Bildern, dann Maskierung und Rauschen.
+Spiegelung blieb nahe am Ausgangswert, veränderte aber die Korrektheit einzelner
+Antworten. Arme mit Beschreibungen verloren bei beeinträchtigten Bildern
+weniger Genauigkeit, vor allem weil mehr zuvor korrekte Antworten korrekt
+blieben. Wir interpretieren dieses Muster als textuelle Substitution.
+
+Für Stage~2 hielten wir die Gold-Antwort fest und verglichen, wie sich die
+erzeugten Begründungen unter denselben Bildbedingungen veränderten. BERTScore-Drift für den finalen
+Begründungsabschnitt folgte derselben groben Reihenfolge: unpassende Bilder
+erzeugten die höchsten Werte, gefolgt von grauen Bildern, dann Maskierung und
+Rauschen; Spiegelung erzeugte die niedrigsten Werte. Arme mit Beschreibungen
+hatten niedrigere Drift-Werte zwischen Ausgangsbild und Grau als die
+entsprechenden Arme ohne Beschreibung.
+In einer festen Kontrolle mit 200 Datensätzen pro Arm erzeugte eine Änderung
+der vorgegebenen Antwort mehr Drift als die entsprechende Entfernung des Bildes
+durch Grau. Polygonmarkierungen allein zeigten keinen konsistenten,
+eigenständigen Vorteil.
+
+Die Studie misst Verhaltenssignale, die für Faithfulness relevant sind:
+beobachtbare Antwortabhängigkeit und Sensitivität des Begründungstextes unter
+kontrollierten Eingabeänderungen. Sie beobachtet keine verborgene kausale
+Berechnung und klassifiziert einzelne Begründungen nicht als faithful oder
+unfaithful.
+\end{singlespace}
+\vfill\null
+}
+
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%----------------------------------------------------------------------------------------
+
+% \begin{acknowledgements}
+% \addchaptertocentry{\acknowledgementname}
+% The acknowledgments and the people to thank go here, don't forget to include your project advisor\ldots
+% \end{acknowledgements}
+
+%----------------------------------------------------------------------------------------
+%	LIST OF CONTENTS/FIGURES/TABLES PAGES
+%----------------------------------------------------------------------------------------
+
+\setcounter{tocdepth}{2}
+{\fontsize{9}{10.5}\selectfont\tableofcontents}
+
+% Each entry is added after the page break so the recorded page number and the
+% hyperref anchor both point at the list itself, not at the page before it.
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+{\small\listoffigures}
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+{\footnotesize\listoftables}
+
+%----------------------------------------------------------------------------------------
+%	ABBREVIATIONS
+%----------------------------------------------------------------------------------------
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Abbreviations}
+\begin{abbreviations}{ll}
+
+\textbf{BERT} & \textbf{B}idirectional \textbf{E}ncoder \textbf{R}epresentations from \textbf{T}ransformers\\
+\textbf{BERTScore} & Embedding based metric for text similarity (built on BERT)\\
+\textbf{CI} & \textbf{C}onfidence \textbf{I}nterval\\
+\textbf{CMC} & \textbf{C}ross-\textbf{M}odal \textbf{C}onsistency\\
+\textbf{CoT} & \textbf{C}hain-\textbf{o}f-\textbf{T}hought\\
+\textbf{e-SNLI} & Stanford Natural Language Inference with natural-language explanations\\
+\textbf{LLaVA} & \textbf{L}arge \textbf{L}anguage \textbf{a}nd \textbf{V}ision \textbf{A}ssistant\\
+\textbf{LoRA} & \textbf{Lo}w-\textbf{R}ank \textbf{A}daptation\\
+\textbf{PJ-X} & \textbf{P}ointing and \textbf{J}ustification model\\
+\textbf{PRED-A} & \textbf{Pred}icted-\textbf{a}nswer regime (Stage~2 conditioned on the Stage~1 answer)\\
+\textbf{QLoRA} & \textbf{Q}uantized \textbf{Lo}w-\textbf{R}ank \textbf{A}daptation\\
+\textbf{VCR} & \textbf{V}isual \textbf{C}ommonsense \textbf{R}easoning\\
+\textbf{VLM} & \textbf{V}ision-\textbf{L}anguage \textbf{M}odel\\
+\textbf{VQA} & \textbf{V}isual \textbf{Q}uestion \textbf{A}nswering\\
+\textbf{VQA-CP} & \textbf{V}isual \textbf{Q}uestion \textbf{A}nswering under \textbf{C}hanging \textbf{P}riors\\
+
+\end{abbreviations}
+
+%----------------------------------------------------------------------------------------
+%	DEDICATION
+%----------------------------------------------------------------------------------------
+
+%\dedicatory{For/Dedicated to/To my\ldots}
+
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - CHAPTERS
+%----------------------------------------------------------------------------------------
+
+\mainmatter
+
+\pagestyle{thesis}
+
+\include{Chapters/Chapter1}
+\include{Chapters/Chapter2}
+\include{Chapters/Chapter3}
+\include{Chapters/Chapter4}
+\include{Chapters/Chapter5}
+\include{Chapters/Chapter6}
+\include{Chapters/Chapter7}
+\include{Chapters/Chapter9}
+
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - APPENDICES
+%----------------------------------------------------------------------------------------
+
+\appendix
+
+\include{Appendices/AppendixC}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\begin{singlespace}
+\small
+\cleardoublepage
+% Without a fresh anchor here, \addcontentsline reuses the last one, which is
+% the final appendix table, so both the Contents link and the outline bookmark
+% open that table instead of the bibliography.
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{bibtex,bibtex_v2,marasovic_supplement}
+\end{singlespace}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

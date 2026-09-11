@@ -1,0 +1,38 @@
+\begin{longtable}{llrrrrrrr}
+\caption[Stage~1 correctness movements in every arm and condition]{Correctness
+movements relative to source for all 20 arm and condition comparisons, drawn
+from the same 2,653 records in each row. C$\rightarrow$W rates use records
+correct under source; W$\rightarrow$C rates use records wrong under source.
+Churn is the number that changed state, and net is W$\rightarrow$C minus
+C$\rightarrow$W. The unchanged C$\rightarrow$C and W$\rightarrow$W cells are not
+printed.}\label{tab:app-rq1-transitions}\\
+\toprule
+Arm & Condition & C$\rightarrow$W & Rate & W$\rightarrow$C & Rate & W$\rightarrow$C/$N$ & Churn & Net \\
+\midrule
+\endfirsthead
+\toprule
+Arm & Condition & C$\rightarrow$W & Rate & W$\rightarrow$C & Rate & W$\rightarrow$C/$N$ & Churn & Net \\
+\midrule
+\endhead
+\texttt{plain} & grey & 984 & 0.461 & 131 & 0.253 & 0.049 & 1,115 & $-$853 \\
+ & mismatch & 1,108 & 0.519 & 135 & 0.261 & 0.051 & 1,243 & $-$973 \\
+ & mask & 530 & 0.248 & 109 & 0.210 & 0.041 & 639 & $-$421 \\
+ & noise & 597 & 0.280 & 115 & 0.222 & 0.043 & 712 & $-$482 \\
+ & mirror & 76 & 0.036 & 63 & 0.122 & 0.024 & 139 & $-$13 \\
+\texttt{point} & grey & 953 & 0.444 & 108 & 0.212 & 0.041 & 1,061 & $-$845 \\
+ & mismatch & 1,121 & 0.523 & 130 & 0.255 & 0.049 & 1,251 & $-$991 \\
+ & mask & 597 & 0.278 & 105 & 0.206 & 0.040 & 702 & $-$492 \\
+ & noise & 577 & 0.269 & 109 & 0.214 & 0.041 & 686 & $-$468 \\
+ & mirror & 103 & 0.048 & 88 & 0.173 & 0.033 & 191 & $-$15 \\
+\texttt{plain\_desc} & grey & 720 & 0.333 & 133 & 0.270 & 0.050 & 853 & $-$587 \\
+ & mismatch & 1,006 & 0.466 & 139 & 0.282 & 0.052 & 1,145 & $-$867 \\
+ & mask & 467 & 0.216 & 114 & 0.231 & 0.043 & 581 & $-$353 \\
+ & noise & 499 & 0.231 & 104 & 0.211 & 0.039 & 603 & $-$395 \\
+ & mirror & 98 & 0.045 & 68 & 0.138 & 0.026 & 166 & $-$30 \\
+\texttt{point\_desc} & grey & 603 & 0.279 & 102 & 0.208 & 0.038 & 705 & $-$501 \\
+ & mismatch & 912 & 0.422 & 126 & 0.257 & 0.047 & 1,038 & $-$786 \\
+ & mask & 450 & 0.208 & 92 & 0.188 & 0.035 & 542 & $-$358 \\
+ & noise & 456 & 0.211 & 98 & 0.200 & 0.037 & 554 & $-$358 \\
+ & mirror & 113 & 0.052 & 86 & 0.176 & 0.032 & 199 & $-$27 \\
+\bottomrule
+\end{longtable}

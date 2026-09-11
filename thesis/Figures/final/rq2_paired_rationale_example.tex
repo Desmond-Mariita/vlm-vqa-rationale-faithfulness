@@ -1,0 +1,46 @@
+\begin{figure}[ht]
+\centering
+\begin{tabular}{ccc}
+\includegraphics[width=0.30\textwidth]{Figures/records/R/source.png} &
+\includegraphics[width=0.30\textwidth]{Figures/records/R/grey.png} &
+\includegraphics[width=0.30\textwidth]{Figures/records/R/mismatch.png} \\
+\small Source & \small Grey & \small Mismatch
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{Question:} Did person\_1 person\_3 surprise person\_0 person\_2 ?\\[2pt]
+\textbf{A.} Yes they did .\\
+\textbf{B.} No , they are being very rude and disgusting towards person\_0 person\_2 .\\
+\textbf{C.} Yes something has happened to surprise person\_1 person\_3 .\\
+\textbf{D.} No , person\_0 person\_2 did not notice anything unusual .\\[2pt]
+\textbf{Supplied gold answer:} A\\[3pt]
+\textbf{Source}\\
+\textit{Reasoning:} person\_0 looks surprised and person\_1 person\_3 look happy .\\
+\textit{Final:} person\_0 looks surprised and person\_1 person\_3 look happy .
+
+\vspace{3pt}
+\textbf{Grey} (raw Drift on the final span, 0.0822)\\
+\textit{Reasoning:} person\_1 person\_3 are hiding behind the tree .\\
+\textit{Final:} person\_1 person\_3 are hiding behind the tree .
+
+\vspace{3pt}
+\textbf{Mismatch} (raw Drift on the final span, 0.0884)\\
+\textit{Reasoning:} person\_1 person\_3 are walking up behind person\_0 person\_2 who are sitting down .\\
+\textit{Final:} person\_1 person\_3 are walking up behind person\_0 person\_2 who are sitting down .
+\end{minipage}
+\caption[Paired rationale example]{One evaluation record from the
+\texttt{plain} arm under the source image, grey replacement, and mismatch
+replacement. The question, choices, and supplied gold answer are identical in all
+three cells; only the image changes. The parsed span contents are reproduced
+verbatim and the output tags are omitted for display. Each displayed generation
+contains the same one-sentence text in both fields, matching the rule that builds
+the training target when the rationale has one sentence (Section~\ref{sec:setup-prompts}). Raw
+Drift on the final span was 0.0822 under grey and 0.0884 under mismatch, against
+arm means of 0.0835 and 0.0882. The record was chosen mechanically as the one
+whose grey and mismatch Drift lie closest to those arm means, among records with
+all three spans usable and excluding every record used elsewhere in the thesis.
+It illustrates the comparison and carries no inferential weight.}
+\label{fig:rq2-paired-example}
+\end{figure}

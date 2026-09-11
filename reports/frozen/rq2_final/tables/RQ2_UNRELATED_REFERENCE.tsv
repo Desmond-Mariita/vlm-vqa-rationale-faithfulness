@@ -1,0 +1,5 @@
+arm	valid_pair_n	source_frame_n	mean_raw_drift	median_raw_drift	sd_raw_drift	ci_lower_95	ci_upper_95	reference_role
+plain	2653	2400	0.12602278413837287	0.12800508737564087	0.0216651310089532	0.12519954092904145	0.1268478433585872	empirical scale reference; not a ceiling, threshold, or null distribution
+point	2653	2400	0.12519528537348357	0.12706279754638672	0.020818835360141445	0.12442054279102532	0.1259812824208516	empirical scale reference; not a ceiling, threshold, or null distribution
+plain_desc	2651	2399	0.12226348341927804	0.12309896945953369	0.021685917269599408	0.12141933684649715	0.12308856255257689	empirical scale reference; not a ceiling, threshold, or null distribution
+point_desc	2653	2400	0.12580313100214505	0.12690472602844238	0.021817845258958156	0.12497639006268588	0.12664103950038105	empirical scale reference; not a ceiling, threshold, or null distribution

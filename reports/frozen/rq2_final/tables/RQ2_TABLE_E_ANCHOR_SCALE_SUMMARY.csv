@@ -1,0 +1,33 @@
+arm,anchor_or_condition,n,mean_raw_drift,ci_95,scope
+plain,identity,definition,0.0000,definition,identity by definition
+plain,grey,2653,0.0835,"[0.0821, 0.0850]",full primary population
+plain,mismatch,2653,0.0882,"[0.0869, 0.0896]",full primary population
+plain,mask,2653,0.0762,"[0.0747, 0.0777]",full primary population
+plain,noise,2653,0.0769,"[0.0754, 0.0784]",full primary population
+plain,mirror,2652,0.0575,"[0.0559, 0.0592]",full primary population
+plain,deliberate_answer_control,200,0.1033,"[0.0989, 0.1075]",fixed matched 200-record metric anchor
+plain,unrelated_rationale_reference,2653,0.1260,"[0.1252, 0.1268]",frozen derangement empirical reference
+point,identity,definition,0.0000,definition,identity by definition
+point,grey,2653,0.0817,"[0.0802, 0.0831]",full primary population
+point,mismatch,2653,0.0886,"[0.0873, 0.0899]",full primary population
+point,mask,2653,0.0758,"[0.0743, 0.0773]",full primary population
+point,noise,2653,0.0745,"[0.0731, 0.0761]",full primary population
+point,mirror,2653,0.0604,"[0.0588, 0.0620]",full primary population
+point,deliberate_answer_control,200,0.1043,"[0.1000, 0.1084]",fixed matched 200-record metric anchor
+point,unrelated_rationale_reference,2653,0.1252,"[0.1244, 0.1260]",frozen derangement empirical reference
+plain_desc,identity,definition,0.0000,definition,identity by definition
+plain_desc,grey,2652,0.0745,"[0.0731, 0.0760]",full primary population
+plain_desc,mismatch,2652,0.0788,"[0.0774, 0.0801]",full primary population
+plain_desc,mask,2652,0.0669,"[0.0654, 0.0684]",full primary population
+plain_desc,noise,2651,0.0681,"[0.0666, 0.0695]",full primary population
+plain_desc,mirror,2651,0.0496,"[0.0480, 0.0512]",full primary population
+plain_desc,deliberate_answer_control,200,0.0955,"[0.0913, 0.0997]",fixed matched 200-record metric anchor
+plain_desc,unrelated_rationale_reference,2651,0.1223,"[0.1214, 0.1231]",frozen derangement empirical reference
+point_desc,identity,definition,0.0000,definition,identity by definition
+point_desc,grey,2653,0.0770,"[0.0756, 0.0785]",full primary population
+point_desc,mismatch,2653,0.0890,"[0.0875, 0.0906]",full primary population
+point_desc,mask,2652,0.0716,"[0.0700, 0.0731]",full primary population
+point_desc,noise,2652,0.0705,"[0.0690, 0.0721]",full primary population
+point_desc,mirror,2652,0.0590,"[0.0574, 0.0607]",full primary population
+point_desc,deliberate_answer_control,200,0.0980,"[0.0935, 0.1025]",fixed matched 200-record metric anchor
+point_desc,unrelated_rationale_reference,2653,0.1258,"[0.1250, 0.1266]",frozen derangement empirical reference

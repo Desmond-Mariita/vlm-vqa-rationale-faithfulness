@@ -1,0 +1,194 @@
+% Appendix: supporting analyses and reproducibility details
+
+\chapter{Supporting Analyses and Reproducibility Details}
+\label{app:supplementary}
+
+This appendix holds the complete transition and parser evidence, the qualitative
+material for the W$\rightarrow$C sample, the checks that support the primary RQ2
+text unit, and the prompt and parsing details needed to read the study. The main
+chapters contain the evidence used to answer RQ1 and RQ2.
+
+\section{Correctness movements in every arm and \mbox{condition}}
+\label{sec:app-rq1-transitions}
+
+Table~\ref{tab:app-rq1-transitions} reports the correctness movements for all 20
+arm and condition comparisons relative to source. Each row gives the two cells in
+which correctness changed, their rates, the churn they produce, and the net
+movement. The two unchanged cells, C$\rightarrow$C and W$\rightarrow$W, are not
+printed because neither churn nor the accounting identity needs them; each row is
+drawn from the same 2,653 records. Every cell satisfies
+\[
+  A_{\mathrm{source}}-A_{\mathrm{condition}}
+  =(\mathrm{C\rightarrow W}-\mathrm{W\rightarrow C})/N.
+\]
+
+\input{Tables/final/rq1_transitions_full}
+
+\section[Wrong-to-correct qualitative audit]{W$\rightarrow$C qualitative audit}
+\label{sec:app-w2c}
+
+The fixed sample contains 16 W$\rightarrow$C cases, each representing one arm under
+one condition, drawn from 15 unique records: one record appears twice, as E1 under grey and as E2 under
+mismatch. Its complete identifiers were written and hashed before the questions,
+answer choices, descriptions, or images were inspected. Each record appears below as one self-contained panel
+holding both images, the question, the four answer choices, the description as
+the model received it, the three answers as letters, and one observation. No
+panel needs another page to be understood. The index below names each panel.
+
+Descriptions are shown exactly as supplied, which is the first 256 characters of
+the stored text, so several end mid-word. Every observation is written against
+that supplied text and the displayed images only. VCR question and answer text is
+reproduced verbatim, including its spacing before punctuation. The sample
+illustrates possible explanations for output changes and does not estimate their
+frequency. W$\rightarrow$C is an output transition. It is not evidence of
+corrected reasoning.
+
+\input{Figures/final/w2c_record_panels}
+
+\clearpage
+
+\section{Complete Stage~2 parser coverage}
+\label{sec:app-rq2-coverage}
+
+Table~\ref{tab:app-rq2-coverage} reports strict and tolerant coverage for the
+final rationale span in every primary arm and condition cell. The tolerant
+parser and the rule against imputation were specified before analysis. The
+primary set contained eight missing tolerant rationales. Missing source
+spans shared across comparisons account for some of the eleven missing pairs.
+
+\input{Tables/final/rq2_parse_coverage_full}
+
+The wrong-answer generations had 200 tolerant rationales in every arm.
+
+\section{Complete planned RQ2 comparisons}
+\label{sec:app-rq2-contrasts}
+
+Table~\ref{tab:app-rq2-contrasts} reports every planned comparison. The set was
+fixed before the complete set of generations was inspected, and all directions
+are shown.
+
+\input{Tables/final/rq2_planned_contrasts}
+
+\section{Drift scale and sensitivity to the rationale unit}
+\label{sec:app-rq2-sensitivity}
+
+Drift is a similarity difference on a span of text, so its size cannot be read
+without knowing how much text the span holds. In the source condition the final
+span has a median length of 13 to 14 words in every arm, and the complete
+generation about 32. A short unit makes each token weigh more, so a Drift of a few
+hundredths on the final span reflects a smaller wording change than the same
+number would on a longer text.
+
+The primary unit is the final span, so it matters whether the intervention
+ordering depends on that choice. Table~\ref{tab:app-rq2-text-unit} gives the
+same pairs measured three ways: on the final span, on the reasoning span, and on
+the complete generation. The ordering of the five interventions is identical
+under all three units in every arm. Absolute values fall as the unit grows,
+because a longer text shares more tokens between the two members of a pair, but
+the ranking does not move.
+
+Table~\ref{tab:app-rq2-echo-unit} does the same for the wrong-answer
+comparison. The difference stays positive with an interval above zero in every arm
+under all three representations, including the final span with answer choices
+masked. Across the matched control, a string exactly matching an answer choice occurred in
+at most three of 200 records in an arm. Together these reduce a direct lexical echo
+explanation without changing the primary rationale unit.
+
+\input{Tables/final/rq2_text_unit_sensitivity}
+
+\clearpage
+
+\section{Prompt forms and output processing}
+\label{sec:app-prompts}
+
+This section gives the prompt forms the study used and the rule that defines its
+primary text unit.
+
+\input{Appendices/prompt_templates}
+
+\paragraph{Recovering the final span.}
+A Stage~2 request is wrapped in the model's own chat template as a single user
+turn holding the image item and the prompt text, with the rationale as the
+assistant turn during training. The tolerant parser then runs on the generated
+text alone, and only its tag pattern is applied case-insensitively. It works in
+this order.
+
+\begin{enumerate}
+\item Trim the generation. An empty result yields an empty reasoning span and an
+empty final span.
+\item Find every marker resembling a tag, in order, and record for each whether it opens
+or closes and whether its name begins \texttt{reason} or \texttt{final}. The
+pattern is permissive: it accepts stray spacing inside the brackets, a
+misspelling such as \texttt{reasonning}, trailing punctuation such as
+\texttt{<final'>}, and a tag with no closing bracket.
+\item Take the first opening reasoning tag. Its span runs to the next closing
+reasoning tag or opening final tag, whichever comes first, and to the end of the
+generation if neither follows.
+\item Take the first opening final tag. Its span runs to the next closing final
+tag, or to the end of the generation when none follows.
+\item Clean each span by deleting any remaining markers resembling a tag, collapsing
+runs of whitespace, and trimming.
+\item Use the fallback only when both spans are still empty: clean the whole
+generation, split it after a full stop, exclamation mark, or question mark
+followed by whitespace, and take the last sentence as the final span with the
+rest as the reasoning span. With one sentence or none, the whole cleaned text
+becomes the final span.
+\item Record a span that is empty after cleaning as missing.
+\end{enumerate}
+
+The strict parser, reported alongside the tolerant one, requires the literal
+\texttt{<reasoning>}\ldots\texttt{</reasoning>} and
+\texttt{<final>}\ldots\texttt{</final>} pairs.
+
+A record enters the primary analysis only when the tolerant parser returns a
+non-empty final span for both the source output and the condition output. Missing text
+is never replaced by the reasoning span, the raw output, another condition's
+text, or a model-generated substitute.
+
+The exact pattern strings and the code that applies them are kept with the
+analysis files for this project.
+
+\clearpage
+
+\section{Predicted-answer evidence}
+\label{sec:app-pred-a}
+
+Table~\ref{tab:app-pred-a-strata} splits the secondary predicted-answer regime
+by whether the Stage~1 answer it supplied was the gold answer. The judge
+recovered that supplied answer from rationales written for both correct and
+wrong predictions. In \texttt{plain\_desc} the conditional rates were almost
+identical, 0.5378 for correct predictions and 0.5331 for wrong ones. Recovering
+a supplied answer from its rationale therefore does not establish that the
+answer is correct, and the table is not evidence that a rationale written for a
+wrong prediction is unfaithful.
+
+\input{Tables/final/pred_a_strata}
+
+\paragraph{What the missing outputs are.}
+Table~\ref{tab:app-pred-a-coverage} accounts for every record the regime did not
+supply a usable final span for, and separates two reasons.
+
+Most of them held no final span at all. Every record with an empty stored final
+span still contained reasoning text, so those were not empty generations, and
+nothing in the stored text supports classifying those outputs as refusals.
+
+The remaining two are a different case. In \texttt{plain\_desc}, two records
+carried a malformed reasoning tag, and the only candidate final span the
+tolerant parser could form came from text inside the reasoning field rather than
+from an independently delimited final field. The rule against imputation does
+not admit reasoning text as a final span, so neither candidate was accepted.
+They are recorded as ambiguous exclusions rather than empty finals, which is why
+that arm's ineligible total of 1,029 exceeds its 1,027 empty finals.
+
+Among the usable outputs, the tolerant parser recovered a malformed final span
+in 127 \texttt{point} records, 668 \texttt{plain\_desc} records, and 37
+\texttt{point\_desc} records; the \texttt{plain} outputs needed no recovery.
+Those recovered records are included in the usable count. No
+generation error and no judge parse failure was recorded. These runs allowed at
+most 128 new tokens (Section~\ref{sec:setup-pred-a}), but the stored artefacts
+carry no finish reason and no count of generated tokens, so a generation that
+reached that limit cannot be separated from one that stopped without emitting a
+closing tag. The counts above therefore record what the outputs contain. They do not record
+why the outputs end where they do.
+
+\input{Tables/final/pred_a_coverage}

@@ -1,0 +1,21 @@
+{
+  "registered_title": "Evaluating the Faithfulness of Chain-of-Thought Rationales in Vision-Language Models for Visual Question Answering",
+  "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+  "approved_filename": "Author_Read_Thesis_v11_6fbbfd1.pdf",
+  "approved_pdf_sha256": "59b9a0da63f099ad7a6b8ad36e9f948f4c49bd4792e41b32212ce721b33339ad",
+  "bytes": 10758145,
+  "pages": 102,
+  "page_size_pt": [
+    595.276,
+    841.89
+  ],
+  "format": "A4",
+  "payload_included": false,
+  "status": "WITHHELD",
+  "holds": [
+    "author signature publication decision",
+    "University of Potsdam logo redistribution clearance"
+  ],
+  "section_7_6": "author waived the current 230-word target; no source edit or rebuild",
+  "rebuilt": false
+}

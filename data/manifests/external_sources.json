@@ -1,0 +1,501 @@
+{
+  "schema_version": 1,
+  "artifacts": [
+    {
+      "placeholder": "data/external/checkpoints/plain_desc_stage1_transport.pt.README.md",
+      "artifact_name": "plain_desc_stage1_transport.pt",
+      "original_sha256": "10c1d1264bf313e0cc8c2bf70723d276413c3c6c46f0906a53b955bcf9cde220",
+      "original_bytes": 234849439,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Manifest-bound canonical checkpoint or small transport adapter"
+    },
+    {
+      "placeholder": "data/external/checkpoints/plain_desc_stage2_transport.pt.README.md",
+      "artifact_name": "plain_desc_stage2_transport.pt",
+      "original_sha256": "05a32ade19c26dc61eb5eaa3202c20bb3e084aa36eb944ed0d16627125b02e09",
+      "original_bytes": 218030935,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Manifest-bound canonical checkpoint or small transport adapter"
+    },
+    {
+      "placeholder": "data/external/checkpoints/plain_stage1_transport.pt.README.md",
+      "artifact_name": "plain_stage1_transport.pt",
+      "original_sha256": "7b570b1642881e2706425ad288d84b1c099b38c9e68ca02c8a1dfe634b7024ee",
+      "original_bytes": 234846717,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Manifest-bound canonical checkpoint or small transport adapter"
+    },
+    {
+      "placeholder": "data/external/checkpoints/plain_stage2_transport.pt.README.md",
+      "artifact_name": "plain_stage2_transport.pt",
+      "original_sha256": "5c5627554f044d10b9c7c891aab756a81245e70bdee213d27648887b0e48079b",
+      "original_bytes": 218028233,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Manifest-bound canonical checkpoint or small transport adapter"
+    },
+    {
+      "placeholder": "data/external/checkpoints/point_desc_stage1_transport.pt.README.md",
+      "artifact_name": "point_desc_stage1_transport.pt",
+      "original_sha256": "7b78fc4ce7d7257820438abe927fcc93848306f92d4ca4df77348739f81cede5",
+      "original_bytes": 234849439,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Manifest-bound canonical checkpoint or small transport adapter"
+    },
+    {
+      "placeholder": "data/external/checkpoints/point_desc_stage2_transport.pt.README.md",
+      "artifact_name": "point_desc_stage2_transport.pt",
+      "original_sha256": "0bdc606d92f115533dbc22704697217ca856f4ee7739174ae77a7de15fadf38a",
+      "original_bytes": 218030935,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Manifest-bound canonical checkpoint or small transport adapter"
+    },
+    {
+      "placeholder": "data/external/checkpoints/point_stage1_transport.pt.README.md",
+      "artifact_name": "point_stage1_transport.pt",
+      "original_sha256": "e3bcef3417160f07a164994c3617cd5ec94952bbdc819983642e7bf2c88fa114",
+      "original_bytes": 234846525,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Manifest-bound canonical checkpoint or small transport adapter"
+    },
+    {
+      "placeholder": "data/external/checkpoints/point_stage2_transport.pt.README.md",
+      "artifact_name": "point_stage2_transport.pt",
+      "original_sha256": "873dc3cf20a34f66b8456e5863b443353ed170a93a6a4ada334663b22afce44f",
+      "original_bytes": 218028041,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Manifest-bound canonical checkpoint or small transport adapter"
+    },
+    {
+      "placeholder": "data/external/cmc_prompt_samples.jsonl.README.md",
+      "artifact_name": "prompt_samples.jsonl",
+      "original_sha256": "2401de1b9b954d8f2f76dba233ebbcaceeadb8417cba79f7e3f4a488c493852d",
+      "original_bytes": 21426,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Frozen prompt-fill examples used by the current prompt appendix builder"
+    },
+    {
+      "placeholder": "data/external/final/train/images/README.md",
+      "artifact_name": "images",
+      "original_sha256": "",
+      "original_bytes": "",
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "External image set; file-level closure retained in DATA_DEPENDENCY_FILES.csv"
+    },
+    {
+      "placeholder": "data/external/final/val/images/README.md",
+      "artifact_name": "images",
+      "original_sha256": "",
+      "original_bytes": "",
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "External image set; file-level closure retained in DATA_DEPENDENCY_FILES.csv"
+    },
+    {
+      "placeholder": "data/external/models/Qwen2.5-3B-Instruct/README.md",
+      "artifact_name": "",
+      "original_sha256": "",
+      "original_bytes": "",
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "External model ID and pinned revision aa8e72537993ba99e69dfaafa59ed015b17504d1"
+    },
+    {
+      "placeholder": "data/external/models/Qwen2.5-VL-3B-Instruct/README.md",
+      "artifact_name": "",
+      "original_sha256": "",
+      "original_bytes": "",
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "External model ID and pinned revision 66285546d2b821cf421d4f5eb2576359d3770cd3"
+    },
+    {
+      "placeholder": "data/external/models/roberta-large/README.md",
+      "artifact_name": "",
+      "original_sha256": "",
+      "original_bytes": "",
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "External model ID and pinned revision 722cf37b1afa9454edce342e7895e588b6ff1d59"
+    },
+    {
+      "placeholder": "data/external/processed/vcr/train/images/README.md",
+      "artifact_name": "images",
+      "original_sha256": "",
+      "original_bytes": "",
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "External image set; file-level closure retained in DATA_DEPENDENCY_FILES.csv"
+    },
+    {
+      "placeholder": "data/external/processed/vcr/val/images/README.md",
+      "artifact_name": "images",
+      "original_sha256": "",
+      "original_bytes": "",
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "External image set; file-level closure retained in DATA_DEPENDENCY_FILES.csv"
+    },
+    {
+      "placeholder": "data/external/raw/README.md",
+      "artifact_name": "raw",
+      "original_sha256": "",
+      "original_bytes": "",
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "External image set; file-level closure retained in DATA_DEPENDENCY_FILES.csv"
+    },
+    {
+      "placeholder": "data/external/reports/runs/plain/stage1/scratch_v1/checkpoints/model_best.pt.README.md",
+      "artifact_name": "model_best.pt",
+      "original_sha256": "ee80fd5e56cb8fd6625765a6d17aef65761b7dc5762c729afe5d94484fc7e9a9",
+      "original_bytes": 3658258565,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Manifest-bound canonical checkpoint or small transport adapter"
+    },
+    {
+      "placeholder": "data/external/reports/runs/plain/stage1/scratch_v1/outputs/stage1_preds_val.json.README.md",
+      "artifact_name": "stage1_preds_val.json",
+      "original_sha256": "9eb3d1d5c653d3c293c3e80ddd3d84a7477c282fba3df53ebe67b8e54d86acd9",
+      "original_bytes": 2315980,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "PRED-A actual supplied epoch-3 answers and figure/manifests source"
+    },
+    {
+      "placeholder": "data/external/reports/runs/plain/stage2_gold/scratch_v1/checkpoints/stage2_best.pt.README.md",
+      "artifact_name": "stage2_best.pt",
+      "original_sha256": "e629c5c818e527b810e6df8d6707e7c634f17ff984280479a992fb2b558569cb",
+      "original_bytes": 3248859625,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Manifest-bound canonical checkpoint or small transport adapter"
+    },
+    {
+      "placeholder": "data/external/reports/runs/plain/stage2_pred/20260704_145350/outputs/Route2/generated_rationales.jsonl.README.md",
+      "artifact_name": "generated_rationales.jsonl",
+      "original_sha256": "39ff955c3778c8e6e0ae1b0049b1bea2289e6028dc5d2061f4cadb270b7d6937",
+      "original_bytes": 5429095,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Hash-bound historical PRED-A/judge input used by active builders"
+    },
+    {
+      "placeholder": "data/external/reports/runs/plain_desc/stage1/20260507_203440/checkpoints/model_best.pt.README.md",
+      "artifact_name": "model_best.pt",
+      "original_sha256": "928bc4bf3ed514d750884ffc8b5e25b01733ae59e10e05dfa7cedf452d767de7",
+      "original_bytes": 3658258437,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Manifest-bound canonical checkpoint or small transport adapter"
+    },
+    {
+      "placeholder": "data/external/reports/runs/plain_desc/stage1/20260507_203440/outputs/stage1_preds_val.json.README.md",
+      "artifact_name": "stage1_preds_val.json",
+      "original_sha256": "02d686e922b96ac62014f23f32ee72117627b1ed84c4f0320a8440f87874e4a4",
+      "original_bytes": 3539169,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "PRED-A actual supplied epoch-3 answers and figure/manifests source"
+    },
+    {
+      "placeholder": "data/external/reports/runs/plain_desc/stage2_gold/20260509_174550/checkpoints/stage2_best.pt.README.md",
+      "artifact_name": "stage2_best.pt",
+      "original_sha256": "b6016869c99b4ef27099f0e40aba3f28a6ea9528820144203b0ba06dbcb9a6b8",
+      "original_bytes": 3248859497,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Manifest-bound canonical checkpoint or small transport adapter"
+    },
+    {
+      "placeholder": "data/external/reports/runs/plain_desc/stage2_pred/20260510_144738/outputs/Route2/generated_rationales.jsonl.README.md",
+      "artifact_name": "generated_rationales.jsonl",
+      "original_sha256": "c356042dbd27ded5c9a75d275cad16562232fc8c5019b53d041ee692b603b646",
+      "original_bytes": 7705005,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Hash-bound historical PRED-A/judge input used by active builders"
+    },
+    {
+      "placeholder": "data/external/reports/runs/point/stage1/20260429_234801/checkpoints/model_best.pt.README.md",
+      "artifact_name": "model_best.pt",
+      "original_sha256": "a46b2cd79f6abe45da612916a2a9f4ac25dcc462f7762cd6ce81f0fa8c4f96e8",
+      "original_bytes": 3658258373,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Manifest-bound canonical checkpoint or small transport adapter"
+    },
+    {
+      "placeholder": "data/external/reports/runs/point/stage1/20260429_234801/outputs/stage1_preds_val.json.README.md",
+      "artifact_name": "stage1_preds_val.json",
+      "original_sha256": "48f0c41b4f7a082c966132403ef0c0ab1cb65d761fd49d56bac64313b0dd54d7",
+      "original_bytes": 2318656,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "PRED-A actual supplied epoch-3 answers and figure/manifests source"
+    },
+    {
+      "placeholder": "data/external/reports/runs/point/stage2_gold/20260505_141209/checkpoints/stage2_best.pt.README.md",
+      "artifact_name": "stage2_best.pt",
+      "original_sha256": "5cfa9a692280ff79ad93192e55c10292eacf69b2a05123f9a0d8957217f1931a",
+      "original_bytes": 3248859433,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Manifest-bound canonical checkpoint or small transport adapter"
+    },
+    {
+      "placeholder": "data/external/reports/runs/point/stage2_pred/20260506_100946/outputs/Route2/generated_rationales.jsonl.README.md",
+      "artifact_name": "generated_rationales.jsonl",
+      "original_sha256": "fba34525d1f8695e822cdf44fa17288d5d7499743afc8773035d5ca6599dc163",
+      "original_bytes": 5246218,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Hash-bound historical PRED-A/judge input used by active builders"
+    },
+    {
+      "placeholder": "data/external/reports/runs/point_desc/stage1/20260511_211533/checkpoints/model_best.pt.README.md",
+      "artifact_name": "model_best.pt",
+      "original_sha256": "869bc1d38d259512340ebb12f7bca813b4e3f5c820c7b4b510f298d47f824ab5",
+      "original_bytes": 3658258437,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Manifest-bound canonical checkpoint or small transport adapter"
+    },
+    {
+      "placeholder": "data/external/reports/runs/point_desc/stage1/20260511_211533/outputs/stage1_preds_val.json.README.md",
+      "artifact_name": "stage1_preds_val.json",
+      "original_sha256": "a8b94e16493c567d3cefa26c35610dffb4363a948f5a37b78fd38b4e3dfcee8c",
+      "original_bytes": 3541854,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "PRED-A actual supplied epoch-3 answers and figure/manifests source"
+    },
+    {
+      "placeholder": "data/external/reports/runs/point_desc/stage2_gold/20260513_183118/checkpoints/stage2_best.pt.README.md",
+      "artifact_name": "stage2_best.pt",
+      "original_sha256": "4735e4a954069f07f0d22e0228a3839d1f678b7c86f898d64f1a4a7a38546e12",
+      "original_bytes": 3248859497,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Manifest-bound canonical checkpoint or small transport adapter"
+    },
+    {
+      "placeholder": "data/external/reports/runs/point_desc/stage2_pred/20260514_152333/outputs/Route2/generated_rationales.jsonl.README.md",
+      "artifact_name": "generated_rationales.jsonl",
+      "original_sha256": "0ac82cc018fda8bd47edb1d2f18435ed9fa7474a787183d0c778db1b3d63a991",
+      "original_bytes": 7764685,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Hash-bound historical PRED-A/judge input used by active builders"
+    },
+    {
+      "placeholder": "data/external/stage1_final/plain/worker_0/records.jsonl.README.md",
+      "artifact_name": "records.jsonl",
+      "original_sha256": "013e98dc586ab044d7e54579ebf66569b2bf9d917fb4f43e0ab992d9bf63c398",
+      "original_bytes": 3872513,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Final mismatch-only prediction shard with pinned hash"
+    },
+    {
+      "placeholder": "data/external/stage1_final/plain_desc/worker_0/records.jsonl.README.md",
+      "artifact_name": "records.jsonl",
+      "original_sha256": "a3998049d2ddce805c34d1d50644f725e3c165697fb03802ac91cfd85017b83d",
+      "original_bytes": 3896857,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Final mismatch-only prediction shard with pinned hash"
+    },
+    {
+      "placeholder": "data/external/stage1_final/point/worker_0/records.jsonl.README.md",
+      "artifact_name": "records.jsonl",
+      "original_sha256": "42ce5a06ad5a24717b591cc5d86e2855fc956baed72043a0f749e17f77b287c8",
+      "original_bytes": 3873262,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Final mismatch-only prediction shard with pinned hash"
+    },
+    {
+      "placeholder": "data/external/stage1_final/point_desc/worker_0/records.jsonl.README.md",
+      "artifact_name": "records.jsonl",
+      "original_sha256": "60a897a5e37bd55927882f9332808db8e97bc4d682ed8d27f0d8d8983795a84d",
+      "original_bytes": 3899641,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Final mismatch-only prediction shard with pinned hash"
+    },
+    {
+      "placeholder": "data/external/stage2_frozen_outputs/README.md",
+      "artifact_name": "shards",
+      "original_sha256": "",
+      "original_bytes": "",
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "65,272 final Stage-2 generations including controls, held outside Git"
+    },
+    {
+      "placeholder": "data/external/v9/Artifacts/hardening_20260817/cmc_clean/records_qwen.jsonl.README.md",
+      "artifact_name": "records_qwen.jsonl",
+      "original_sha256": "9b12f9553b247e17a3513fa86ae9c6ad8913b046004c32f55fe0e474f9e2766d",
+      "original_bytes": 16020759,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Hash-bound historical PRED-A/judge input used by active builders"
+    },
+    {
+      "placeholder": "data/external/v9/Artifacts/hardening_20260817/cmc_clean/summary_qwen.json.README.md",
+      "artifact_name": "summary_qwen.json",
+      "original_sha256": "7d8dc265ceb298b3d5452da5a54cccf7118c5312477e115b166fc30b1787e710",
+      "original_bytes": 16991,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Hash-bound historical PRED-A/judge input used by active builders"
+    },
+    {
+      "placeholder": "data/external/vcr_train_5_pct.json.README.md",
+      "artifact_name": "vcr_train_5_pct.json",
+      "original_sha256": "27e156d7043289685ce0723d94fc676610d817b2241097d2f2e70d9b722a0d30",
+      "original_bytes": 10767294,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Licensed dataset split or parent required for replay"
+    },
+    {
+      "placeholder": "data/external/vcr_train_final_with_orig.json.README.md",
+      "artifact_name": "vcr_train_final_with_orig.json",
+      "original_sha256": "d03d383bbe8f1f345e67b8b90c711dfe278b99f692f06516346aefa49cf1c8a0",
+      "original_bytes": 215665166,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Licensed dataset split or parent required for replay"
+    },
+    {
+      "placeholder": "data/external/vcr_val_10_pct.json.README.md",
+      "artifact_name": "vcr_val_10_pct.json",
+      "original_sha256": "0288740b785021e667c12eb08ab2c222a65f80b2702d598a7ebb7b942b3a5fdc",
+      "original_bytes": 3072539,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Licensed dataset split or parent required for replay"
+    },
+    {
+      "placeholder": "data/external/vcr_val_final_with_orig.json.README.md",
+      "artifact_name": "vcr_val_final_with_orig.json",
+      "original_sha256": "fec6c1e9e3a2c89c73184473c0e5a21a008a2532caeb8def808826003772d0e8",
+      "original_bytes": 30697039,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Licensed dataset split or parent required for replay"
+    },
+    {
+      "placeholder": "frozen_execution/manifests/STAGE2_PRIMARY_MANIFEST.tsv.gz.README.md",
+      "artifact_name": "STAGE2_PRIMARY_MANIFEST.tsv.gz",
+      "original_sha256": "28a1fc204f2d983123bf08e7aeca8a5b69ecb87bf4f8659035257c087593ec5f",
+      "original_bytes": 20869210,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Frozen experimental contract, lineage, pairings or environment source"
+    },
+    {
+      "placeholder": "reports/frozen/rq1_final/provenance/inputs/plain_desc_examples.csv.README.md",
+      "artifact_name": "plain_desc_examples.csv",
+      "original_sha256": "6ea9785a2f49943ceddf6b3cf6b3a5d38c579f8ee7a8f99a5e47d63c1b5aa32e",
+      "original_bytes": 338389,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Full historical six-condition prediction CSV; hash matches canonical remote input"
+    },
+    {
+      "placeholder": "reports/frozen/rq1_final/provenance/inputs/plain_examples.csv.README.md",
+      "artifact_name": "plain_examples.csv",
+      "original_sha256": "bc6ce9c30f91c313ec40bb26e4c706768f78f243c36c096eeab8ac6bdc09a92a",
+      "original_bytes": 338389,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Full historical six-condition prediction CSV; hash matches canonical remote input"
+    },
+    {
+      "placeholder": "reports/frozen/rq1_final/provenance/inputs/point_desc_examples.csv.README.md",
+      "artifact_name": "point_desc_examples.csv",
+      "original_sha256": "78fb8cc6169b3bb97242d738246bd080fd670e5ed5705ac4f35744cd7931e0f1",
+      "original_bytes": 338389,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Full historical six-condition prediction CSV; hash matches canonical remote input"
+    },
+    {
+      "placeholder": "reports/frozen/rq1_final/provenance/inputs/point_examples.csv.README.md",
+      "artifact_name": "point_examples.csv",
+      "original_sha256": "e5431fa4f9ff4007f2d0f7df65aed9302f12a5da6211f61db8cc1e07acff1015",
+      "original_bytes": 338389,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Full historical six-condition prediction CSV; hash matches canonical remote input"
+    },
+    {
+      "placeholder": "reports/frozen/rq1_final/qualitative/RQ1_W2C_FINAL_SAMPLE.tsv.README.md",
+      "artifact_name": "RQ1_W2C_FINAL_SAMPLE.tsv",
+      "original_sha256": "5ebd52c4f79d97c05088faf205885b6be2249333914c060d483af70d889d24d8",
+      "original_bytes": 2730,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Frozen selection/material source for the sixteen W-to-C panels"
+    },
+    {
+      "placeholder": "reports/frozen/rq1_final/qualitative/RQ1_W2C_MISMATCH_ELIGIBLE_FRAME.tsv.README.md",
+      "artifact_name": "RQ1_W2C_MISMATCH_ELIGIBLE_FRAME.tsv",
+      "original_sha256": "6b6c0d854c40c5ab518be4905bdcf339e5279193e6b8790dd4fb18dcc083b1a5",
+      "original_bytes": 123556,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Frozen selection/material source for the sixteen W-to-C panels"
+    },
+    {
+      "placeholder": "reports/frozen/rq1_final/qualitative/RQ1_W2C_QUALITATIVE_AUDIT.md.README.md",
+      "artifact_name": "RQ1_W2C_QUALITATIVE_AUDIT.md",
+      "original_sha256": "e8f5d0079d6faf4427fd051c982cb0d7df0fbc71db6fa3592915e6fd9880ae2a",
+      "original_bytes": 8448,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Frozen selection/material source for the sixteen W-to-C panels"
+    },
+    {
+      "placeholder": "reports/frozen/rq1_final/qualitative/RQ1_W2C_SAMPLE_FREEZE.json.README.md",
+      "artifact_name": "RQ1_W2C_SAMPLE_FREEZE.json",
+      "original_sha256": "228b0d2b5fda3b7bf1bb15cb980e907a5daad90aa3059aafc24edf2f9f62f436",
+      "original_bytes": 1167,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Frozen selection/material source for the sixteen W-to-C panels"
+    },
+    {
+      "placeholder": "reports/frozen/rq1_final/qualitative/RQ1_W2C_SELECTED_MATERIAL.tsv.README.md",
+      "artifact_name": "RQ1_W2C_SELECTED_MATERIAL.tsv",
+      "original_sha256": "7f3f1e817d6836daa67833022dbb42ea5b44b1d68952005d1a4fe61a5f282883",
+      "original_bytes": 17147,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Frozen selection/material source for the sixteen W-to-C panels"
+    },
+    {
+      "placeholder": "reports/frozen/rq2_final/data/RQ2_BERTSCORE_SCORING_JOBS.tsv.gz.README.md",
+      "artifact_name": "RQ2_BERTSCORE_SCORING_JOBS.tsv.gz",
+      "original_sha256": "0d3181fa952fc10a35a5ec4c94daea74b60ecbec5d3485ae43ce56fbad914e2c",
+      "original_bytes": 10944095,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Frozen rq2_final analysis dependency"
+    },
+    {
+      "placeholder": "frozen_execution/manifests/FINAL_OPTION_B_MISMATCH_MANIFEST.tsv.README.md",
+      "artifact_name": "FINAL_OPTION_B_MISMATCH_MANIFEST.tsv",
+      "original_sha256": "dbeeb0a0eaad8f1d6d79c9558e8748cd0f6f9854156f979969f145a8f3a4b22d",
+      "original_bytes": 2287049,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Frozen experimental contract, lineage, pairings or environment source"
+    },
+    {
+      "placeholder": "frozen_execution/manifests/FINAL_UNRELATED_RATIONALE_PAIRING_MAP.tsv.README.md",
+      "artifact_name": "FINAL_UNRELATED_RATIONALE_PAIRING_MAP.tsv",
+      "original_sha256": "93d64685975e05705386b3bcdcde383bbb1a386681d37b0451c42ed8874e7426",
+      "original_bytes": 2623111,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Frozen experimental contract, lineage, pairings or environment source"
+    },
+    {
+      "placeholder": "frozen_execution/manifests/PREDICTED_REGIME_PROVENANCE.json.README.md",
+      "artifact_name": "PREDICTED_REGIME_PROVENANCE.json",
+      "original_sha256": "37e02412ca6c72a93379394344daec5ad7feccce04a64684f8b0d3c9e58cc9d8",
+      "original_bytes": 7535,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Frozen experimental contract, lineage, pairings or environment source"
+    },
+    {
+      "placeholder": "frozen_execution/manifests/STAGE1_FINAL_WRONG_MANIFEST.tsv.README.md",
+      "artifact_name": "STAGE1_FINAL_WRONG_MANIFEST.tsv",
+      "original_sha256": "e5db9cd53751b7b7b9b5c0f3429c1dd518a5edb6cc56580207a531327934ff12",
+      "original_bytes": 12312310,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Frozen experimental contract, lineage, pairings or environment source"
+    },
+    {
+      "placeholder": "frozen_execution/manifests/STAGE2_DESCRIPTION_AVAILABILITY_ABLATION_MANIFEST.tsv.README.md",
+      "artifact_name": "STAGE2_DESCRIPTION_AVAILABILITY_ABLATION_MANIFEST.tsv",
+      "original_sha256": "30a98b7aac15ad0725a971b735789003e3554bf66526baa7f98e4f3a33d47937",
+      "original_bytes": 1506623,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Frozen experimental contract, lineage, pairings or environment source"
+    },
+    {
+      "placeholder": "frozen_execution/manifests/STAGE2_KNOWN_CHANGE_MANIFEST.tsv.README.md",
+      "artifact_name": "STAGE2_KNOWN_CHANGE_MANIFEST.tsv",
+      "original_sha256": "a146fe45daced64087146257f82b6096f59602b2992769665363b0bf9eaee3ca",
+      "original_bytes": 1322395,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Frozen experimental contract, lineage, pairings or environment source"
+    },
+    {
+      "placeholder": "frozen_execution/manifests/evaluation_asset_inventory.tsv.README.md",
+      "artifact_name": "evaluation_asset_inventory.tsv",
+      "original_sha256": "1fc8ad04303820c3124fbbaf0dfd5279c725c58810a765f9c9c44dfc310fd0a8",
+      "original_bytes": 1111971,
+      "status": "EXTERNAL_NOT_INCLUDED",
+      "role": "Frozen experimental contract, lineage, pairings or environment source"
+    }
+  ]
+}

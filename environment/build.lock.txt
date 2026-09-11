@@ -1,0 +1,2 @@
+# System package references; not bundled font files or an installable pip lock.
+# latexmk, pdflatex, BibTeX, mathpazo, type1cm, type1ec, recommended/extra LaTeX packages.

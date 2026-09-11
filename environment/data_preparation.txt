@@ -1,0 +1,6 @@
+# Recovered preparation API/CV packages; run only with licensed external inputs.
+openai==2.15.0
+opencv-python==4.12.0.88
+Pillow==12.0.0
+numpy==2.2.6
+tqdm==4.67.1

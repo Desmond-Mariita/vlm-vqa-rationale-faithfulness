@@ -1,0 +1,302 @@
+% Chapter 6: Results
+
+\chapter{Results}
+\label{ch:results}
+
+% Local placement only: keep each enclosed object at its prose boundary.
+% No global float parameters or asset/caption contents are changed.
+\newenvironment{chSixFigureHere}{%
+  \begingroup
+  \renewenvironment{figure}[1][]{%
+    \par\begin{center}\begin{minipage}{\linewidth}%
+    \captionsetup{type=figure}%
+  }{\end{minipage}\end{center}\par}%
+}{\endgroup}
+
+This chapter reports the evidence for RQ1 and RQ2. All Stage~1
+cells use the same 2,653 records and 2,400 source frames. The primary Stage~2
+set contains 63,672 generations from one RTX~5090 environment.
+Intervals are 95\% percentile intervals from 10,000 bootstrap replicates
+clustered by source frame with seed~42.
+
+\section{RQ1: Stage~1 answer behaviour}
+\label{sec:results-rq1}
+
+\subsection{Accuracy across the six image conditions}
+\label{sec:results-rq1-accuracy}
+
+Accuracy with the source image ranged from 0.805 to 0.815 across arms. The
+interventions separated the
+conditions much more clearly (Table~\ref{tab:rq1-battery}). Mismatch produced
+the largest accuracy loss in every arm, with gaps from 0.296 to 0.374 relative
+to source. Grey was next, with gaps from 0.189 to 0.322. Mask and noise had
+intermediate gaps, while mirror remained close to source.
+
+\input{Tables/final/rq1_battery}
+
+Figure~\ref{fig:rq1-accuracy} shows the same pattern without the interval
+inventory, and Table~\ref{tab:rq1-gaps} gives every gap relative to source with
+its interval. The two description arms retained more accuracy under grey,
+mismatch, mask, and noise than their matched arms without descriptions. Polygon
+overlays alone did not produce a uniform advantage: condition differences
+between \texttt{point} and \texttt{plain} changed direction.
+
+After every image pixel was replaced by uniform grey, accuracy remained between
+0.483 and 0.626 in every arm, above the 0.25 chance level for four choices. Every arm still received the question and
+answer choices; the two description arms also retained their descriptions, and
+learned regularities could contribute in all arms. Source accuracy alone therefore
+cannot establish dependence on the image.
+
+\begin{chSixFigureHere}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.82\textwidth]{Figures/final/rq1_accuracy_by_condition.pdf}
+\caption[Stage~1 accuracy by image condition]{Stage~1 accuracy across six image
+conditions. Every arm and condition cell contains the same 2,653 records. Error
+bars are 95\% confidence intervals from a bootstrap clustered by source frame.
+Points are offset horizontally within each condition so the four arms stay
+separable; the conditions are discrete categories and are not joined. The dashed
+line marks chance accuracy of 0.25 for four choices.}
+\label{fig:rq1-accuracy}
+\end{figure}
+\end{chSixFigureHere}
+
+Mismatch produced the lowest accuracy in every arm: 0.438 for
+\texttt{plain}, 0.435 for \texttt{point}, 0.487 for
+\texttt{plain\_desc}, and 0.519 for \texttt{point\_desc}.
+
+\subsection{Sufficiency Gap and description comparisons}
+\label{sec:results-rq1-sufficiency}
+
+Sufficiency Gap is source accuracy minus grey accuracy. It was 0.322 for
+\texttt{plain}, 0.319 for \texttt{point}, 0.221 for
+\texttt{plain\_desc}, and 0.189 for \texttt{point\_desc}. The
+comparisons between arms with and without descriptions were negative in both matched arm
+pairs (Table~\ref{tab:rq1-sufficiency}). Thus description arms lost less answer
+accuracy when the image was removed.
+
+\begingroup
+\let\table\inplacetable
+\let\endtable\endinplacetable
+\input{Tables/final/rq1_sufficiency}
+\endgroup
+
+Source accuracy and grey accuracy remain visible because a small gap alone is
+not sufficient to characterise performance.
+Section~\ref{sec:discussion-descriptions} interprets the pattern.
+
+\subsection{Correctness transitions}
+\label{sec:results-rq1-transitions}
+
+The transition decomposition shows how the accuracy gaps arose
+(Table~\ref{tab:rq1-transitions-compact}). Under grey, the
+C$\rightarrow$W rate was 46.09\% for \texttt{plain} and 33.33\% for
+\texttt{plain\_desc}. It was 44.45\% for \texttt{point} and 27.88\% for
+\texttt{point\_desc}. Each rate uses the records that were correct under source
+in that arm. As planned comparisons, those differences were $-0.1276$
+[$-0.1468$, $-0.1085$] for \texttt{plain\_desc} minus \texttt{plain} and
+$-0.1657$ [$-0.1876$, $-0.1442$] for \texttt{point\_desc} minus
+\texttt{point}. The corresponding W$\rightarrow$C counts changed little:
+131 versus 133, and 108 versus 102. Grey accuracy was below source accuracy in
+every arm because C$\rightarrow$W counts exceeded W$\rightarrow$C counts.
+The lower C$\rightarrow$W rates in the description arms account for most of
+their smaller source-to-grey accuracy gaps. Because each arm has its own
+checkpoint, these differences describe the adapted arms.
+
+Mismatch produced the largest C$\rightarrow$W count and churn in every arm
+(\mbox{Table}~\ref{tab:rq1-churn-compact}). Mirror provides the counterexample to
+relying only on net accuracy. Its net gaps were 0.49--1.13 percentage points,
+yet 5.24--7.50\% of records changed correctness state. Correct and wrong
+movements partly cancelled in the aggregate.
+
+\begingroup
+\let\table\inplacetable
+\let\endtable\endinplacetable
+\input{Tables/final/rq1_transitions_compact}
+\endgroup
+
+The qualitative audit examined 16 mechanically selected W$\rightarrow$C cases.
+It found answer-choice artefacts, scene or choice
+ambiguity, misleading or irrelevant mismatch content, apparent decision
+instability, one case in which the masked image still showed visible support for
+the keyed answer, and two cases it could not resolve. One record contained four
+nearly identical choices that expressed the same answer, so an index change
+appeared as W$\rightarrow$C without a meaningful content change. The counts are
+too small to read as frequencies. The audit supports treating W$\rightarrow$C as
+an output transition. The full
+sample is reported in Appendix~\ref{sec:app-w2c}.
+
+\subsection{Direct answer to RQ1}
+\label{sec:results-rq1-answer}
+
+\begin{samepage}
+Stage~1 answer behaviour changed with the available visual evidence. Mismatch
+was most disruptive, grey was next, mask and noise were intermediate, and mirror
+produced little net accuracy loss. The description arms lost less accuracy under
+grey, mismatch, mask, and noise, mainly because fewer source-correct predictions
+became wrong. Polygon overlays did not show a consistent advantage across the
+image conditions.
+\end{samepage}
+
+\section{RQ2: Stage~2 rationale behaviour}
+\label{sec:results-rq2}
+
+\subsection{Parser coverage}
+\label{sec:results-rq2-coverage}
+
+The primary set contained 63,672 raw generations. The tolerant parser
+recovered 63,664 non-empty final rationale spans (99.987\%). Of 53,060 possible
+pairs relative to source, 53,049 were usable (99.979\%); every cell retained at
+least 2,651 pairs and 2,398 source frames. Thirteen outputs ended at the length
+limit, and no generation or record error was recorded.
+
+Strict and tolerant parsing differed most in \texttt{point\_desc}. Strict
+final tags were present in 2,435 of 2,653 mismatch generations and 2,603 of
+2,653 source generations, while the tolerant parser recovered all final spans in
+both cells. These differences are formatting limitations and remain visible in
+Appendix~\ref{sec:app-rq2-coverage}.
+
+\subsection{Primary BERTScore Drift results}
+\label{sec:results-rq2-drift}
+
+Rationale text responded to every visual intervention
+(Table~\ref{tab:rq2-drift} and Figure~\ref{fig:rq2-drift}). The common broad
+ordering was mirror, then mask and noise, then grey, then mismatch from lower to
+higher mean Drift. Mismatch
+produced the highest mean in every arm, from 0.0788 to 0.0890. Mirror produced
+the lowest, from 0.0496 to 0.0604.
+
+\begin{chSixFigureHere}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.88\textwidth]{Figures/final/rq2_drift_by_perturbation.pdf}
+\caption[BERTScore Drift by condition]{Mean raw BERTScore Drift for final
+rationale spans under each image intervention. Error bars are 95\% confidence
+intervals from a bootstrap clustered by source frame, and the arm order, colours,
+and markers match Figure~\ref{fig:rq1-accuracy}. Conditions appear in protocol
+order; the magnitude order runs mirror, mask and noise, grey, mismatch. The
+vertical axis is truncated to separate the arms, so
+Figure~\ref{fig:rq2-anchors} shows the same means on a scale anchored at
+identity. Paired sample sizes are given in Table~\ref{tab:rq2-drift}.}
+\label{fig:rq2-drift}
+\end{figure}
+\end{chSixFigureHere}
+
+Differences between grey and mirror ranged from 0.0180 to 0.0260, while
+differences between mismatch and mirror ranged from 0.0281
+to 0.0307; every interval was above zero. Mismatch also exceeded grey in every
+arm, by 0.0043--0.0120. Differences between mask and noise were much smaller and
+changed direction by arm. The complete comparison table is in
+Appendix~\ref{sec:app-rq2-contrasts}.
+
+\begingroup
+\let\table\inplacetable
+\let\endtable\endinplacetable
+\input{Tables/final/rq2_drift}
+\endgroup
+
+Under grey, \texttt{plain\_desc} minus \texttt{plain} Drift was
+$-0.0090$ [$-0.0107$, $-0.0073$]. The \texttt{point\_desc} minus
+\texttt{point} comparison was $-0.0046$ [$-0.0064$, $-0.0029$]. The
+description arms therefore produced less text change between source and grey than
+their matched arms without descriptions.
+
+Figure~\ref{fig:rq2-paired-example} shows what a single paired comparison looks
+like. The question, the four choices, and the supplied gold answer are the same
+in all three cells; only the image changes. The source rationale reads the people as surprised and happy. Under grey the
+rationale introduces scene detail that the uniform input cannot support: it
+places them behind a tree. Under mismatch the rationale appears to follow the
+unrelated replacement scene, describing people approaching a seated pair. That
+text may fit parts of the wrong image, but it cannot support the source record's
+question and answer. Raw Drift was
+0.0822 under grey and 0.0884 under mismatch, against arm means of 0.0835 and
+0.0882. These values place the record close to the plain-arm means.
+One record cannot show a mean. It does show what the measure is comparing.
+
+\begin{chSixFigureHere}
+\input{Figures/final/rq2_paired_rationale_example}
+\end{chSixFigureHere}
+
+\subsection{Wrong-answer control and empirical scale references}
+\label{sec:results-rq2-anchors}
+
+The wrong-answer control compared image removal from source to grey with a
+change to the supplied answer on the same 200 records per arm.
+Drift from the wrong answer was greater in all four arms
+(Table~\ref{tab:rq2-known-change}). Every paired difference interval was above
+zero. The direction also survived the reasoning span and final rationales with
+answer choices masked.
+
+\begingroup
+\let\table\inplacetable
+\let\endtable\endinplacetable
+\input{Tables/final/rq2_known_change}
+\endgroup
+
+Figure~\ref{fig:rq2-anchors} places the image interventions between identity at
+Drift zero, the wrong-answer control, and the reference using rationales from
+different records. Those means were 0.1260 for \texttt{plain}, 0.1252
+for \texttt{point}, 0.1223 for \texttt{plain\_desc}, and 0.1258 for
+\texttt{point\_desc}. The three kinds of comparison point rest on different
+samples, which the figure marks.
+
+The control establishes answer conditioning at the output level: changing the
+answer that Stage~2 was asked to justify produced greater Drift than matched
+grey removal. The scope of this comparison is the wrong answer against
+matched grey.
+
+\begin{chSixFigureHere}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.92\textwidth]{Figures/final/rq2_anchor_ladder.pdf}
+\caption[Empirical BERTScore Drift references]{Raw Drift for final rationale
+spans under three of the five image interventions, the fixed 200-record
+wrong-answer control, and the reference using rationales from different records.
+Mirror, grey, and mismatch are shown because they bracket the range of the five;
+mask and noise fall between mirror and grey and are given in
+Table~\ref{tab:rq2-drift}. The three kinds of comparison point are separated by
+vertical rules and rest on different samples, which the axis labels give. The
+dotted line marks identity, where two texts are the same and Drift is zero.
+These are observed comparison points for reading the scale. They are not
+classification thresholds, ceilings, or a null distribution.}
+\label{fig:rq2-anchors}
+\end{figure}
+\end{chSixFigureHere}
+
+\subsection{Direct answer to RQ2}
+\label{sec:results-rq2-answer}
+
+\begin{samepage}
+With the supplied gold answer fixed, Stage~2 rationale text changed under every
+visual intervention. Mean Drift was greatest under mismatch, next under grey,
+intermediate under mask and noise, and lowest under mirror. The description arms
+had lower source-to-grey Drift than their matched arms without descriptions. In the
+200-record wrong-answer control, changing the supplied answer produced greater Drift
+than matched grey replacement in every arm.
+\end{samepage}
+
+\subsection{Secondary predicted-answer evidence}
+\label{sec:results-pred-a}
+
+Table~\ref{tab:pred-a-compact} reports the PRED-A regime, which uses source
+images only and in which Stage~2 received an answer selected by Stage~1 instead
+of the gold answer (Section~\ref{sec:setup-pred-a}). Usable final-span coverage
+was 91.86\% for \texttt{plain}, 39.84\% for \texttt{point}, 61.21\% for
+\texttt{plain\_desc}, and 97.02\% for \texttt{point\_desc}. Because coverage
+varied this widely, a rate calculated only over successful generations does not
+describe the full regime.
+
+Among usable outputs, conditional CMC ranged from 0.5369 to 0.6305, so the judge
+recovered the supplied answer from a little over half of the rationales in every
+arm. Once coverage is included, pipeline CMC ranged from 0.2341 to 0.6118. The
+two rates order the arms differently: \texttt{point} has the second-highest
+conditional value and the lowest pipeline value. Moderate recoverability among
+successful generations therefore does not imply that the regime performs well
+end to end. CMC records coherence with the supplied answer
+(Section~\ref{sec:framework-pred-a}).
+
+\begingroup
+\let\table\inplacetable
+\let\endtable\endinplacetable
+\input{Tables/final/pred_a_compact}
+\endgroup

@@ -1,0 +1,417 @@
+\begin{center}
+\small
+\begin{tabular}{llll}
+\toprule
+Record & Arm & Condition & Panel \\
+\midrule
+E1 & \texttt{plain} & grey & Figure~\ref{fig:w2c-e01} \\
+E2 & \texttt{plain} & mismatch & Figure~\ref{fig:w2c-e02} \\
+E3 & \texttt{plain} & mask & Figure~\ref{fig:w2c-e03} \\
+E4 & \texttt{plain} & mirror & Figure~\ref{fig:w2c-e04} \\
+E5 & \texttt{point} & grey & Figure~\ref{fig:w2c-e05} \\
+E6 & \texttt{point} & mismatch & Figure~\ref{fig:w2c-e06} \\
+E7 & \texttt{point} & noise & Figure~\ref{fig:w2c-e07} \\
+E8 & \texttt{point} & mirror & Figure~\ref{fig:w2c-e08} \\
+E9 & \texttt{plain\_desc} & grey & Figure~\ref{fig:w2c-e09} \\
+E10 & \texttt{plain\_desc} & mismatch & Figure~\ref{fig:w2c-e10} \\
+E11 & \texttt{plain\_desc} & mask & Figure~\ref{fig:w2c-e11} \\
+E12 & \texttt{plain\_desc} & mirror & Figure~\ref{fig:w2c-e12} \\
+E13 & \texttt{point\_desc} & grey & Figure~\ref{fig:w2c-e13} \\
+E14 & \texttt{point\_desc} & mismatch & Figure~\ref{fig:w2c-e14} \\
+E15 & \texttt{point\_desc} & noise & Figure~\ref{fig:w2c-e15} \\
+E16 & \texttt{point\_desc} & mirror & Figure~\ref{fig:w2c-e16} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E01_source.png} &
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E01_intervention.png} \\
+\small Source image & \small Intervention image
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{E1} \quad \texttt{plain} \quad grey \quad answer-choice artefact\\[3pt]
+\textbf{Question:} What is the purpose of the staircase where person\_3 is walking ?\\[2pt]
+\textbf{A.} It is called the gallows .\\
+\textbf{B.} There is a figure of an angel at the base of the stairs .\\
+\textbf{C.} The setting is a spiral staircase .\\
+\textbf{D.} People can move from one level of the place to another place .\\[2pt]
+\textbf{Gold answer:} D \quad \textbf{Source prediction:} B \quad \textbf{Intervention prediction:} D\\[2pt]
+\textbf{Observation:} The question asks the purpose of a staircase; choice D gives the generic function of moving between levels, whereas the grey image contains no scene information.
+\end{minipage}
+\caption[W-to-C record E1]{Record E1: \texttt{plain} under grey.}
+\label{fig:w2c-e01}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E02_source.png} &
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E02_intervention.png} \\
+\small Source image & \small Intervention image
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{E2} \quad \texttt{plain} \quad mismatch \quad misleading or irrelevant content\\[3pt]
+\textbf{Question:} What is the purpose of the staircase where person\_3 is walking ?\\[2pt]
+\textbf{A.} It is called the gallows .\\
+\textbf{B.} There is a figure of an angel at the base of the stairs .\\
+\textbf{C.} The setting is a spiral staircase .\\
+\textbf{D.} People can move from one level of the place to another place .\\[2pt]
+\textbf{Gold answer:} D \quad \textbf{Source prediction:} B \quad \textbf{Intervention prediction:} D\\[2pt]
+\textbf{Observation:} The replacement image shows a wedding group and no staircase, while choice D still states the generic function of a staircase.
+\end{minipage}
+\caption[W-to-C record E2]{Record E2: \texttt{plain} under mismatch.}
+\label{fig:w2c-e02}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E03_source.png} &
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E03_intervention.png} \\
+\small Source image & \small Intervention image
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{E3} \quad \texttt{plain} \quad mask \quad scene or choice ambiguity\\[3pt]
+\textbf{Question:} Will person\_3 be able to resist person\_5 ' s grip ?\\[2pt]
+\textbf{A.} Yes she will beat him .\\
+\textbf{B.} No , she will watch and let it happen .\\
+\textbf{C.} No , she will not .\\
+\textbf{D.} She will be forced to do what he says .\\[2pt]
+\textbf{Gold answer:} D \quad \textbf{Source prediction:} C \quad \textbf{Intervention prediction:} D\\[2pt]
+\textbf{Observation:} Roughly half the image pixels are blacked out, but the central interaction remains partly visible; choices C and D both describe the woman not resisting.
+\end{minipage}
+\caption[W-to-C record E3]{Record E3: \texttt{plain} under mask.}
+\label{fig:w2c-e03}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E04_source.png} &
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E04_intervention.png} \\
+\small Source image & \small Intervention image
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{E4} \quad \texttt{plain} \quad mirror \quad apparent decision instability\\[3pt]
+\textbf{Question:} Why is person\_1 looking on curiously ?\\[2pt]
+\textbf{A.} person\_3 is worried and wants to know what is up .\\
+\textbf{B.} person\_3 is mesmirized by this animal .\\
+\textbf{C.} person\_1 has just noticed a fire off in the distance .\\
+\textbf{D.} person\_3 is talking to the person behind the bar , in a very eager tone .\\[2pt]
+\textbf{Gold answer:} D \quad \textbf{Source prediction:} C \quad \textbf{Intervention prediction:} D\\[2pt]
+\textbf{Observation:} Horizontal mirroring preserves the people and bar scene while reversing left and right; the predicted label nevertheless changes.
+\end{minipage}
+\caption[W-to-C record E4]{Record E4: \texttt{plain} under mirror.}
+\label{fig:w2c-e04}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E05_source.png} &
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E05_intervention.png} \\
+\small Source image & \small Intervention image
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{E5} \quad \texttt{point} \quad grey \quad scene or choice ambiguity\\[3pt]
+\textbf{Question:} Why is person\_0 looking down ?\\[2pt]
+\textbf{A.} person\_0 is trying to read a document .\\
+\textbf{B.} person\_0 is reading what ' s in the bottle .\\
+\textbf{C.} person\_0 is saying something but is embarrassed or ashamed .\\
+\textbf{D.} person\_0 is in deep thought .\\[2pt]
+\textbf{Gold answer:} D \quad \textbf{Source prediction:} C \quad \textbf{Intervention prediction:} D\\[2pt]
+\textbf{Observation:} The source shows the labelled person looking down; the grey intervention removes that scene, and choices C and D offer nearby affective interpretations.
+\end{minipage}
+\caption[W-to-C record E5]{Record E5: \texttt{point} under grey.}
+\label{fig:w2c-e05}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E06_source.png} &
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E06_intervention.png} \\
+\small Source image & \small Intervention image
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{E6} \quad \texttt{point} \quad mismatch \quad misleading or irrelevant content\\[3pt]
+\textbf{Question:} Why is person\_10 kneeling on the ground ?\\[2pt]
+\textbf{A.} person\_1 has been badly injured .\\
+\textbf{B.} person\_10 is trying to talk to person\_1 .\\
+\textbf{C.} To perform an exorcism .\\
+\textbf{D.} person\_10 is trying to help someone who has been harmed .\\[2pt]
+\textbf{Gold answer:} B \quad \textbf{Source prediction:} C \quad \textbf{Intervention prediction:} B\\[2pt]
+\textbf{Observation:} The source contains a kneeling labelled person near another person; the replacement instead shows a woman beside a vehicle reading an object.
+\end{minipage}
+\caption[W-to-C record E6]{Record E6: \texttt{point} under mismatch.}
+\label{fig:w2c-e06}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E07_source.png} &
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E07_intervention.png} \\
+\small Source image & \small Intervention image
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{E7} \quad \texttt{point} \quad noise \quad answer-choice artefact\\[3pt]
+\textbf{Question:} Who is leading this group ?\\[2pt]
+\textbf{A.} person\_2 is leading .\\
+\textbf{B.} person\_2 is in charge here .\\
+\textbf{C.} person\_2 is supervising them .\\
+\textbf{D.} person\_2 is the one in charge .\\[2pt]
+\textbf{Gold answer:} A \quad \textbf{Source prediction:} D \quad \textbf{Intervention prediction:} A\\[2pt]
+\textbf{Observation:} All four answer choices are paraphrases saying that person\_2 leads or is in charge; noise moves the selected choice from D to the keyed choice A.
+\end{minipage}
+\caption[W-to-C record E7]{Record E7: \texttt{point} under noise.}
+\label{fig:w2c-e07}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E08_source.png} &
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E08_intervention.png} \\
+\small Source image & \small Intervention image
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{E8} \quad \texttt{point} \quad mirror \quad apparent decision instability\\[3pt]
+\textbf{Question:} Why is person\_3 dancing ?\\[2pt]
+\textbf{A.} She is dancing to upbeat music .\\
+\textbf{B.} person\_3 wants to follow and join her fellow group .\\
+\textbf{C.} person\_3 is dancing with someone she is romantically interested in .\\
+\textbf{D.} The girlfriend of person\_15 is part of the dance team .\\[2pt]
+\textbf{Gold answer:} B \quad \textbf{Source prediction:} A \quad \textbf{Intervention prediction:} B\\[2pt]
+\textbf{Observation:} Mirroring preserves the dance scene and labelled participants while the prediction moves from upbeat music to joining the group.
+\end{minipage}
+\caption[W-to-C record E8]{Record E8: \texttt{point} under mirror.}
+\label{fig:w2c-e08}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E09_source.png} &
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E09_intervention.png} \\
+\small Source image & \small Intervention image
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{E9} \quad \texttt{plain\_desc} \quad grey \quad unclear\\[3pt]
+\textbf{Question:} Is person\_7 going to join person\_0 person\_3 ?\\[2pt]
+\textbf{A.} person\_7 isn ' t going to join person\_0 person\_3 .\\
+\textbf{B.} Only person\_6 is going to leave .\\
+\textbf{C.} person\_7 is walking toward person\_0 person\_3 .\\
+\textbf{D.} person\_5 will join the party .\\[2pt]
+\textbf{Description supplied to the model:} The scene shows a group of people in what appears to be an outdoor setting with greenery and pathways. - **Person\_0**: Wearing a light green dress with long hair and holding a black bag, seen from behind. - **Person\_3**: Wearing a suit and tie, facing per\\[2pt]
+\textbf{Gold answer:} A \quad \textbf{Source prediction:} C \quad \textbf{Intervention prediction:} A\\[2pt]
+\textbf{Observation:} The grey image removes the scene, and the supplied description reaches only person\_0 and the start of the person\_3 entry, so it states nothing about person\_7. Neither the supplied text nor the image bears on the future action the question asks about.
+\end{minipage}
+\caption[W-to-C record E9]{Record E9: \texttt{plain\_desc} under grey.}
+\label{fig:w2c-e09}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E10_source.png} &
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E10_intervention.png} \\
+\small Source image & \small Intervention image
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{E10} \quad \texttt{plain\_desc} \quad mismatch \quad scene or choice ambiguity\\[3pt]
+\textbf{Question:} What is person\_1 drinking ?\\[2pt]
+\textbf{A.} She is drinking water .\\
+\textbf{B.} person\_1 is drinking wine since she has a wineglass .\\
+\textbf{C.} She is drinking a glass of wine .\\
+\textbf{D.} She ' s drinking a beer .\\[2pt]
+\textbf{Description supplied to the model:} The scene features two individuals in an interior setting. Person\_0 is holding a dart and looking towards Person\_1, who is drinking from a glass containing a dark liquid. The background includes framed items on the wall and a window with a diamond-patterne\\[2pt]
+\textbf{Gold answer:} D \quad \textbf{Source prediction:} B \quad \textbf{Intervention prediction:} D\\[2pt]
+\textbf{Observation:} The source and retained description show a woman drinking a dark liquid from a glass; the replacement shows an unrelated group of men, while the keyed answer is beer rather than either wine choice.
+\end{minipage}
+\caption[W-to-C record E10]{Record E10: \texttt{plain\_desc} under mismatch.}
+\label{fig:w2c-e10}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E11_source.png} &
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E11_intervention.png} \\
+\small Source image & \small Intervention image
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{E11} \quad \texttt{plain\_desc} \quad mask \quad visible support for the correct answer\\[3pt]
+\textbf{Question:} Why is person\_1 looking at person\_2 ?\\[2pt]
+\textbf{A.} Because person\_2 is acting very strange .\\
+\textbf{B.} person\_1 is looking at how person\_2 will react .\\
+\textbf{C.} person\_1 finds person\_2 attractive .\\
+\textbf{D.} person\_2 has interrupted a conversation between person\_1 person\_0 .\\[2pt]
+\textbf{Description supplied to the model:} The scene depicts a bar setting with three labeled individuals: person\_0, person\_1, and person\_2. Person\_1 is positioned in the center, looking towards person\_2 on the left, who appears to be speaking. Person\_0, on the right, is interacting with person\_1,\\[2pt]
+\textbf{Gold answer:} D \quad \textbf{Source prediction:} C \quad \textbf{Intervention prediction:} D\\[2pt]
+\textbf{Observation:} Despite masking, the three-person bar interaction remains partly visible; the unchanged description says person\_2 appears to be speaking while person\_0 interacts with person\_1.
+\end{minipage}
+\caption[W-to-C record E11]{Record E11: \texttt{plain\_desc} under mask.}
+\label{fig:w2c-e11}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E12_source.png} &
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E12_intervention.png} \\
+\small Source image & \small Intervention image
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{E12} \quad \texttt{plain\_desc} \quad mirror \quad apparent decision instability\\[3pt]
+\textbf{Question:} What are person\_4 person\_2 having a conversation about ?\\[2pt]
+\textbf{A.} person\_5 seems to be talking but person\_3 isn ' t listening .\\
+\textbf{B.} They are talking to someone about getting a loan .\\
+\textbf{C.} They are having an awkward conversation .\\
+\textbf{D.} person\_4 person\_2 are discussing the manner in which person\_2 will take over the situation .\\[2pt]
+\textbf{Description supplied to the model:} The image depicts a hallway scene with five labeled individuals. - **Person\_4** and **person\_2** are in the foreground, facing each other, with person\_2 looking at person\_4. Both are wearing formal attire. - **Person\_5** stands slightly behind person\_2,\\[2pt]
+\textbf{Gold answer:} D \quad \textbf{Source prediction:} C \quad \textbf{Intervention prediction:} D\\[2pt]
+\textbf{Observation:} Mirroring preserves the hallway conversation and the fixed description, but the predicted scenario changes from awkward conversation to taking over the situation.
+\end{minipage}
+\caption[W-to-C record E12]{Record E12: \texttt{plain\_desc} under mirror.}
+\label{fig:w2c-e12}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E13_source.png} &
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E13_intervention.png} \\
+\small Source image & \small Intervention image
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{E13} \quad \texttt{point\_desc} \quad grey \quad unclear\\[3pt]
+\textbf{Question:} Why is person\_8 doubled over ?\\[2pt]
+\textbf{A.} He ' s sick from the drugs and chemicals .\\
+\textbf{B.} He dropped something .\\
+\textbf{C.} He was drinking too much .\\
+\textbf{D.} Because he was hit by a car .\\[2pt]
+\textbf{Description supplied to the model:} The scene depicts a crowded indoor arena with numerous individuals seated closely together. Their expressions and interactions suggest a lively atmosphere. The crowd is diverse, with people wearing various styles of casual clothing. Labeled within the imag\\[2pt]
+\textbf{Gold answer:} B \quad \textbf{Source prediction:} C \quad \textbf{Intervention prediction:} B\\[2pt]
+\textbf{Observation:} The grey image removes the scene, and the supplied description ends mid-word before it names person\_8, so it describes only a crowded indoor arena. Nothing supplied indicates why the person is doubled over.
+\end{minipage}
+\caption[W-to-C record E13]{Record E13: \texttt{point\_desc} under grey.}
+\label{fig:w2c-e13}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E14_source.png} &
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E14_intervention.png} \\
+\small Source image & \small Intervention image
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{E14} \quad \texttt{point\_desc} \quad mismatch \quad misleading or irrelevant content\\[3pt]
+\textbf{Question:} Why did person\_1 person\_2 run them off the road ?\\[2pt]
+\textbf{A.} person\_1 person\_2 want to pick up motorcycle\_3 .\\
+\textbf{B.} person\_1 person\_2 started to run first .\\
+\textbf{C.} person\_1 person\_2 are thugs .\\
+\textbf{D.} They are after an escaping assailant .\\[2pt]
+\textbf{Description supplied to the model:} The scene features three labeled individuals and a motorcycle. - **Person\_0** is partially visible, seated in a vehicle, with only the upper body and head clearly shown. - **Person\_1** is in the foreground, likely standing or leaning forward, obscuring m\\[2pt]
+\textbf{Gold answer:} C \quad \textbf{Source prediction:} D \quad \textbf{Intervention prediction:} C\\[2pt]
+\textbf{Observation:} The source and description concern people near a motorcycle; the replacement is an unrelated historical street scene, while the prediction changes to the keyed “thugs” choice.
+\end{minipage}
+\caption[W-to-C record E14]{Record E14: \texttt{point\_desc} under mismatch.}
+\label{fig:w2c-e14}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E15_source.png} &
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E15_intervention.png} \\
+\small Source image & \small Intervention image
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{E15} \quad \texttt{point\_desc} \quad noise \quad answer-choice artefact\\[3pt]
+\textbf{Question:} Where is the groom ?\\[2pt]
+\textbf{A.} He is in a bedroom .\\
+\textbf{B.} He is at a funeral .\\
+\textbf{C.} He is in a church .\\
+\textbf{D.} person\_1 groom is nearby .\\[2pt]
+\textbf{Description supplied to the model:} The image depicts a scene outdoors with person\_0 and person\_1 prominently in the foreground. Person\_0 is smiling and looking at person\_1, who is wearing glasses, a gray suit, a white shirt, and a purple tie with a matching purple flower boutonniere. There\\[2pt]
+\textbf{Gold answer:} D \quad \textbf{Source prediction:} B \quad \textbf{Intervention prediction:} D\\[2pt]
+\textbf{Observation:} Heavy noise leaves the foreground pair visible; the supplied description places the scene outdoors and describes person\_1 in a suit, tie, and boutonniere. It is cut before the sentence that characterises the setting as a formal event. The keyed choice also says only that the groom is nearby rather than naming a location, as the other three choices do, so the case carries an answer-choice artefact as well.
+\end{minipage}
+\caption[W-to-C record E15]{Record E15: \texttt{point\_desc} under noise.}
+\label{fig:w2c-e15}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E16_source.png} &
+\includegraphics[width=0.44\textwidth]{Figures/w2c/panels/E16_intervention.png} \\
+\small Source image & \small Intervention image
+\end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{0.94\textwidth}
+\small
+\textbf{E16} \quad \texttt{point\_desc} \quad mirror \quad scene or choice ambiguity\\[3pt]
+\textbf{Question:} Why is person\_1 not has dirty ?\\[2pt]
+\textbf{A.} He isn ' t working .\\
+\textbf{B.} He is working around dirty stuff .\\
+\textbf{C.} He works on the basement floor .\\
+\textbf{D.} He has been outside .\\[2pt]
+\textbf{Description supplied to the model:} The scene depicts two individuals labeled as person\_1 and person\_2. Both are wearing hard hats and protective clothing, suggesting they are in a work environment. They appear to be engaged in conversation or work-related interaction. The background shows i\\[2pt]
+\textbf{Gold answer:} A \quad \textbf{Source prediction:} B \quad \textbf{Intervention prediction:} A\\[2pt]
+\textbf{Observation:} Mirroring preserves the industrial scene and fixed description, both of which depict person\_1 in work clothing; the prediction changes to “He isn't working.”
+\end{minipage}
+\caption[W-to-C record E16]{Record E16: \texttt{point\_desc} under mirror.}
+\label{fig:w2c-e16}
+\end{figure}

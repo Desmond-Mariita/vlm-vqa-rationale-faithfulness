@@ -1,0 +1,23 @@
+\begin{table}[ht]
+\centering
+\caption[Secondary predicted-answer regime]{Results of the PRED-A regime,
+which uses source images only. Stage~2 received the Stage~1 predictions
+saved at epoch~3. The RQ1 results use the retained epoch~2 predictions, so
+these figures describe the answers actually supplied to these generations.
+CMC here is conditioned on that supplied predicted answer. Answer recovered
+counts the records whose supplied answer the judge recovered. Conditional
+CMC divides that count by the usable final rationales; pipeline CMC divides
+it by all 2,653 records, so it also carries the coverage shown in the third
+column. Both rates are derived from the printed integers.}
+\label{tab:pred-a-compact}
+\begin{tabular}{lrrrrr}
+\toprule
+Arm & Usable rationales & Coverage & Answer recovered & Conditional CMC & Pipeline CMC \\
+\midrule
+\texttt{plain} & @@ROW_0@@ \\
+\texttt{point} & @@ROW_1@@ \\
+\texttt{plain\_desc} & @@ROW_2@@ \\
+\texttt{point\_desc} & @@ROW_3@@ \\
+\bottomrule
+\end{tabular}
+\end{table}

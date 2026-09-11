@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: Please cite the thesis using this metadata.
+type: software
+title: Evaluating the Faithfulness of Chain-of-Thought Rationales in Vision-Language
+  Models for Visual Question Answering
+authors:
+- family-names: Mariita
+  given-names: Desmond
+repository-code: https://github.com/Desmond-Mariita/vlm-vqa-rationale-faithfulness
+preferred-citation:
+  type: thesis
+  title: Evaluating the Faithfulness of Chain-of-Thought Rationales in Vision-Language
+    Models for Visual Question Answering
+  authors:
+  - family-names: Mariita
+    given-names: Desmond
+  year: 2026
+  institution:
+    name: University of Potsdam

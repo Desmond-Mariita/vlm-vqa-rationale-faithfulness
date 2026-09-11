@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "External processed VCR record shape; no dataset content",
+  "type": "object",
+  "required": [
+    "image_id",
+    "question",
+    "choices",
+    "answer_label"
+  ],
+  "properties": {
+    "image_id": {
+      "type": "string"
+    },
+    "question": {
+      "type": "string"
+    },
+    "choices": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "string"
+      }
+    },
+    "answer_label": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3
+    },
+    "image_descriptions": {
+      "type": "object"
+    },
+    "rationale": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,2 @@
+# Compatibility base only. Use the explicit per-arm, per-stage configurations.
+_base: stage1/plain.yaml

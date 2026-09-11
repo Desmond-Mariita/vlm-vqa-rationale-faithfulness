@@ -1,0 +1,3 @@
+# CPU tests and numeric table reconstruction only.
+pytest==9.0.3
+PyYAML==6.0.2

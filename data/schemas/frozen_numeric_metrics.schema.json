@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Numeric release record",
+  "type": "object",
+  "required": [
+    "arm",
+    "condition"
+  ],
+  "properties": {
+    "arm": {
+      "enum": [
+        "plain",
+        "point",
+        "plain_desc",
+        "point_desc"
+      ]
+    },
+    "condition": {
+      "enum": [
+        "source",
+        "grey",
+        "mismatch",
+        "mask",
+        "noise",
+        "mirror"
+      ]
+    },
+    "record_id": {
+      "type": "integer"
+    },
+    "source_frame_id": {
+      "type": "integer"
+    },
+    "raw_drift": {
+      "type": "number"
+    },
+    "accuracy": {
+      "type": "number"
+    }
+  },
+  "additionalProperties": {
+    "type": [
+      "number",
+      "integer",
+      "boolean",
+      "string"
+    ]
+  },
+  "$comment": "TSV numeric projection column allow-lists are enforced separately by release checks; strings are categorical labels/hashes, not VCR text."
+}

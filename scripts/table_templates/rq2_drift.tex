@@ -1,0 +1,33 @@
+\begin{table}[ht]
+\centering
+\caption[Stage~2 BERTScore Drift by image condition]{Mean raw BERTScore Drift
+for final rationale spans, 95\% confidence interval from a bootstrap clustered
+by source frame, and pairable records. The gold answer remains fixed.}
+\label{tab:rq2-drift}
+\begin{tabular}{llrrr}
+\toprule
+Arm & Image condition & Mean Drift & 95\% CI & Pairable records \\
+\midrule
+\texttt{plain} & grey & @@ROW_0@@ \\
+ & mismatch & @@ROW_1@@ \\
+ & mask & @@ROW_2@@ \\
+ & noise & @@ROW_3@@ \\
+ & mirror & @@ROW_4@@ \\
+\texttt{point} & grey & @@ROW_5@@ \\
+ & mismatch & @@ROW_6@@ \\
+ & mask & @@ROW_7@@ \\
+ & noise & @@ROW_8@@ \\
+ & mirror & @@ROW_9@@ \\
+\texttt{plain\_desc} & grey & @@ROW_10@@ \\
+ & mismatch & @@ROW_11@@ \\
+ & mask & @@ROW_12@@ \\
+ & noise & @@ROW_13@@ \\
+ & mirror & @@ROW_14@@ \\
+\texttt{point\_desc} & grey & @@ROW_15@@ \\
+ & mismatch & @@ROW_16@@ \\
+ & mask & @@ROW_17@@ \\
+ & noise & @@ROW_18@@ \\
+ & mirror & @@ROW_19@@ \\
+\bottomrule
+\end{tabular}
+\end{table}

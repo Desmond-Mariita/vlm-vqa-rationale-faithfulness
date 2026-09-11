@@ -1,0 +1,886 @@
+{
+  "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+  "files": [
+    {
+      "path": "thesis/Appendices/AppendixC.tex",
+      "sha256": "e8a0837e0ebcccfc3c74f15b0817fa25d90d368c756e63cfb34c22236ef2be27",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Appendices/prompt_templates.tex",
+      "sha256": "4bbf968cee37b00262c608b6241788dab6e898aaa5ed27c720952a10d46dc353",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Chapters/Chapter1.tex",
+      "sha256": "12b6ff12429ba391c8f23f056f28b3952b2868edcf360df225f220741ee54c29",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Chapters/Chapter2.tex",
+      "sha256": "508afc1f279d39b382e798f8a1ec58e001848836d5583cf348c3ec9e79c60692",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Chapters/Chapter3.tex",
+      "sha256": "28ec8395b2a4edcb265e14f9d0f47063aea8642300722b888dc82478da21bcbd",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Chapters/Chapter4.tex",
+      "sha256": "ca830450f1ceb2c3b1cb52f6bfd2044da0304445831aee8aced8d87b7fa77424",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Chapters/Chapter5.tex",
+      "sha256": "9958cff38f62b97d9d7fa86e1cd3f20a56f0a5c776627b7710d0d65f6cb50b68",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Chapters/Chapter6.tex",
+      "sha256": "6107fc8cfe547449bcea3b7d828b09bfe07288067461dab60b1325ed01acab3d",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Chapters/Chapter7.tex",
+      "sha256": "c2496307298a0bf9df0276a5fa3ea415d64f418ed59203b1519172d94859fa05",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Chapters/Chapter9.tex",
+      "sha256": "1e0285e4bb03ec7d29881af9243260feae9352408517dc15042fdb9f4c8c3858",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Figures/final/record_methods_example.tex",
+      "sha256": "ff18bf9c498dcafd261b577bfa50d04215d03b21465a93b2f1c0b62af64673dd",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Figures/final/record_six_conditions.tex",
+      "sha256": "fb974c4d5400604a016da024c90e9393df515c680f6387e7b9005cf7063d529f",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Figures/final/rq1_accuracy_by_condition.pdf",
+      "sha256": "7f452ece65644de03a5eb32c16e87ae7f71580efe2222fee9047198bc860aacf",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Figures/final/rq2_anchor_ladder.pdf",
+      "sha256": "10579d996c2bc220b7aeab31acc4dea2f59fe3be907fe6395d08e41b7b6d30d4",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Figures/final/rq2_drift_by_perturbation.pdf",
+      "sha256": "8ff7fe4f7644afd10b612ed144c02452868beea14416267c8740a8c2e9e1f636",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Figures/final/rq2_paired_rationale_example.tex",
+      "sha256": "5af5e1cede1c901b8d9451157bac7111edb65edb3f0ec0c48e92640a068689ed",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Figures/final/w2c_record_panels.tex",
+      "sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Figures/pipeline_twostage.tex",
+      "sha256": "7477cc156238ff95abab1b7ac85ea0e811cbf590798fceb4d03cb14d12f50f34",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Figures/records/C/grey.png",
+      "sha256": "8a879ba72be77baae3118d54c3b179924e14da5d4b91e214e8101ce6b9e551b6",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/records/C/mask.png",
+      "sha256": "d2a2f81ccf32e1c4bb33ff1fa569471d29c0959825c36060c8f441ab96840494",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/records/C/mirror.png",
+      "sha256": "7ef9416b74c16553e3b40947271632e189f235ed59715a8df31c41c2ae3f7242",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/records/C/mismatch.png",
+      "sha256": "832722db0412143686aab9a21d7f49ffb6e81f9701031abcccc8855e44ce057b",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/records/C/noise.png",
+      "sha256": "c0df6d6900cedeead1513b9ba2066d75e03125b9fddeaab7f5426100e621185c",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/records/C/source.png",
+      "sha256": "f0f8a3d96e7f361e90e954821ab79f37e39422dbc29f63a979e59902a70789a1",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/records/M/polygon.png",
+      "sha256": "2ce0b64fca8f19e1c3637427dc3fdae35be51b2b592e41e3244b0b69e9d33a48",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/records/M/source.png",
+      "sha256": "2fb353a01879666382c422f330a34f137526263168659ba8f856368efa7c6584",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/records/R/grey.png",
+      "sha256": "8a879ba72be77baae3118d54c3b179924e14da5d4b91e214e8101ce6b9e551b6",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/records/R/mismatch.png",
+      "sha256": "88a2791f8a3666cc33ebc37519b477a2d759653b0df4993bded2496986245fa4",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/records/R/source.png",
+      "sha256": "4c69d051306dd746953bf2395a45e0920afe5333dc062a44f64ab96d0255a823",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/signature.png",
+      "sha256": "409bf9de946b24ec4c2d61b206285666e1b49562a23778f32fb203edd46a79a1",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/uni_potsdam_logo.png",
+      "sha256": "df49aa729d39ff167afbd4e7c590855445ea12949de39e73aa8eedd4837ab2fb",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E01_intervention.png",
+      "sha256": "8a879ba72be77baae3118d54c3b179924e14da5d4b91e214e8101ce6b9e551b6",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E01_source.png",
+      "sha256": "2dea914075be270995322b147d090367fa60d745d263e9319c0b096ad19c8407",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E02_intervention.png",
+      "sha256": "aa45d52eba5b4c55af899c0fe7f379686994fa5118566316020b6561a590be55",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E02_source.png",
+      "sha256": "2dea914075be270995322b147d090367fa60d745d263e9319c0b096ad19c8407",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E03_intervention.png",
+      "sha256": "0210f7a73ccd46751e262f94d569be7099be689bba790fb333ecd105e19432f6",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E03_source.png",
+      "sha256": "ddc0fc40f2c3c6c8cd7e4298f99b8e2357b54f2f068d6a7696c38b2ee507e0fb",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E04_intervention.png",
+      "sha256": "c680e5b40c784e3a4a314d1e42a6063109433fbedfe8fec4a1e72a9270d35b08",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E04_source.png",
+      "sha256": "74dcea683a6973736872415eddf720fe02c85745028dfaf33c6d49736bc65335",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E05_intervention.png",
+      "sha256": "8a879ba72be77baae3118d54c3b179924e14da5d4b91e214e8101ce6b9e551b6",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E05_source.png",
+      "sha256": "3b9451faeda4a81689849e449e0a4864bd127d88b89e41c95a2d2f509ae8c131",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E06_intervention.png",
+      "sha256": "7183018e98a36059946605ef32793e7d701a33286724686f2622ab441c58a7d6",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E06_source.png",
+      "sha256": "b2d2ac1961b670fa1794f28a6fb241a712d00d3a1eb5c187cf5695ef53470d9f",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E07_intervention.png",
+      "sha256": "2e748bf19f6aed851d034b355241420b91c258ab7e4349562784a02cfa22f2d6",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E07_source.png",
+      "sha256": "2dcfa9b3bc69e1d6cc3e2b7df5572fd4d64e37b1057dd77c3dac906edd22d28d",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E08_intervention.png",
+      "sha256": "44c638759f56952a219f7bdf8834d852b6f2eff2eaf4c71bf17b694f593afd8c",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E08_source.png",
+      "sha256": "08e22cc56484c2c37570c85789cd5a5549914a37c49842627340e4a41aa1113a",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E09_intervention.png",
+      "sha256": "8a879ba72be77baae3118d54c3b179924e14da5d4b91e214e8101ce6b9e551b6",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E09_source.png",
+      "sha256": "ad6602c74dff47e247471d45669dd645c613bf5bfd4eccfc7a8a20f5f4025861",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E10_intervention.png",
+      "sha256": "c1371bff2edf8ea912af8acd21a6dcf8656ff1611eda2317e3894c96861139ec",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E10_source.png",
+      "sha256": "1e31708a4f4ec5797e5122eda67bde4fb44d5328a0fd0eef467a668cf069a8a3",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E11_intervention.png",
+      "sha256": "8d108dda5747459d7a38b290e77aa9816b4065277c5b526b73065f37d2e3aa93",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E11_source.png",
+      "sha256": "2e4543571d00f5e08c437e66fbd398a19517d5ad6949fcfb40e4f29f6673e5c7",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E12_intervention.png",
+      "sha256": "4e687c7c82e1386f9a0909743b93d551750e2ab1e9bd4462be94c5589241789e",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E12_source.png",
+      "sha256": "fabcecf1bc1386aa883cf3974caed5059b6d538fb2f28295659795747907c25a",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E13_intervention.png",
+      "sha256": "8a879ba72be77baae3118d54c3b179924e14da5d4b91e214e8101ce6b9e551b6",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E13_source.png",
+      "sha256": "f862bdc66a3c6343f98e084b881659b4326fad857b0f4349795be73cfb97bb1a",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E14_intervention.png",
+      "sha256": "b72e45bd4f0bd086c12f62c6828114f102edb63b0d5fda85779a74fbb73ebac4",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E14_source.png",
+      "sha256": "e3105c05422d5568dec2ee0e8983e2406ad863f0bc6ea19b5f1d167f4fe73304",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E15_intervention.png",
+      "sha256": "eeab34a7c60d83a48e3eb21e03f5c499a099dc0a7987d5d5707c2b00a88e7573",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E15_source.png",
+      "sha256": "8149a9f9e194c0851e058adad956b5bec62e1e9a2ad1bb36005c62b291986006",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E16_intervention.png",
+      "sha256": "58c24cd4d6cf27536b6fa92a9201f3be154e842779c71e5e657f2ea82cea1f74",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E16_source.png",
+      "sha256": "24591d7b1fbe22468589c986e417a4e07cf12730cc41b20fe7db312f83712532",
+      "withheld": true
+    },
+    {
+      "path": "thesis/Makefile",
+      "sha256": "33958b9f15f3b3e8034973de3d48442ec326bb795a177422098610fd50d9c3c9",
+      "withheld": false
+    },
+    {
+      "path": "thesis/MastersDoctoralThesis.cls",
+      "sha256": "d3bd02284888054ee258e55ce412c1ea1360d78d584a7a6fc63237e64ad358a0",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Tables/final/pred_a_compact.tex",
+      "sha256": "b58e9461238e1b0575d1f9492f53cadfe1e8c1802c8e45b22aa603873dffce5b",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Tables/final/pred_a_coverage.tex",
+      "sha256": "1420c063eef96c37e55d15645dc38c3308a17204065ee720bc75b84be7c98126",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Tables/final/pred_a_strata.tex",
+      "sha256": "4b76159a88c858fed1d5b533b2f5cdad1d208e5a9c9b79c562dd18681999e6e1",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Tables/final/rq1_battery.tex",
+      "sha256": "4f04d9eba354f971fcb7828162d9ef85cc5e249214845388b0895e7b9cc20c18",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Tables/final/rq1_sufficiency.tex",
+      "sha256": "81cc92fbef822d13b3adc983820dce631f0fc5a933c2d8cfeeb12e86d221247e",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Tables/final/rq1_transitions_compact.tex",
+      "sha256": "5d4a3f3c8237373a8d5865135917afa4d5293832b3e85b84b0d5c0f6e4db3075",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Tables/final/rq1_transitions_full.tex",
+      "sha256": "e96dbdbe34a75eae2733c0c0f77515e62b5e9e7466d46147e7f598799467147f",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Tables/final/rq2_drift.tex",
+      "sha256": "b08325c572816781186e47569c8f19e5bff81920132f7ae18f04df947cfe07ce",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Tables/final/rq2_known_change.tex",
+      "sha256": "25892595fed0d2918a02f2cc8baf2a36c5ae719143a83f6d946c689dbe35477a",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Tables/final/rq2_parse_coverage_full.tex",
+      "sha256": "a41a1977d89194d15db12671c22db897594d18f163b23e3a2606a45f87908858",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Tables/final/rq2_planned_contrasts.tex",
+      "sha256": "61e67ee33e7592d2652912672fb512acc429f9b758eaa73dd22a661c4a3e4e45",
+      "withheld": false
+    },
+    {
+      "path": "thesis/Tables/final/rq2_text_unit_sensitivity.tex",
+      "sha256": "aaf1bdb4b15e74b0a94ed39de5e5afee080aee6a5ac9e85b914c30f811b74718",
+      "withheld": false
+    },
+    {
+      "path": "thesis/bibtex.bib",
+      "sha256": "05eb5980b46faac5d9bc7d5a066f07a4b451525f043c72ce2b238b1da0c64eb4",
+      "withheld": false
+    },
+    {
+      "path": "thesis/bibtex_v2.bib",
+      "sha256": "215a0d3ab7bd65d7a982e5655e1c5253a3d0b9ceecbeeccf6f546391070e71fe",
+      "withheld": false
+    },
+    {
+      "path": "thesis/main.tex",
+      "sha256": "b773ab074598b4c5c1a13a5f120656b9677185eb35a839b98741f606d24d508d",
+      "withheld": false
+    },
+    {
+      "path": "thesis/marasovic_supplement.bib",
+      "sha256": "3f6bfdc9f6c7aa2ef7376861bbe0fec30d4e3b8269133b3578db43d2511d7f7a",
+      "withheld": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "thesis/main.tex",
+      "line": 12,
+      "literal": "MastersDoctoralThesis",
+      "target": "thesis/MastersDoctoralThesis.cls"
+    },
+    {
+      "source": "thesis/main.tex",
+      "line": 148,
+      "literal": "Figures/uni_potsdam_logo",
+      "target": "thesis/Figures/uni_potsdam_logo.png"
+    },
+    {
+      "source": "thesis/main.tex",
+      "line": 198,
+      "literal": "Figures/signature",
+      "target": "thesis/Figures/signature.png"
+    },
+    {
+      "source": "thesis/main.tex",
+      "line": 382,
+      "literal": "Chapters/Chapter1",
+      "target": "thesis/Chapters/Chapter1.tex"
+    },
+    {
+      "source": "thesis/main.tex",
+      "line": 383,
+      "literal": "Chapters/Chapter2",
+      "target": "thesis/Chapters/Chapter2.tex"
+    },
+    {
+      "source": "thesis/main.tex",
+      "line": 384,
+      "literal": "Chapters/Chapter3",
+      "target": "thesis/Chapters/Chapter3.tex"
+    },
+    {
+      "source": "thesis/main.tex",
+      "line": 385,
+      "literal": "Chapters/Chapter4",
+      "target": "thesis/Chapters/Chapter4.tex"
+    },
+    {
+      "source": "thesis/Chapters/Chapter4.tex",
+      "line": 12,
+      "literal": "Figures/pipeline_twostage",
+      "target": "thesis/Figures/pipeline_twostage.tex"
+    },
+    {
+      "source": "thesis/Chapters/Chapter4.tex",
+      "line": 54,
+      "literal": "Figures/final/record_methods_example",
+      "target": "thesis/Figures/final/record_methods_example.tex"
+    },
+    {
+      "source": "thesis/Figures/final/record_methods_example.tex",
+      "line": 4,
+      "literal": "Figures/records/M/source.png",
+      "target": "thesis/Figures/records/M/source.png"
+    },
+    {
+      "source": "thesis/Figures/final/record_methods_example.tex",
+      "line": 5,
+      "literal": "Figures/records/M/polygon.png",
+      "target": "thesis/Figures/records/M/polygon.png"
+    },
+    {
+      "source": "thesis/Chapters/Chapter4.tex",
+      "line": 313,
+      "literal": "Figures/final/record_six_conditions",
+      "target": "thesis/Figures/final/record_six_conditions.tex"
+    },
+    {
+      "source": "thesis/Figures/final/record_six_conditions.tex",
+      "line": 4,
+      "literal": "Figures/records/C/source.png",
+      "target": "thesis/Figures/records/C/source.png"
+    },
+    {
+      "source": "thesis/Figures/final/record_six_conditions.tex",
+      "line": 5,
+      "literal": "Figures/records/C/grey.png",
+      "target": "thesis/Figures/records/C/grey.png"
+    },
+    {
+      "source": "thesis/Figures/final/record_six_conditions.tex",
+      "line": 6,
+      "literal": "Figures/records/C/mismatch.png",
+      "target": "thesis/Figures/records/C/mismatch.png"
+    },
+    {
+      "source": "thesis/Figures/final/record_six_conditions.tex",
+      "line": 8,
+      "literal": "Figures/records/C/mask.png",
+      "target": "thesis/Figures/records/C/mask.png"
+    },
+    {
+      "source": "thesis/Figures/final/record_six_conditions.tex",
+      "line": 9,
+      "literal": "Figures/records/C/noise.png",
+      "target": "thesis/Figures/records/C/noise.png"
+    },
+    {
+      "source": "thesis/Figures/final/record_six_conditions.tex",
+      "line": 10,
+      "literal": "Figures/records/C/mirror.png",
+      "target": "thesis/Figures/records/C/mirror.png"
+    },
+    {
+      "source": "thesis/main.tex",
+      "line": 386,
+      "literal": "Chapters/Chapter5",
+      "target": "thesis/Chapters/Chapter5.tex"
+    },
+    {
+      "source": "thesis/main.tex",
+      "line": 387,
+      "literal": "Chapters/Chapter6",
+      "target": "thesis/Chapters/Chapter6.tex"
+    },
+    {
+      "source": "thesis/Chapters/Chapter6.tex",
+      "line": 35,
+      "literal": "Tables/final/rq1_battery",
+      "target": "thesis/Tables/final/rq1_battery.tex"
+    },
+    {
+      "source": "thesis/Chapters/Chapter6.tex",
+      "line": 53,
+      "literal": "Figures/final/rq1_accuracy_by_condition.pdf",
+      "target": "thesis/Figures/final/rq1_accuracy_by_condition.pdf"
+    },
+    {
+      "source": "thesis/Chapters/Chapter6.tex",
+      "line": 81,
+      "literal": "Tables/final/rq1_sufficiency",
+      "target": "thesis/Tables/final/rq1_sufficiency.tex"
+    },
+    {
+      "source": "thesis/Chapters/Chapter6.tex",
+      "line": 115,
+      "literal": "Tables/final/rq1_transitions_compact",
+      "target": "thesis/Tables/final/rq1_transitions_compact.tex"
+    },
+    {
+      "source": "thesis/Chapters/Chapter6.tex",
+      "line": 172,
+      "literal": "Figures/final/rq2_drift_by_perturbation.pdf",
+      "target": "thesis/Figures/final/rq2_drift_by_perturbation.pdf"
+    },
+    {
+      "source": "thesis/Chapters/Chapter6.tex",
+      "line": 195,
+      "literal": "Tables/final/rq2_drift",
+      "target": "thesis/Tables/final/rq2_drift.tex"
+    },
+    {
+      "source": "thesis/Chapters/Chapter6.tex",
+      "line": 217,
+      "literal": "Figures/final/rq2_paired_rationale_example",
+      "target": "thesis/Figures/final/rq2_paired_rationale_example.tex"
+    },
+    {
+      "source": "thesis/Figures/final/rq2_paired_rationale_example.tex",
+      "line": 4,
+      "literal": "Figures/records/R/source.png",
+      "target": "thesis/Figures/records/R/source.png"
+    },
+    {
+      "source": "thesis/Figures/final/rq2_paired_rationale_example.tex",
+      "line": 5,
+      "literal": "Figures/records/R/grey.png",
+      "target": "thesis/Figures/records/R/grey.png"
+    },
+    {
+      "source": "thesis/Figures/final/rq2_paired_rationale_example.tex",
+      "line": 6,
+      "literal": "Figures/records/R/mismatch.png",
+      "target": "thesis/Figures/records/R/mismatch.png"
+    },
+    {
+      "source": "thesis/Chapters/Chapter6.tex",
+      "line": 233,
+      "literal": "Tables/final/rq2_known_change",
+      "target": "thesis/Tables/final/rq2_known_change.tex"
+    },
+    {
+      "source": "thesis/Chapters/Chapter6.tex",
+      "line": 251,
+      "literal": "Figures/final/rq2_anchor_ladder.pdf",
+      "target": "thesis/Figures/final/rq2_anchor_ladder.pdf"
+    },
+    {
+      "source": "thesis/Chapters/Chapter6.tex",
+      "line": 301,
+      "literal": "Tables/final/pred_a_compact",
+      "target": "thesis/Tables/final/pred_a_compact.tex"
+    },
+    {
+      "source": "thesis/main.tex",
+      "line": 388,
+      "literal": "Chapters/Chapter7",
+      "target": "thesis/Chapters/Chapter7.tex"
+    },
+    {
+      "source": "thesis/main.tex",
+      "line": 389,
+      "literal": "Chapters/Chapter9",
+      "target": "thesis/Chapters/Chapter9.tex"
+    },
+    {
+      "source": "thesis/main.tex",
+      "line": 397,
+      "literal": "Appendices/AppendixC",
+      "target": "thesis/Appendices/AppendixC.tex"
+    },
+    {
+      "source": "thesis/Appendices/AppendixC.tex",
+      "line": 25,
+      "literal": "Tables/final/rq1_transitions_full",
+      "target": "thesis/Tables/final/rq1_transitions_full.tex"
+    },
+    {
+      "source": "thesis/Appendices/AppendixC.tex",
+      "line": 46,
+      "literal": "Figures/final/w2c_record_panels",
+      "target": "thesis/Figures/final/w2c_record_panels.tex"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 30,
+      "literal": "Figures/w2c/panels/E01_source.png",
+      "target": "thesis/Figures/w2c/panels/E01_source.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 31,
+      "literal": "Figures/w2c/panels/E01_intervention.png",
+      "target": "thesis/Figures/w2c/panels/E01_intervention.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 54,
+      "literal": "Figures/w2c/panels/E02_source.png",
+      "target": "thesis/Figures/w2c/panels/E02_source.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 55,
+      "literal": "Figures/w2c/panels/E02_intervention.png",
+      "target": "thesis/Figures/w2c/panels/E02_intervention.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 78,
+      "literal": "Figures/w2c/panels/E03_source.png",
+      "target": "thesis/Figures/w2c/panels/E03_source.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 79,
+      "literal": "Figures/w2c/panels/E03_intervention.png",
+      "target": "thesis/Figures/w2c/panels/E03_intervention.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 102,
+      "literal": "Figures/w2c/panels/E04_source.png",
+      "target": "thesis/Figures/w2c/panels/E04_source.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 103,
+      "literal": "Figures/w2c/panels/E04_intervention.png",
+      "target": "thesis/Figures/w2c/panels/E04_intervention.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 126,
+      "literal": "Figures/w2c/panels/E05_source.png",
+      "target": "thesis/Figures/w2c/panels/E05_source.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 127,
+      "literal": "Figures/w2c/panels/E05_intervention.png",
+      "target": "thesis/Figures/w2c/panels/E05_intervention.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 150,
+      "literal": "Figures/w2c/panels/E06_source.png",
+      "target": "thesis/Figures/w2c/panels/E06_source.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 151,
+      "literal": "Figures/w2c/panels/E06_intervention.png",
+      "target": "thesis/Figures/w2c/panels/E06_intervention.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 174,
+      "literal": "Figures/w2c/panels/E07_source.png",
+      "target": "thesis/Figures/w2c/panels/E07_source.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 175,
+      "literal": "Figures/w2c/panels/E07_intervention.png",
+      "target": "thesis/Figures/w2c/panels/E07_intervention.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 198,
+      "literal": "Figures/w2c/panels/E08_source.png",
+      "target": "thesis/Figures/w2c/panels/E08_source.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 199,
+      "literal": "Figures/w2c/panels/E08_intervention.png",
+      "target": "thesis/Figures/w2c/panels/E08_intervention.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 222,
+      "literal": "Figures/w2c/panels/E09_source.png",
+      "target": "thesis/Figures/w2c/panels/E09_source.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 223,
+      "literal": "Figures/w2c/panels/E09_intervention.png",
+      "target": "thesis/Figures/w2c/panels/E09_intervention.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 247,
+      "literal": "Figures/w2c/panels/E10_source.png",
+      "target": "thesis/Figures/w2c/panels/E10_source.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 248,
+      "literal": "Figures/w2c/panels/E10_intervention.png",
+      "target": "thesis/Figures/w2c/panels/E10_intervention.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 272,
+      "literal": "Figures/w2c/panels/E11_source.png",
+      "target": "thesis/Figures/w2c/panels/E11_source.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 273,
+      "literal": "Figures/w2c/panels/E11_intervention.png",
+      "target": "thesis/Figures/w2c/panels/E11_intervention.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 297,
+      "literal": "Figures/w2c/panels/E12_source.png",
+      "target": "thesis/Figures/w2c/panels/E12_source.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 298,
+      "literal": "Figures/w2c/panels/E12_intervention.png",
+      "target": "thesis/Figures/w2c/panels/E12_intervention.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 322,
+      "literal": "Figures/w2c/panels/E13_source.png",
+      "target": "thesis/Figures/w2c/panels/E13_source.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 323,
+      "literal": "Figures/w2c/panels/E13_intervention.png",
+      "target": "thesis/Figures/w2c/panels/E13_intervention.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 347,
+      "literal": "Figures/w2c/panels/E14_source.png",
+      "target": "thesis/Figures/w2c/panels/E14_source.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 348,
+      "literal": "Figures/w2c/panels/E14_intervention.png",
+      "target": "thesis/Figures/w2c/panels/E14_intervention.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 372,
+      "literal": "Figures/w2c/panels/E15_source.png",
+      "target": "thesis/Figures/w2c/panels/E15_source.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 373,
+      "literal": "Figures/w2c/panels/E15_intervention.png",
+      "target": "thesis/Figures/w2c/panels/E15_intervention.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 397,
+      "literal": "Figures/w2c/panels/E16_source.png",
+      "target": "thesis/Figures/w2c/panels/E16_source.png"
+    },
+    {
+      "source": "thesis/Figures/final/w2c_record_panels.tex",
+      "line": 398,
+      "literal": "Figures/w2c/panels/E16_intervention.png",
+      "target": "thesis/Figures/w2c/panels/E16_intervention.png"
+    },
+    {
+      "source": "thesis/Appendices/AppendixC.tex",
+      "line": 59,
+      "literal": "Tables/final/rq2_parse_coverage_full",
+      "target": "thesis/Tables/final/rq2_parse_coverage_full.tex"
+    },
+    {
+      "source": "thesis/Appendices/AppendixC.tex",
+      "line": 70,
+      "literal": "Tables/final/rq2_planned_contrasts",
+      "target": "thesis/Tables/final/rq2_planned_contrasts.tex"
+    },
+    {
+      "source": "thesis/Appendices/AppendixC.tex",
+      "line": 97,
+      "literal": "Tables/final/rq2_text_unit_sensitivity",
+      "target": "thesis/Tables/final/rq2_text_unit_sensitivity.tex"
+    },
+    {
+      "source": "thesis/Appendices/AppendixC.tex",
+      "line": 107,
+      "literal": "Appendices/prompt_templates",
+      "target": "thesis/Appendices/prompt_templates.tex"
+    },
+    {
+      "source": "thesis/Appendices/AppendixC.tex",
+      "line": 165,
+      "literal": "Tables/final/pred_a_strata",
+      "target": "thesis/Tables/final/pred_a_strata.tex"
+    },
+    {
+      "source": "thesis/Appendices/AppendixC.tex",
+      "line": 194,
+      "literal": "Tables/final/pred_a_coverage",
+      "target": "thesis/Tables/final/pred_a_coverage.tex"
+    },
+    {
+      "source": "thesis/main.tex",
+      "line": 411,
+      "literal": "bibtex",
+      "target": "thesis/bibtex.bib"
+    },
+    {
+      "source": "thesis/main.tex",
+      "line": 411,
+      "literal": "bibtex_v2",
+      "target": "thesis/bibtex_v2.bib"
+    },
+    {
+      "source": "thesis/main.tex",
+      "line": 411,
+      "literal": "marasovic_supplement",
+      "target": "thesis/marasovic_supplement.bib"
+    }
+  ]
+}

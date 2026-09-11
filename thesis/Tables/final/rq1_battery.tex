@@ -1,0 +1,71 @@
+\begin{table}[ht]
+\centering
+\caption[Stage~1 accuracy by image condition]{Stage~1 accuracy on the same
+2,653 records and 2,400 source frames. Intervals are 95\% confidence intervals
+from a bootstrap clustered by source frame.}
+\label{tab:rq1-battery}
+\begin{tabular}{llrr}
+\toprule
+Arm & Image condition & Accuracy & 95\% CI \\
+\midrule
+\texttt{plain} & source & 0.805 & [0.790, 0.820] \\
+ & grey & 0.483 & [0.464, 0.502] \\
+ & mismatch & 0.438 & [0.419, 0.458] \\
+ & mask & 0.646 & [0.627, 0.665] \\
+ & noise & 0.623 & [0.605, 0.642] \\
+ & mirror & 0.800 & [0.784, 0.815] \\
+\texttt{point} & source & 0.808 & [0.793, 0.823] \\
+ & grey & 0.490 & [0.470, 0.509] \\
+ & mismatch & 0.435 & [0.415, 0.453] \\
+ & mask & 0.623 & [0.604, 0.642] \\
+ & noise & 0.632 & [0.613, 0.650] \\
+ & mirror & 0.802 & [0.787, 0.818] \\
+\texttt{plain\_desc} & source & 0.814 & [0.799, 0.829] \\
+ & grey & 0.593 & [0.574, 0.612] \\
+ & mismatch & 0.487 & [0.468, 0.507] \\
+ & mask & 0.681 & [0.663, 0.699] \\
+ & noise & 0.665 & [0.647, 0.683] \\
+ & mirror & 0.803 & [0.787, 0.818] \\
+\texttt{point\_desc} & source & 0.815 & [0.801, 0.830] \\
+ & grey & 0.626 & [0.607, 0.645] \\
+ & mismatch & 0.519 & [0.500, 0.538] \\
+ & mask & 0.680 & [0.663, 0.698] \\
+ & noise & 0.680 & [0.662, 0.698] \\
+ & mirror & 0.805 & [0.790, 0.820] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption[Stage~1 gaps relative to source]{Source accuracy minus condition
+accuracy. Positive values indicate lower accuracy under the intervention.
+Intervals use the same bootstrap as Table~\ref{tab:rq1-battery}.}
+\label{tab:rq1-gaps}
+\begin{tabular}{llrr}
+\toprule
+Arm & Image condition & Gap & 95\% CI \\
+\midrule
+\texttt{plain} & grey & 0.322 & [0.300, 0.343] \\
+ & mismatch & 0.367 & [0.344, 0.389] \\
+ & mask & 0.159 & [0.141, 0.176] \\
+ & noise & 0.182 & [0.164, 0.200] \\
+ & mirror & 0.005 & [$-$0.003, 0.014] \\
+\texttt{point} & grey & 0.319 & [0.298, 0.340] \\
+ & mismatch & 0.374 & [0.351, 0.396] \\
+ & mask & 0.185 & [0.167, 0.203] \\
+ & noise & 0.176 & [0.158, 0.195] \\
+ & mirror & 0.006 & [$-$0.005, 0.016] \\
+\texttt{plain\_desc} & grey & 0.221 & [0.201, 0.241] \\
+ & mismatch & 0.327 & [0.305, 0.349] \\
+ & mask & 0.133 & [0.116, 0.151] \\
+ & noise & 0.149 & [0.132, 0.166] \\
+ & mirror & 0.011 & [0.002, 0.021] \\
+\texttt{point\_desc} & grey & 0.189 & [0.171, 0.207] \\
+ & mismatch & 0.296 & [0.275, 0.318] \\
+ & mask & 0.135 & [0.119, 0.151] \\
+ & noise & 0.135 & [0.118, 0.152] \\
+ & mirror & 0.010 & [0.000, 0.021] \\
+\bottomrule
+\end{tabular}
+\end{table}

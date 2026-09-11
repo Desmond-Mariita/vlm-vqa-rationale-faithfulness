@@ -1,0 +1,589 @@
+{
+  "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+  "policy": "Fail closed. No VCR imagery is redistributed. Only exact path/hash-listed synthetic assets and author-created numeric plots are permitted; historical VCR entries grant no payload exemption.",
+  "visual_files": [
+    {
+      "path": "thesis/Figures/final/rq1_accuracy_by_condition.pdf",
+      "sha256": "7f452ece65644de03a5eb32c16e87ae7f71580efe2222fee9047198bc860aacf",
+      "classification": "AUTHOR_CREATED_NON_VCR"
+    },
+    {
+      "path": "thesis/Figures/final/rq2_anchor_ladder.pdf",
+      "sha256": "10579d996c2bc220b7aeab31acc4dea2f59fe3be907fe6395d08e41b7b6d30d4",
+      "classification": "AUTHOR_CREATED_NON_VCR"
+    },
+    {
+      "path": "thesis/Figures/final/rq2_drift_by_perturbation.pdf",
+      "sha256": "8ff7fe4f7644afd10b612ed144c02452868beea14416267c8740a8c2e9e1f636",
+      "classification": "AUTHOR_CREATED_NON_VCR"
+    },
+    {
+      "path": "data/examples/synthetic_scene.svg",
+      "sha256": "893a24868226a0ebb5290931fdefaa06ac82e83510fdcde665570b27e2b5fc43",
+      "classification": "SYNTHETIC"
+    }
+  ],
+  "expected_tracked_vcr_raster_count": 0,
+  "historical_vcr_note": "Metadata only: these 43 raster dependencies were used in the approved thesis and private staging tree. Their original hashes, source references and historical classification are retained for licensed local reconstruction, not redistribution. No listed raster is part of the current release payload.",
+  "historical_vcr_files": [
+    {
+      "path": "thesis/Figures/records/C/grey.png",
+      "sha256": "8a879ba72be77baae3118d54c3b179924e14da5d4b91e214e8101ce6b9e551b6",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/record_six_conditions.tex",
+          "source_sha256": "fb974c4d5400604a016da024c90e9393df515c680f6387e7b9005cf7063d529f",
+          "literal": "Figures/records/C/grey.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/records/C/mask.png",
+      "sha256": "d2a2f81ccf32e1c4bb33ff1fa569471d29c0959825c36060c8f441ab96840494",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/record_six_conditions.tex",
+          "source_sha256": "fb974c4d5400604a016da024c90e9393df515c680f6387e7b9005cf7063d529f",
+          "literal": "Figures/records/C/mask.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/records/C/mirror.png",
+      "sha256": "7ef9416b74c16553e3b40947271632e189f235ed59715a8df31c41c2ae3f7242",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/record_six_conditions.tex",
+          "source_sha256": "fb974c4d5400604a016da024c90e9393df515c680f6387e7b9005cf7063d529f",
+          "literal": "Figures/records/C/mirror.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/records/C/mismatch.png",
+      "sha256": "832722db0412143686aab9a21d7f49ffb6e81f9701031abcccc8855e44ce057b",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/record_six_conditions.tex",
+          "source_sha256": "fb974c4d5400604a016da024c90e9393df515c680f6387e7b9005cf7063d529f",
+          "literal": "Figures/records/C/mismatch.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/records/C/noise.png",
+      "sha256": "c0df6d6900cedeead1513b9ba2066d75e03125b9fddeaab7f5426100e621185c",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/record_six_conditions.tex",
+          "source_sha256": "fb974c4d5400604a016da024c90e9393df515c680f6387e7b9005cf7063d529f",
+          "literal": "Figures/records/C/noise.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/records/C/source.png",
+      "sha256": "f0f8a3d96e7f361e90e954821ab79f37e39422dbc29f63a979e59902a70789a1",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/record_six_conditions.tex",
+          "source_sha256": "fb974c4d5400604a016da024c90e9393df515c680f6387e7b9005cf7063d529f",
+          "literal": "Figures/records/C/source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/records/M/polygon.png",
+      "sha256": "2ce0b64fca8f19e1c3637427dc3fdae35be51b2b592e41e3244b0b69e9d33a48",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/record_methods_example.tex",
+          "source_sha256": "ff18bf9c498dcafd261b577bfa50d04215d03b21465a93b2f1c0b62af64673dd",
+          "literal": "Figures/records/M/polygon.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/records/M/source.png",
+      "sha256": "2fb353a01879666382c422f330a34f137526263168659ba8f856368efa7c6584",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/record_methods_example.tex",
+          "source_sha256": "ff18bf9c498dcafd261b577bfa50d04215d03b21465a93b2f1c0b62af64673dd",
+          "literal": "Figures/records/M/source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/records/R/grey.png",
+      "sha256": "8a879ba72be77baae3118d54c3b179924e14da5d4b91e214e8101ce6b9e551b6",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/rq2_paired_rationale_example.tex",
+          "source_sha256": "5af5e1cede1c901b8d9451157bac7111edb65edb3f0ec0c48e92640a068689ed",
+          "literal": "Figures/records/R/grey.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/records/R/mismatch.png",
+      "sha256": "88a2791f8a3666cc33ebc37519b477a2d759653b0df4993bded2496986245fa4",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/rq2_paired_rationale_example.tex",
+          "source_sha256": "5af5e1cede1c901b8d9451157bac7111edb65edb3f0ec0c48e92640a068689ed",
+          "literal": "Figures/records/R/mismatch.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/records/R/source.png",
+      "sha256": "4c69d051306dd746953bf2395a45e0920afe5333dc062a44f64ab96d0255a823",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/rq2_paired_rationale_example.tex",
+          "source_sha256": "5af5e1cede1c901b8d9451157bac7111edb65edb3f0ec0c48e92640a068689ed",
+          "literal": "Figures/records/R/source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E01_intervention.png",
+      "sha256": "8a879ba72be77baae3118d54c3b179924e14da5d4b91e214e8101ce6b9e551b6",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E01_intervention.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E01_source.png",
+      "sha256": "2dea914075be270995322b147d090367fa60d745d263e9319c0b096ad19c8407",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E01_source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E02_intervention.png",
+      "sha256": "aa45d52eba5b4c55af899c0fe7f379686994fa5118566316020b6561a590be55",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E02_intervention.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E02_source.png",
+      "sha256": "2dea914075be270995322b147d090367fa60d745d263e9319c0b096ad19c8407",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E02_source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E03_intervention.png",
+      "sha256": "0210f7a73ccd46751e262f94d569be7099be689bba790fb333ecd105e19432f6",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E03_intervention.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E03_source.png",
+      "sha256": "ddc0fc40f2c3c6c8cd7e4298f99b8e2357b54f2f068d6a7696c38b2ee507e0fb",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E03_source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E04_intervention.png",
+      "sha256": "c680e5b40c784e3a4a314d1e42a6063109433fbedfe8fec4a1e72a9270d35b08",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E04_intervention.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E04_source.png",
+      "sha256": "74dcea683a6973736872415eddf720fe02c85745028dfaf33c6d49736bc65335",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E04_source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E05_intervention.png",
+      "sha256": "8a879ba72be77baae3118d54c3b179924e14da5d4b91e214e8101ce6b9e551b6",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E05_intervention.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E05_source.png",
+      "sha256": "3b9451faeda4a81689849e449e0a4864bd127d88b89e41c95a2d2f509ae8c131",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E05_source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E06_intervention.png",
+      "sha256": "7183018e98a36059946605ef32793e7d701a33286724686f2622ab441c58a7d6",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E06_intervention.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E06_source.png",
+      "sha256": "b2d2ac1961b670fa1794f28a6fb241a712d00d3a1eb5c187cf5695ef53470d9f",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E06_source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E07_intervention.png",
+      "sha256": "2e748bf19f6aed851d034b355241420b91c258ab7e4349562784a02cfa22f2d6",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E07_intervention.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E07_source.png",
+      "sha256": "2dcfa9b3bc69e1d6cc3e2b7df5572fd4d64e37b1057dd77c3dac906edd22d28d",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E07_source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E08_intervention.png",
+      "sha256": "44c638759f56952a219f7bdf8834d852b6f2eff2eaf4c71bf17b694f593afd8c",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E08_intervention.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E08_source.png",
+      "sha256": "08e22cc56484c2c37570c85789cd5a5549914a37c49842627340e4a41aa1113a",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E08_source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E09_intervention.png",
+      "sha256": "8a879ba72be77baae3118d54c3b179924e14da5d4b91e214e8101ce6b9e551b6",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E09_intervention.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E09_source.png",
+      "sha256": "ad6602c74dff47e247471d45669dd645c613bf5bfd4eccfc7a8a20f5f4025861",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E09_source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E10_intervention.png",
+      "sha256": "c1371bff2edf8ea912af8acd21a6dcf8656ff1611eda2317e3894c96861139ec",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E10_intervention.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E10_source.png",
+      "sha256": "1e31708a4f4ec5797e5122eda67bde4fb44d5328a0fd0eef467a668cf069a8a3",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E10_source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E11_intervention.png",
+      "sha256": "8d108dda5747459d7a38b290e77aa9816b4065277c5b526b73065f37d2e3aa93",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E11_intervention.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E11_source.png",
+      "sha256": "2e4543571d00f5e08c437e66fbd398a19517d5ad6949fcfb40e4f29f6673e5c7",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E11_source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E12_intervention.png",
+      "sha256": "4e687c7c82e1386f9a0909743b93d551750e2ab1e9bd4462be94c5589241789e",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E12_intervention.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E12_source.png",
+      "sha256": "fabcecf1bc1386aa883cf3974caed5059b6d538fb2f28295659795747907c25a",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E12_source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E13_intervention.png",
+      "sha256": "8a879ba72be77baae3118d54c3b179924e14da5d4b91e214e8101ce6b9e551b6",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E13_intervention.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E13_source.png",
+      "sha256": "f862bdc66a3c6343f98e084b881659b4326fad857b0f4349795be73cfb97bb1a",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E13_source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E14_intervention.png",
+      "sha256": "b72e45bd4f0bd086c12f62c6828114f102edb63b0d5fda85779a74fbb73ebac4",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E14_intervention.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E14_source.png",
+      "sha256": "e3105c05422d5568dec2ee0e8983e2406ad863f0bc6ea19b5f1d167f4fe73304",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E14_source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E15_intervention.png",
+      "sha256": "eeab34a7c60d83a48e3eb21e03f5c499a099dc0a7987d5d5707c2b00a88e7573",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E15_intervention.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E15_source.png",
+      "sha256": "8149a9f9e194c0851e058adad956b5bec62e1e9a2ad1bb36005c62b291986006",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E15_source.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E16_intervention.png",
+      "sha256": "58c24cd4d6cf27536b6fa92a9201f3be154e842779c71e5e657f2ea82cea1f74",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E16_intervention.png"
+        }
+      ]
+    },
+    {
+      "path": "thesis/Figures/w2c/panels/E16_source.png",
+      "sha256": "24591d7b1fbe22468589c986e417a4e07cf12730cc41b20fe7db312f83712532",
+      "classification": "THESIS_VCR_EXEMPTION",
+      "approved_manuscript_sha": "6fbbfd10286a0e37fb7d70d3b3c3ca29ab556610",
+      "active_references": [
+        {
+          "source": "thesis/Figures/final/w2c_record_panels.tex",
+          "source_sha256": "058ce16301eb12d99e2da39d3dfb299b1555f9946817ab7b74b04dd9b23f742d",
+          "literal": "Figures/w2c/panels/E16_source.png"
+        }
+      ]
+    }
+  ]
+}

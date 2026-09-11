@@ -1,0 +1,37 @@
+\begin{table}[ht]
+\centering
+\caption[Grey correctness transitions]{Correctness transitions from source to
+grey. C$\rightarrow$W uses records correct under source; W$\rightarrow$C uses
+records wrong under source.}
+\label{tab:rq1-transitions-compact}
+\begin{tabular}{lrr}
+\toprule
+Arm & C$\rightarrow$W & W$\rightarrow$C \\
+\midrule
+\texttt{plain} & 984 (46.09\%) & 131 (25.29\%) \\
+\texttt{point} & 953 (44.45\%) & 108 (21.22\%) \\
+\texttt{plain\_desc} & 720 (33.33\%) & 133 (26.98\%) \\
+\texttt{point\_desc} & 603 (27.88\%) & 102 (20.82\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption[Mismatch and mirror correctness movement]{Selected movements relative
+to source. The three percentage columns use two different denominators. Mismatch
+C$\rightarrow$W is a percentage of the records that were correct under source in
+that arm. Both churn columns are C$\rightarrow$W plus W$\rightarrow$C as a
+percentage of all 2,653 records.}
+\label{tab:rq1-churn-compact}
+\begin{tabular}{lrrr}
+\toprule
+Arm & Mismatch C$\rightarrow$W & Mismatch churn & Mirror churn \\
+\midrule
+\texttt{plain} & 1,108 (51.90\%) & 1,243 (46.85\%) & 139 (5.24\%) \\
+\texttt{point} & 1,121 (52.29\%) & 1,251 (47.15\%) & 191 (7.20\%) \\
+\texttt{plain\_desc} & 1,006 (46.57\%) & 1,145 (43.16\%) & 166 (6.26\%) \\
+\texttt{point\_desc} & 912 (42.16\%) & 1,038 (39.13\%) & 199 (7.50\%) \\
+\bottomrule
+\end{tabular}
+\end{table}

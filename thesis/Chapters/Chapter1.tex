@@ -1,0 +1,138 @@
+% Chapter 1: Introduction
+
+\chapter{Introduction}
+\label{ch:introduction}
+
+\section{Why rationale faithfulness matters}
+\label{sec:intro-motivation}
+
+Vision-language models (VLMs) can answer questions about images and explain
+their answers in natural language. Instruction-tuned systems such as the Large
+Language and Vision Assistant (LLaVA) \citep{DBLP:conf/nips/LiuLWL23a} and
+Qwen2.5-VL \citep{DBLP:journals/corr/abs-2502-13923} make these rationales easy
+to obtain.
+The text can help a reader understand what the model claims to have seen and why
+it selected an answer. Its usefulness depends on whether it reflects the
+evidence that affected the model's output.
+
+Plausibility and faithfulness are different properties. A plausible rationale
+offers a reasonable account to a reader. A faithful rationale reflects the
+information that actually contributed to the prediction
+\citep{DBLP:conf/acl/JacoviG20}. Studies of language models have shown that a
+cue can change an answer without appearing in the generated chain of thought
+\citep{DBLP:conf/nips/TurpinMPB23}. Similar concerns arise in visual question
+answering (VQA), where question patterns and shallow regularities between questions and
+objects can support predictions even when the image contributes less than
+expected \citep{DBLP:conf/iccv/DancetteCTC21,DBLP:conf/emnlp/SiMZLL0CWZ22}.
+
+This thesis uses a two-stage answer and rationale pipeline. Stage~1 predicts one
+of four answers. Stage~2 receives a supplied answer and generates a rationale
+for it. Separating the stages lets us ask whether the answer changes when visual
+evidence changes and whether the rationale responds to the same intervention.
+For the primary Stage~2 experiment, we hold the supplied gold answer fixed so
+that an image intervention cannot also change the answer that Stage~2 is asked
+to justify. The gold answer is the correct choice recorded by the dataset's
+human annotators.
+
+Chain-of-thought (CoT) prompting elicits intermediate reasoning text before an
+answer \citep{WeiEtAl22CoT}. In this thesis, the generated output is divided
+into a \texttt{<reasoning>} span and a \texttt{<final>} span, and that division
+is the thesis's own output convention. The
+\texttt{<reasoning>} part is step-by-step explanatory text. The
+\texttt{<final>} part is a shorter justification written for a reader. The
+primary RQ2 measure uses the \texttt{<final>} span. That span is the concise
+output the model presents as its justification. It is recovered by one fixed parsing rule, and it is the unit
+specified for the primary analysis before the results were seen. We also
+analysed the reasoning span and the complete generation in
+Appendix~\ref{sec:app-rq2-sensitivity} to check whether the broad ordering of
+the interventions depends on using the final span. Generated CoT text is a model
+output. It does not directly record the computation that produced an answer
+\citep{DBLP:journals/corr/abs-2307-13702}.
+
+Faithfulness concerns whether an explanation reflects the information actually
+used by the model. This study measures behavioural changes in Stage~1 answers
+and Stage~2 rationale text under controlled alterations of visual evidence.
+Chapter~\ref{ch:problem-statement} sets out what that evidence licenses.
+
+\section{Study design}
+\label{sec:intro-design}
+
+We used Visual Commonsense Reasoning (VCR), a multiple-choice benchmark built
+from movie scenes \citep{DBLP:conf/cvpr/ZellersBFC19}. The evaluation population
+contains 2,653 question records drawn from 2,400 source frames. We adapted the
+same Qwen2.5-VL-3B-Instruct base model separately for four input arms:
+
+\begin{description}
+\item[\texttt{plain}] the source image without an added description;
+\item[\texttt{point}] the image with labelled polygon overlays;
+\item[\texttt{plain\_desc}] the source image with a fixed description; and
+\item[\texttt{point\_desc}] the polygon image with the same description.
+\end{description}
+
+The arms vary two possible aids. A polygon overlay points to referenced
+people or objects in the image. A description provides scene information in
+text. We evaluated every arm under six image conditions: source, grey,
+mismatch, random pixel mask, Gaussian noise, and horizontal mirror. The same
+mismatch map, which pairs records from different source frames, was used at
+both stages.
+
+Stage~1 is evaluated through accuracy, gaps relative to source, and movements
+between correct and wrong predictions. Stage~2 is evaluated through BERTScore
+Drift relative to source, which measures change in generated rationale text.
+Three comparisons help interpret the Drift scale:
+
+\begin{itemize}
+\item \textbf{Mirror.} The image is reversed horizontally while its scene
+content is preserved.
+\item \textbf{\mbox{Wrong-answer} control.} The source image remains fixed, but
+Stage~2 receives an answer that differs from the VCR gold answer. Here, wrong
+means different from the dataset's gold answer.
+\item \textbf{Reference using rationales from different records.} Within each
+arm, a rationale
+generated under the source condition for one record is paired with a rationale
+generated under the source condition for a different record, drawn from a
+different source frame. The resulting Drift provides an empirical reference for
+unrelated rationale texts.
+\end{itemize}
+
+\section{Research questions}
+\label{sec:intro-rqs}
+
+The thesis addresses exactly two research questions:
+
+\begin{description}
+\item[RQ1.] How does Stage~1 answer behaviour change when visual evidence is altered or removed across the four input arms?
+\item[RQ2.] When the supplied gold answer is held fixed, how do Stage~2 rationales change when visual evidence is altered or removed across the four input arms?
+\end{description}
+
+Together, the two questions provide behavioural evidence relevant to rationale
+faithfulness by examining answer dependence and rationale sensitivity under the
+same controlled changes in visual evidence. Chapter~\ref{ch:discussion}
+interprets the two sets of results together.
+
+\section{Contributions}
+\label{sec:intro-contributions}
+
+This thesis makes four contributions.
+
+\begin{itemize}
+\item It gives a matched evaluation of Stage~1 answers under six image conditions across four
+input arms on the same 2,653 records.
+\item It provides the complete primary Stage~2 rationale set conditioned on the
+gold answer across the source image and five interventions.
+\item It interprets BERTScore Drift against three empirical references while
+reporting parser coverage and retaining the raw metric specified in the study plan.
+\item It compares answer and rationale patterns associated with descriptions
+and polygon overlays across both stages.
+\end{itemize}
+
+\section{Thesis structure}
+\label{sec:intro-overview}
+
+Chapter~\ref{ch:problem-statement} defines the claim boundary and scope of the
+study.
+Chapter~\ref{ch:related-work} connects the study to VQA shortcuts, rationale
+generation, and behavioural faithfulness tests. Chapters~\ref{ch:setup}
+and~\ref{ch:framework} describe the experiment and analysis. Chapter~\ref{ch:results}
+answers the two research questions. Chapter~\ref{ch:discussion} interprets the
+two stages together, and Chapter~\ref{ch:conclusion} concludes the thesis.

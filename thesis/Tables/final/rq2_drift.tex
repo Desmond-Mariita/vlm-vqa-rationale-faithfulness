@@ -1,0 +1,33 @@
+\begin{table}[ht]
+\centering
+\caption[Stage~2 BERTScore Drift by image condition]{Mean raw BERTScore Drift
+for final rationale spans, 95\% confidence interval from a bootstrap clustered
+by source frame, and pairable records. The gold answer remains fixed.}
+\label{tab:rq2-drift}
+\begin{tabular}{llrrr}
+\toprule
+Arm & Image condition & Mean Drift & 95\% CI & Pairable records \\
+\midrule
+\texttt{plain} & grey & 0.0835 & [0.0821, 0.0850] & 2,653 \\
+ & mismatch & 0.0882 & [0.0869, 0.0896] & 2,653 \\
+ & mask & 0.0762 & [0.0747, 0.0777] & 2,653 \\
+ & noise & 0.0769 & [0.0754, 0.0784] & 2,653 \\
+ & mirror & 0.0575 & [0.0559, 0.0592] & 2,652 \\
+\texttt{point} & grey & 0.0817 & [0.0802, 0.0831] & 2,653 \\
+ & mismatch & 0.0886 & [0.0873, 0.0899] & 2,653 \\
+ & mask & 0.0758 & [0.0743, 0.0773] & 2,653 \\
+ & noise & 0.0745 & [0.0731, 0.0761] & 2,653 \\
+ & mirror & 0.0604 & [0.0588, 0.0620] & 2,653 \\
+\texttt{plain\_desc} & grey & 0.0745 & [0.0731, 0.0760] & 2,652 \\
+ & mismatch & 0.0788 & [0.0774, 0.0801] & 2,652 \\
+ & mask & 0.0669 & [0.0654, 0.0684] & 2,652 \\
+ & noise & 0.0681 & [0.0666, 0.0695] & 2,651 \\
+ & mirror & 0.0496 & [0.0480, 0.0512] & 2,651 \\
+\texttt{point\_desc} & grey & 0.0770 & [0.0756, 0.0785] & 2,653 \\
+ & mismatch & 0.0890 & [0.0875, 0.0906] & 2,653 \\
+ & mask & 0.0716 & [0.0700, 0.0731] & 2,652 \\
+ & noise & 0.0705 & [0.0690, 0.0721] & 2,652 \\
+ & mirror & 0.0590 & [0.0574, 0.0607] & 2,652 \\
+\bottomrule
+\end{tabular}
+\end{table}

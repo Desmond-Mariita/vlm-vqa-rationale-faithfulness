@@ -1,0 +1,446 @@
+% Chapter 4: Data, models, and experimental setup
+
+\chapter{Data, Models, and Experimental Setup}
+\label{ch:setup}
+
+This chapter describes how we produced the answers and the rationales.
+Figure~\ref{fig:pipeline} gives the shape of the experiment: the design holds
+VCR records and text inputs fixed while varying the image condition and the
+presence of polygon overlays or descriptions. Chapter~\ref{ch:framework} defines
+the measures applied to the resulting outputs.
+
+\input{Figures/pipeline_twostage}
+
+\section{Dataset and evaluation population}
+\label{sec:setup-dataset}
+
+Section~\ref{sec:background-vcr} introduced Visual Commonsense Reasoning (VCR),
+its two selection tasks, indexed entities, and region metadata
+\citep{DBLP:conf/cvpr/ZellersBFC19}. For this study, each record supplies a movie
+frame, a question, four answer choices, the gold answer index, and a human
+rationale. The gold answer index is the correctness reference throughout. This
+thesis renders an indexed person as a label such as \texttt{person\_0}, and it
+uses the polygon form of the region metadata. A given question refers to a
+selection of the indexed entities.
+
+The two sets of records come from different VCR splits. Adaptation used 5\% of the
+VCR training split: 10,646 records out of 212,923. Evaluation used 10\% of the VCR
+validation split: 2,653 records out of 26,534, drawn from 2,400 source frames. The
+stored subsets contain unique records, preserve the order of their parent splits,
+and are nearly balanced across the four gold answer labels: 2,661, 2,662, 2,662,
+and 2,661 for adaptation, and 663, 664, 663, and 663 for evaluation. Both subsets
+were constructed with \texttt{data/subset\_balanced\_json.py}. The script grouped a
+split's records by their four gold answer labels, shuffled each group with a
+generator seeded with 42, and took an equal number from each group, giving the
+remainder to one label at a time. It then restored the selected records to
+parent-split order. Replaying it reproduces both stored files byte for byte. The
+subsets are identified by their filenames and SHA-256
+hashes.\footnote{Adaptation used
+\texttt{vcr\_train\_5\_pct.json}, SHA-256\\
+\texttt{27e156d7043289685ce0723d94fc676610d817b2241097d2f2e70d9b722a0d30}.\\
+Evaluation used \texttt{vcr\_val\_10\_pct.json}, SHA-256\\
+\texttt{0288740b785021e667c12eb08ab2c222a65f80b2702d598a7ebb7b942b3a5fdc}.} The evaluation set is shared across every arm
+and condition. We compared the two files directly: they share no record identifier
+and no source frame identifier, so overlap in records and in source
+frames between adaptation and evaluation is zero. Several questions can use one frame, so we retain the record count
+and the source frame count separately.
+
+Figure~\ref{fig:record-plain-vs-point} shows the two image families on one
+record, together with that record's question, choices, and outputs from both
+stages. A plain arm uses the unmarked source frame. A point arm uses a copy
+specific to the question with magenta polygon outlines and indexed labels on the
+referenced regions.
+
+\input{Figures/final/record_methods_example}
+
+\section{Four input arms}
+\label{sec:setup-arms}
+
+The four arms combine the presence or absence of polygon overlays and fixed
+descriptions (Table~\ref{tab:setup-arms}). Each arm was adapted separately, as
+Section~\ref{sec:problem-design} explains.
+
+\begin{table}[ht]
+\centering
+\caption[Four input arms]{Inputs that distinguish the four arms. The VCR
+record, question, choices, and answer labels remain matched. Descriptions were
+generated from the \mbox{polygon-marked} image in both description arms, so
+\texttt{plain\_desc} pairs an unmarked image with text derived from the marked
+one.}
+\label{tab:setup-arms}
+\begin{tabular}{lccL{6.0cm}}
+\toprule
+Arm & Polygon overlay & Description & Input \\
+\midrule
+\texttt{plain} & no & no & unmarked source image \\
+\texttt{point} & yes & no & image with question-specific polygons \\
+\texttt{plain\_desc} & no & yes & source image and fixed description \\
+\texttt{point\_desc} & yes & yes & polygon image and the same description \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+We generated descriptions from the polygon-marked images through
+\mbox{OpenAI's} API that accepts images, using the \texttt{gpt-4o} model alias. The alias is mutable
+and no dated snapshot was pinned, so the exact weights behind it are not
+recoverable; Section~\ref{sec:discussion-limitations} records that as a
+reproducibility limitation. Appendix~\ref{sec:app-prompts} gives the exact prompt and
+generation settings. The description model received the image but not the VCR question, choices,
+gold answer, or human rationale as text. The prompt requested a short, factual
+scene description using the visible indexed labels. The descriptions are
+therefore informed by the annotations, because they were generated from images
+containing indexed overlays. This matters most for \texttt{plain\_desc}, which
+pairs an unmarked image with a description derived from its marked copy. Where
+indexed references occur, the \texttt{plain} arm sees them in the question and
+choices but receives no added description linking those labels to the scene.
+
+Each description arm receives the first 256 characters of the stored
+description. The cap is applied identically at both stages and in every arm and
+condition. We selected 256 characters after trial runs because this setting
+avoided GPU out-of-memory errors in the available hardware setup. Because it cuts
+at a fixed offset, the supplied text can end in the middle of a word, and
+details that appear later in a longer description, including entries for
+individual people,
+are simply absent from what the model receives. The stored descriptions run to a
+median of 445 characters, so 2,624 of the 2,653 records are cut, and 1,674 of them
+are cut in the middle of a word. At that
+median stored length of 445 characters, the 256-character prefix contains about
+58\% of the description.
+Appendix~\ref{sec:app-w2c} shows the supplied text exactly as the model
+received it for each audited record.
+
+\section{Model and adaptation}
+\label{sec:setup-model}
+
+We used Qwen2.5-VL-3B-Instruct
+\citep{DBLP:journals/corr/abs-2502-13923}, pinned to model and processor
+revision \texttt{66285546d2b821cf421d4f5eb2576359d3770cd3}. We adapted the
+model with low-rank adaptation (LoRA)
+\citep{DBLP:conf/iclr/HuSWALWWC22}. The base weights remained fixed and were
+loaded in four-bit form following QLoRA
+\citep{DBLP:conf/nips/DettmersPHZ23}. Computation used bfloat16.
+
+Each arm had one Stage~1 adapter and one Stage~2 adapter. All adaptations used
+seed~42, LoRA rank~32, alpha~64, and dropout~0.05, applied to the query, key,
+value, and output projections and to the up and down projections of the
+feedforward blocks. Stage~2 was trained with the causal language modelling loss on
+targets derived from the human rationale. The four Stage~2 checkpoints were trained with
+gold answers and fixed for evaluation. Stage~2 begins from the arm's selected
+Stage~1 weights and is then trained on the rationale objective; it does not
+carry the Stage~1 classifier head, and at inference it receives no Stage~1
+hidden state or class score.
+
+Stage~1 predicts through a classifier head. The backbone processes the image
+together with the full textual prompt, which contains the question and all four
+choices. The Stage~1 representation is
+the final hidden state on the text side, taken at the last non-padding token. That vector
+passes through a head of the form
+\[
+  \mathrm{Linear}(H,H)\rightarrow\mathrm{GELU}\rightarrow
+  \mathrm{Dropout}(0.1)\rightarrow\mathrm{Linear}(H,4),
+\]
+where GELU is the Gaussian Error Linear Unit and $H$ is the backbone hidden
+size. The four output logits correspond to the
+four answer options in their dataset order, and the prediction is the option
+with the largest logit. The A--D instruction in the prompt is part of the
+textual framing of the task. The classifier gives one explicit score per
+candidate answer while leaving the multimodal representation from the backbone
+intact.
+
+Table~\ref{tab:setup-training} lists the settings shared by every arm. Both
+stages used AdamW with a cosine schedule for the learning rate and a warmup over
+the first 5\% of updates. Stage~1 used a learning rate of $1\times10^{-4}$, weight
+decay 0.01, gradient accumulation of six steps, and clipping the gradient norm at
+1.0. Stage~2 used a learning rate of $5\times10^{-5}$, weight decay 0, and
+gradient accumulation of two steps. Both stages used a batch size of two per
+device and ran on one device, so accumulation alone determines how many examples
+contribute to an update. Stage~1 selected the epoch with the highest validation
+accuracy, and for every arm that was epoch~2 of three. Stage~2 ran a fixed budget
+of six epochs and retained epoch~6 in every arm. BLEU against the human rationale
+was monitored during Stage~2 training, but epochs one to five were scored on a
+fixed subsample of 200 records and epoch~6 on all 2,653 records, so those values
+from different epochs are not a directly comparable selection curve. The retained
+Stage~2 checkpoint was therefore the final checkpoint at the end of its fixed
+budget of six epochs. All four arms followed the same training procedure, but
+each remained a separately trained system.
+
+The same VCR validation subset of 2,653 records supplied those metrics and the
+reported evaluation. The reported results are therefore performance on the
+validation set for the selected Stage~1 and retained Stage~2
+checkpoints. The study has no separate untouched test set. Every metric taken
+at each epoch came from the source condition; no intervention output entered
+checkpoint selection or retention. Stage~1 applied an early stopping rule with a
+patience of three epochs on validation accuracy; it ran its full budget of three
+epochs, so the rule never stopped a run. Stage~2 has no early stopping rule and
+ran a fixed budget of six epochs. The runs used
+PyTorch~2.9.0, Transformers~4.57.1, PEFT~0.16.0, bitsandbytes~0.48.2, and
+Accelerate~1.11.0.
+
+\begin{table}[ht]
+\centering
+\caption[Shared adaptation settings]{Adaptation settings shared across the four
+arms. Retained epochs were read from the run metadata of the eight
+checkpoints. Stage~1 kept the epoch with the
+highest validation accuracy; Stage~2 kept the final checkpoint of its fixed budget
+of six epochs because the BLEU values monitored across epochs did not form a
+directly comparable selection curve (Section~\ref{sec:setup-model}).}
+\label{tab:setup-training}
+\begin{tabular}{lll}
+\toprule
+Component & Stage~1 & Stage~2 \\
+\midrule
+Objective & cross entropy over four classes & causal language modelling \\
+Role of gold answer & classification target & supplied in prompt \\
+Optimiser & AdamW & AdamW \\
+Learning rate & $1\times10^{-4}$ & $5\times10^{-5}$ \\
+Weight decay & 0.01 & 0 \\
+Schedule & cosine; warmup over first 5\% & cosine; warmup over first 5\% \\
+Gradient clipping & 1.0 & none \\
+Batch size per device & 2 & 2 \\
+Gradient accumulation & 6 & 2 \\
+Maximum epochs & 3 & 6 \\
+Retained epoch, every arm & 2 & 6 \\
+Checkpoint retained by & highest validation accuracy & end of fixed budget \\
+LoRA rank, alpha, dropout & 32, 64, 0.05 & 32, 64, 0.05 \\
+LoRA target modules & \multicolumn{2}{l}{q, k, v, and o projections; feedforward up and down projections} \\
+Base weights & \multicolumn{2}{l}{frozen, loaded in four-bit form} \\
+Compute precision & \multicolumn{2}{l}{bfloat16} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Two-stage prompts}
+\label{sec:setup-prompts}
+
+Stage~1 received the image, question, four choices, and optional description.
+The text instructed the model to select one of A--D. As
+Section~\ref{sec:setup-model} describes, the classifier head's four scores produced
+the answer.
+
+The two prompt families label the choices differently. The Stage~1 prompt uses
+the letters A--D and the Stage~2 prompt uses zero-based indices (0)--(3), in the
+same dataset order. The text and tables a reader sees use the letters
+throughout, so index 0 is choice~A, 1 is B, 2 is C, and 3 is D. Indices appear
+only in the prompts reproduced in Appendix~\ref{sec:app-prompts} and in
+equations.
+
+Stage~2 received the same record and optional description together with a
+supplied answer. The prompt conditioned on the gold answer opens by naming the
+task, restates the question and the four indexed choices, names the supplied
+answer as correct, asks for step-by-step reasoning about the image, and then
+gives a literal output template with a \texttt{<reasoning>} and a
+\texttt{<final>} field. In the two description arms the first 256 characters of
+the stored description are appended after that template, at the very end of the
+prompt, under the literal field label \texttt{Image caption:}. The
+image is not a token in the prompt text: it is supplied as a separate image item
+in the chat template, and the processor inserts its own image tokens.
+
+The two stages label the description field differently. Stage~1 appends the
+description under the literal field label \texttt{Caption:}, while primary
+Stage~2 uses the literal field label \texttt{Image caption:}. Both carry the
+same 256-character description prefix. Appendix~\ref{sec:app-prompts} gives the prompt forms for
+Stage~1, Stage~2, and description generation, the ways in which the Stage~2
+training and generation prompts differ, and the parser rules that decide which
+outputs are eligible.
+
+Stage~2 was trained towards a target in that same two-part format, built from
+the VCR human rationale by a formatting heuristic. The rationale is split at
+sentence boundaries. When it has more than one sentence, every sentence except
+the last becomes the \texttt{<reasoning>} span and the last sentence becomes the
+\texttt{<final>} span. When it has exactly one sentence, that sentence is placed
+in both spans. The tags therefore reorganise text a human wrote as a single
+rationale; they do not add a separately annotated record of hidden reasoning,
+and no part of the target was written to describe a model's internal steps. This
+is why the primary evaluation unit is the \texttt{<final>} span recovered by the
+tolerant parser
+of the \emph{generated} text, with the reasoning span and the full generation
+reported as sensitivity analyses in
+Appendix~\ref{sec:app-rq2-sensitivity}.
+
+Training used the causal language modelling loss over every non-padding token of
+the formatted user and assistant sequence. The prompt tokens contributed to the
+loss alongside the rationale tokens since the prompt tokens were not masked out.
+
+
+\section{Six image conditions}
+\label{sec:setup-conditions}
+
+The five interventions represent four forms of visual change. Grey removes scene
+content from the image. Mask and noise corrupt the source image. Mismatch
+replaces it with coherent but unrelated visual content. Mirror changes spatial
+orientation while retaining the scene. Source is the reference against which the
+other five are compared.
+
+Every record and arm was evaluated under the six conditions in
+Table~\ref{tab:setup-conditions}. Questions, choices, supplied gold answers,
+and descriptions remained invariant within a record. The mask and noise seeds
+depend on dataset index, so construction remains deterministic across shards.
+
+% Two lines shorter, so that the paragraph after Figure~\ref{fig:six-image-conditions}
+% begins below the figure instead of being split across it.
+\enlargethispage{-2\baselineskip}
+
+\begin{table}[ht]
+\centering
+\caption[Six image conditions]{Image constructions used at both stages. Each
+constructor acts on the image appropriate to the arm.}
+\label{tab:setup-conditions}
+\begin{tabular}{lL{10.6cm}}
+\toprule
+Condition & Construction \\
+\midrule
+source & unmarked image for plain arms or polygon image for point arms \\
+grey & a new $256\times256$ RGB image with every channel set to 128; this removes the
+scene while still providing an RGB image the processor can accept; it is the only
+condition that does not present a frame at its own dimensions \\
+mismatch & the target frame of one fixed derangement of the 2,653 records, in the image
+family appropriate to the arm; no record maps to itself and no pair shares a source frame \\
+mask & one uniform draw in $[0,1)$ per pixel position from NumPy
+\texttt{default\_rng}, seeded with the dataset index; every channel at a position is
+set to 0 where its draw is below 0.5, so about half of the positions go black \\
+noise & independent Gaussian values per colour channel with mean 0 and standard
+deviation 80, drawn with a NumPy \texttt{default\_rng} generator seeded with
+\texttt{1000000} plus the dataset index, added in 16-bit signed arithmetic,
+clipped to 0--255, and cast back to 8-bit RGB \\
+mirror & horizontal flip of the image appropriate to the arm \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Figure~\ref{fig:six-image-conditions} shows these constructors on one
+evaluation record.
+
+\input{Figures/final/record_six_conditions}
+
+The mismatch map pairs all 2,653 records one-to-one, contains no fixed points,
+and never pairs records that share a source frame. Both stages use the same map,
+and it was built without reference to predictions, rationales, or metric
+outcomes. The question, answer choices, supplied answer, and description stay as
+they are; only the image is replaced, by the target record's image in the form
+appropriate to the arm.
+
+The map is reproducible from the evaluation file alone. Load the 2,653 records in
+dataset order and seed Python's standard generator with \texttt{20260829}. Copy the
+indices 0 to 2,652 and shuffle them, drawing repeatedly from the continuing
+generator state, and accept the first permutation in which no index maps to
+itself and no source and target share a source frame identifier. The third draw
+was the first to satisfy both constraints, and it is the map used at both
+stages.
+
+That last detail makes mismatch a slightly different manipulation in the polygon
+arms. A \texttt{point} or \texttt{point\_desc} arm receives the target record's
+polygon image, so the rendered \texttt{person\_N} labels belong to the target
+while the question still refers to the source record's indices. The plain arms
+receive an unmarked frame and meet no such conflict. Because the polygon arms
+carry labels from the target frame, mismatch comparisons across arms are
+descriptive.
+
+Grey differs from the other conditions in a second way that matters for
+interpretation. Every evaluation frame is wider than it is tall, between 1,280
+and 1,920 pixels across, whereas grey is a fixed 256 by 256 square. Mask, noise,
+and mirror keep the source frame's own dimensions, and mismatch presents another
+frame at that frame's dimensions. Grey therefore changes the size and shape of
+the input as well as removing the scene, so it measures the effect of this
+particular replacement rather than of an image without scene content in general.
+
+\section{Inference environments}
+\label{sec:setup-lineage}
+
+All Stage~1 predictions, for all six conditions, come from one RTX~3090
+environment, with batch size~2 and the same checkpoints and prompts throughout.
+
+Every primary Stage~2 rationale, source and intervention alike, comes from one
+environment of two RTX~5090 cards. Generated text can differ across hardware.
+Keeping the execution environment fixed means that differences within a source and
+intervention pair can be attributed to the image condition rather than the
+machine. The primary set contains $4\times6\times2{,}653=63{,}672$
+generations.
+
+Stage~2 inference used four-bit NormalFloat (NF4) loading with double
+quantisation, bfloat16 compute, greedy decoding, batch size~1, and at most 256
+new tokens. Greedy decoding removes sampling. Under the fixed execution setup,
+repeated generation reproduced the same text. Identical strings have Drift zero
+by definition. The same
+model and processor revision, checkpoint, prompt builder, image constructor,
+and parser were used across source and intervention conditions.
+
+\section{Gold answer conditioning and secondary regimes}
+\label{sec:setup-regimes}
+
+Primary RQ2 uses gold answer conditioning: the gold answer index and text are
+identical for a record across all six image conditions. The reason is that
+RQ2 asks what the image change does to the rationale. Under \mbox{predicted-answer}
+conditioning an image change can also change the Stage~1 answer that Stage~2 is
+then asked to justify, so any difference in the text would have two possible
+causes at once. Holding the gold answer fixed means that only the image condition
+changes within each primary RQ2 comparison.
+
+\subsection{Secondary predicted-answer regime}
+\label{sec:setup-pred-a}
+
+PRED-A is a secondary regime that uses only source images. It records what happens
+when Stage~2 is given an answer selected by Stage~1 instead of the gold answer,
+so it adds no condition to RQ2. It reuses the Stage~2 checkpoints trained with
+gold answers and was generated in the RTX~3090 environment. Its results are
+reported separately from the primary RQ2 results. All four arms generated with
+the same settings: greedy decoding and at most 128 new tokens, half the limit
+the primary
+generations were given (Section~\ref{sec:setup-lineage}).
+
+The PRED-A prompt differs from the primary generation prompt in four material
+ways, and each of them bears on what a comparison could mean. The prompt frames
+the task as reflection on the model's own decision. It supplies the Stage~1
+answer in place of the gold answer. It adds the instruction \enquote{Continue
+until the explanation is complete and well-formed}, which the primary generation
+prompt does not carry. In \texttt{plain\_desc} and \texttt{point\_desc} it
+appends the description block used during Stage~2 training, which labels the
+description as context and instructs the model not to reuse it; the other two
+arms receive no description block. A difference between gold and predicted
+conditioning therefore cannot be read as the effect of the answer source alone.
+
+The answers came from the Stage~1 validation predictions saved at epoch~3, the
+last training epoch. Those predictions reproduce every answer the regime
+supplied. The RQ1 results use the retained epoch~2 checkpoint instead, and the
+two prediction sets differ on 121 records in \texttt{plain}, 148 in
+\texttt{point}, 106 in \texttt{plain\_desc}, and 117 in \texttt{point\_desc},
+which is 4.0 to 5.6 per cent of the 2,653 records. PRED-A is therefore not the
+configuration that used the retained Stage~1 checkpoint, and its results hold for
+the answers actually supplied to those generations.
+
+\subsection{Wrong-answer control}
+\label{sec:setup-known-change}
+
+One control changes the supplied answer while keeping the source image fixed. It
+provides a known semantic change against which to compare the Drift caused by
+image changes. It uses the first 200 records in
+deterministic dataset order, giving every arm the same record identifiers in the
+same order. Those 200 records come from 185
+source frames, and the intervals for the control use the same bootstrap
+clustered by source frame as the main analysis. The sample size was fixed before
+the final results were generated; it was chosen to keep the additional
+generation workload manageable, and no power analysis was made for the number 200.
+
+The control generates one rationale for a predefined alternative answer, giving
+800 additional RTX~5090 generations. The alternative
+was the Stage~1 source prediction the RQ1 results report, taken from the
+retained epoch~2 checkpoint, when that prediction differed from gold; otherwise
+it was $(g+2)\bmod4$ for gold index $g$.
+
+\section{Output processing and eligibility}
+\label{sec:setup-output-processing}
+
+Stage~2 requested a \texttt{<reasoning>} span and a shorter \texttt{<final>}
+span. We stored the raw generation and both strict and tolerant parser outcomes.
+The tolerant parser accepts differences in case and spacing and tag names beginning
+with \texttt{reason} or \texttt{final}, including the malformed variants documented
+in Appendix~\ref{sec:app-prompts}. When no usable tag is present it recovers the
+last sentence under one fixed fallback rule. That appendix states the rules exactly.
+
+The primary rationale unit is a final rationale span containing text, recovered by
+the tolerant parser. A comparison relative to source is eligible only when both the
+source and condition spans are usable for the same record. Missing text was not
+replaced with the reasoning span, raw output, text from another condition, or
+content generated by the model. Chapter~\ref{ch:results} reports raw, usable, and
+pairable counts before the Drift results, and
+Figure~\ref{fig:rq2-paired-example} shows one record's spans under three image
+conditions.
