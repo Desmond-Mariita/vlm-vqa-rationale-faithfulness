@@ -693,7 +693,7 @@
     },
     {
       "path": "provenance/thesis_dependencies.json",
-      "sha256": "34ac1c6421b2022c59f93b7583c0434a144db29943b75bc6806963d35e6ab440",
+      "sha256": "d27e3f13897fae344c02b0b1e3392116383f7433033cbff267a9a3a065e1c604",
       "bytes": 29831
     },
     {
@@ -1288,8 +1288,8 @@
     },
     {
       "path": "thesis/Appendices/AppendixC.tex",
-      "sha256": "e8a0837e0ebcccfc3c74f15b0817fa25d90d368c756e63cfb34c22236ef2be27",
-      "bytes": 9688
+      "sha256": "9417453de042488568803bce355496878fccaff7563d8bcb91bd2e463b27d8fd",
+      "bytes": 9989
     },
     {
       "path": "thesis/Appendices/prompt_templates.tex",
