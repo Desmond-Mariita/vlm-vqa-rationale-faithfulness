@@ -42,7 +42,9 @@ Positive values mean that accuracy was lower after the
 image intervention. Both component accuracies accompany the gap because the
 same difference can arise at different performance levels.
 
-The \emph{Sufficiency Gap} is the gap for grey replacement:
+The \emph{Sufficiency Gap} is this thesis's name for the accuracy gap under grey
+replacement, not the ERASER sufficiency measure defined in
+Section~\ref{sec:background-interventions}:
 \[
   \mathrm{Sufficiency\ Gap}
   =A_{\mathrm{source}}-A_{\mathrm{grey}}.
@@ -52,11 +54,11 @@ while the question, choices, checkpoint, and optional description remain. Grey
 also changes the size and shape of the input (Section~\ref{sec:setup-conditions}),
 so the gap measures this specific 256 by 256 replacement. The same grey
 constructor was applied to every arm, but interactions with its size, shape, and
-processed visual tokens may still differ between arms. A
-smaller gap means that more information relevant to the answer
-remains available under grey. In a description arm, the retained text
-can provide that information, so a smaller gap is interpreted as behavioural
-robustness.
+processed visual tokens may still differ between arms. A smaller gap means that
+accuracy is better preserved under this specific grey replacement; it does not
+quantify how much answer-relevant information remains. In a description arm,
+retained text may help preserve accuracy, so the gap is interpreted as
+behavioural robustness.
 
 The planned comparisons across arms compare \texttt{plain\_desc} with
 \texttt{plain} and \texttt{point\_desc} with \texttt{point}. They subtract
@@ -122,7 +124,8 @@ correctness, and hidden causal reasoning are separate questions.
 \label{sec:framework-bertscore-config}
 
 We computed BERTScore F1 \citep{DBLP:conf/iclr/ZhangKWWA20}. Our implementation
-used \texttt{bert\_score==0.3.12} with \textsc{roberta-large}, model snapshot
+used \texttt{bert\_score==0.3.12} with \textsc{roberta-large}
+\citep{DBLP:journals/corr/abs-1907-11692}, model snapshot
 \texttt{722cf37b1afa9454edce342e7895e588b6ff1d59}, and layer~17.
 Inverse document frequency weighting was
 disabled, and baseline rescaling was disabled, so every reported value is raw.
@@ -260,7 +263,9 @@ recovered from the rationale it wrote. We measure this by letting a text-only
 model act as the judge. The judge receives the question, the four answer
 choices, and the eligible final rationale span. These are its only inputs. It
 selects one of the four choice indices, and recovery succeeds when that choice
-matches the answer supplied to Stage~2.
+matches the answer supplied to Stage~2. This connects CMC to simulatability-style
+explanation evaluation \citep{DBLP:conf/emnlp/HaseZXB20}, but CMC does not apply
+their Leakage-Adjusted Simulatability correction for direct label leakage.
 
 The judge is \texttt{Qwen/Qwen2.5-3B-Instruct}, pinned to revision
 \texttt{aa8e72537993ba99e69dfaafa59ed015b17504d1}. Inputs were truncated at 2,048

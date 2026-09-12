@@ -203,7 +203,17 @@ The main limitations are:
         model snapshot. The descriptions were generated from polygon images,
         were not independently checked for factual accuracy or task coverage,
         and were truncated to 256 characters. A description error could cause
-        or mask apparent textual substitution.
+        or mask apparent textual substitution. In the two description arms,
+        the Stage~2 caption block differs between training and primary
+        generation (Appendix~\ref{sec:app-prompts}), creating an additional
+        train/inference mismatch specific to those arms. This additionally
+        confounds the cross-arm Stage~2 description comparison. Within-arm
+        source-versus-intervention pairs remain internally matched because
+        both members use the same generation prompt.
+
+  \item \textbf{Training loss.} Stage~2 training loss included prompt tokens
+        (Section~\ref{sec:setup-prompts}), a training-design limitation whose
+        effect on formatting or echo behaviour was not separately evaluated.
 
   \item \textbf{Visible artefacts.} Some frames contain distributor branding or
         subtitles. Mask, noise, and mirror preserve or partly preserve these
