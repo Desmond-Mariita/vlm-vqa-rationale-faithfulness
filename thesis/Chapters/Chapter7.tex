@@ -156,8 +156,11 @@ rationale change with BERTScore Drift. Applying the same image conditions at
 both stages supports an ordinal cross-stage synthesis. Prior work intervened on
 input spans, attention distributions, or written chains of reasoning
 \citep{DeYoungEtAl20ERASER,JainWallace19Attention,DBLP:journals/corr/abs-2307-13702}.
-This places answer and rationale responses within one matched intervention
-framework.
+Related multimodal work compares image and text contributions to answers and
+explanations \citep{ParcalabescuFrank25VLM}. The specific contribution here is a
+matched VCR setup using the same records and one image-intervention battery at
+both stages, holding the gold answer fixed in primary Stage~2 and interpreting
+rationale change with empirical Drift references.
 
 \section{What the findings mean for faithfulness}
 \label{sec:discussion-faithfulness}

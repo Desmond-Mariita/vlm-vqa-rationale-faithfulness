@@ -693,7 +693,7 @@
     },
     {
       "path": "provenance/thesis_dependencies.json",
-      "sha256": "db2d57beb238839353960d124d8b81d2e5ccb5532ff5de534a69375729e9a008",
+      "sha256": "657df025b64a555d2571372cd54bddb7f27c16724fde4b5ac68c039766c6d06e",
       "bytes": 29831
     },
     {
@@ -1288,8 +1288,8 @@
     },
     {
       "path": "thesis/Appendices/AppendixC.tex",
-      "sha256": "9417453de042488568803bce355496878fccaff7563d8bcb91bd2e463b27d8fd",
-      "bytes": 9989
+      "sha256": "979fa607c0301cb93b16062eaf858f8332e90897435ea243fd6f60a7b34b2d32",
+      "bytes": 9898
     },
     {
       "path": "thesis/Appendices/prompt_templates.tex",
@@ -1328,8 +1328,8 @@
     },
     {
       "path": "thesis/Chapters/Chapter7.tex",
-      "sha256": "8d13e66640b0f2a501e5105b0ce85c3e870fe2a274a74e94b293c6cacd54d302",
-      "bytes": 13530
+      "sha256": "db3590d8054444f6d236ab296d9a4369229c3aa150075445795cd9c46a09cdb0",
+      "bytes": 13810
     },
     {
       "path": "thesis/Chapters/Chapter9.tex",
