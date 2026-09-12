@@ -8,6 +8,12 @@ material for the W$\rightarrow$C sample, the checks that support the primary RQ2
 text unit, and the prompt and parsing details needed to read the study. The main
 chapters contain the evidence used to answer RQ1 and RQ2.
 
+Code and reproducibility materials for this thesis are publicly available in two
+mirrored repositories: GitHub at
+\url{https://github.com/Desmond-Mariita/vlm-vqa-rationale-faithfulness}
+and the University of Potsdam GitUP at
+\url{https://gitup.uni-potsdam.de/mariita/vlm-vqa-rationale-faithfulness}.
+
 \section{Correctness movements in every arm and \mbox{condition}}
 \label{sec:app-rq1-transitions}
 
@@ -72,20 +78,19 @@ are shown.
 \section{Drift scale and sensitivity to the rationale unit}
 \label{sec:app-rq2-sensitivity}
 
-Drift is a similarity difference on a span of text, so its size cannot be read
-without knowing how much text the span holds. In the source condition the final
-span has a median length of 13 to 14 words in every arm, and the complete
-generation about 32. A short unit makes each token weigh more, so a Drift of a few
-hundredths on the final span reflects a smaller wording change than the same
-number would on a longer text.
+In the source condition the final span has a median length of 13 to 14 words in
+every arm, and the complete generation about 32 words. Absolute Drift values
+across different text representations should not be interpreted as a calibrated
+amount of wording change.
 
 The primary unit is the final span, so it matters whether the intervention
 ordering depends on that choice. Table~\ref{tab:app-rq2-text-unit} gives the
 same pairs measured three ways: on the final span, on the reasoning span, and on
 the complete generation. The ordering of the five interventions is identical
-under all three units in every arm. Absolute values fall as the unit grows,
-because a longer text shares more tokens between the two members of a pair, but
-the ranking does not move.
+under all three units in every arm. In these data, the longer representations
+have lower absolute Drift. This analysis does not isolate why; possible
+contributors include length, shared content, contextual-embedding behaviour,
+and other representation differences.
 
 Table~\ref{tab:app-rq2-echo-unit} does the same for the wrong-answer
 comparison. The difference stays positive with an interval above zero in every arm
@@ -147,8 +152,6 @@ text, or a model-generated substitute.
 
 The exact pattern strings and the code that applies them are kept with the
 analysis files for this project.
-
-\clearpage
 
 \section{Predicted-answer evidence}
 \label{sec:app-pred-a}

@@ -693,7 +693,7 @@
     },
     {
       "path": "provenance/thesis_dependencies.json",
-      "sha256": "34ac1c6421b2022c59f93b7583c0434a144db29943b75bc6806963d35e6ab440",
+      "sha256": "657df025b64a555d2571372cd54bddb7f27c16724fde4b5ac68c039766c6d06e",
       "bytes": 29831
     },
     {
@@ -1288,8 +1288,8 @@
     },
     {
       "path": "thesis/Appendices/AppendixC.tex",
-      "sha256": "e8a0837e0ebcccfc3c74f15b0817fa25d90d368c756e63cfb34c22236ef2be27",
-      "bytes": 9688
+      "sha256": "979fa607c0301cb93b16062eaf858f8332e90897435ea243fd6f60a7b34b2d32",
+      "bytes": 9898
     },
     {
       "path": "thesis/Appendices/prompt_templates.tex",
@@ -1308,8 +1308,8 @@
     },
     {
       "path": "thesis/Chapters/Chapter3.tex",
-      "sha256": "28ec8395b2a4edcb265e14f9d0f47063aea8642300722b888dc82478da21bcbd",
-      "bytes": 28604
+      "sha256": "c404fbae916e57bcc667d28cd5a28dbf48569968e989a40c63baaeddd7a65f7a",
+      "bytes": 29331
     },
     {
       "path": "thesis/Chapters/Chapter4.tex",
@@ -1318,18 +1318,18 @@
     },
     {
       "path": "thesis/Chapters/Chapter5.tex",
-      "sha256": "9958cff38f62b97d9d7fa86e1cd3f20a56f0a5c776627b7710d0d65f6cb50b68",
-      "bytes": 14089
+      "sha256": "1ecde008c763abf9d241b3d6892890d2d623bf79863b21a538dab06cff7497aa",
+      "bytes": 14505
     },
     {
       "path": "thesis/Chapters/Chapter6.tex",
-      "sha256": "6107fc8cfe547449bcea3b7d828b09bfe07288067461dab60b1325ed01acab3d",
-      "bytes": 14307
+      "sha256": "021a16f5656943d886ffc818d3b89f2a276fc870876f3287aeb8b33d2bec0d56",
+      "bytes": 14424
     },
     {
       "path": "thesis/Chapters/Chapter7.tex",
-      "sha256": "c2496307298a0bf9df0276a5fa3ea415d64f418ed59203b1519172d94859fa05",
-      "bytes": 12843
+      "sha256": "db3590d8054444f6d236ab296d9a4369229c3aa150075445795cd9c46a09cdb0",
+      "bytes": 13810
     },
     {
       "path": "thesis/Chapters/Chapter9.tex",
@@ -1448,13 +1448,13 @@
     },
     {
       "path": "thesis/bibtex.bib",
-      "sha256": "05eb5980b46faac5d9bc7d5a066f07a4b451525f043c72ce2b238b1da0c64eb4",
-      "bytes": 32607
+      "sha256": "5c4c6185b1d5d8c6159d38cc442709c7f193cc92eb199e379f3f10de703959cf",
+      "bytes": 32609
     },
     {
       "path": "thesis/bibtex_v2.bib",
-      "sha256": "215a0d3ab7bd65d7a982e5655e1c5253a3d0b9ceecbeeccf6f546391070e71fe",
-      "bytes": 8294
+      "sha256": "fbb3a587d0b19cd08179edebf3a661264f375607245368ccccefdaeb15adde82",
+      "bytes": 8293
     },
     {
       "path": "thesis/main.tex",

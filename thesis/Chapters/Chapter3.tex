@@ -48,10 +48,10 @@ question. \citet{DBLP:conf/iccv/DancetteCTC21} mined predictive rules from the
 training set that combine question words with the labels of detected objects, such
 as the presence of a racket, and then collected the validation records on which
 every applicable mined rule gives the wrong answer. These counterexamples form
-the evaluation subset, and records that no rule matched were set aside. Accuracy
-on that subset fell from 63.52
-to 33.91 for one common model and from 67.77 to 39.24 for a pretrained
-transformer. \citet{DBLP:conf/emnlp/SiMZLL0CWZ22} generalised the idea into nine
+the evaluation subset, and records that no rule matched were set aside. For one
+common model, overall validation accuracy was 63.52 versus 33.91 on the selected
+counterexample subset; for a pretrained transformer, the corresponding accuracies
+were 67.77 and 39.24. \citet{DBLP:conf/emnlp/SiMZLL0CWZ22} generalised the idea into nine
 shortcut families built from question types, question keywords, annotated key
 objects, and their combinations, and reported that accuracy within the training
 distribution exceeded accuracy on every one of the nine shifted evaluation sets.
@@ -64,8 +64,7 @@ question and the detected content of the image. Their evidence comes from
 rebuilding the data or reselecting the evaluation records. None of them holds a
 record fixed and alters its image. \citet{DBLP:conf/cvpr/GoyalKSBP17} do add a
 second explanation form, pointing to a similar image on which the answer differs.
-Across the work reviewed here, though, no study tests how a generated textual
-rationale responds when the visual evidence changes.
+These studies do not test generated rationales under altered images.
 
 \subsection{Visual Commonsense Reasoning}
 \label{sec:background-vcr}
@@ -289,11 +288,22 @@ stated limitation is that they
 have no independent access to the model's internal process against which to check
 the chain.
 
-This line of work establishes that written reasoning can be steered by cues it never
-mentions, and that whether an answer depends on the written chain can be measured by
-editing the chain. Both kinds of intervention act on text: on the words of the
-prompt, or on the words of the reasoning. Neither shows how a rationale generator
-responds when the visual evidence is removed, corrupted, replaced, or transformed.
+These text interventions show that written reasoning can omit an influential cue
+and that answer dependence on a written chain can be tested by editing it.
+\citet{DBLP:conf/acl/AtanasovaCLLSA23} provide adjacent tests for natural-language
+explanations: they insert reasons that change predictions without appearing in
+the explanation, and reconstruct inputs from stated reasons to test whether
+the prediction is preserved. \citet{ParcalabescuFrank24CCSHAP} argue that such
+output tests measure self-consistency rather than faithfulness to hidden
+computation; their CC-SHAP measure compares input contributions to answers and
+explanations.
+
+Visual and textual contributions have also been compared in VLM decoders.
+\citet{ParcalabescuFrank25VLM} extend this framework to multimodal answer and
+explanation generation, finding greater image contributions for explanations
+than for answers in the models and tasks tested. This is a close antecedent to
+the present study, whose focus is a matched VCR comparison under the same
+image-intervention battery at both stages.
 
 \section{Behavioural Evaluation of Explanations}
 \label{sec:background-behavioural}
@@ -407,14 +417,14 @@ needs comparison points before it can be read.
 \section{Positioning of This Thesis}
 \label{sec:background-position}
 
-This thesis addresses the gap identified across the three strands reviewed above
-by jointly evaluating Stage~1 answer behaviour and Stage~2 free-form rationale
+This thesis builds on these explanation tests and multimodal contribution
+analyses by jointly evaluating Stage~1 answer behaviour and Stage~2 free-form rationale
 behaviour on the same VCR records under the same controlled changes to visual
 evidence. In the primary Stage~2 analysis, the supplied gold answer remains
 fixed while the image condition changes. The four separately adapted
 configurations vary the use of descriptions and polygon overlays. This places
 the two stages under one intervention framework while keeping their measures
-separate.
+separate and interpreting rationale Drift against empirical reference points.
 
 The three strands motivate different parts of this design. Visual question
 answering motivates the controlled image changes and the analysis of answer
@@ -456,9 +466,9 @@ Behavioural evaluation &
 Altering candidate evidence and observing the output tests dependence; similarity
 to a human reference is a different quantity and correlates weakly with human
 judgement of rationales &
-The studies reviewed here intervene on input spans, attention, or generated
-reasoning. This thesis applies the same conceptual image conditions at both
-stages and compares outputs for the same records \\
+Earlier tests also compare input contributions to answers and explanations.
+This thesis pairs the same VCR records under one image-intervention battery at
+both stages, with empirical Drift references \\
 \bottomrule
 \end{tabular}
 \end{table}
